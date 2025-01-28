@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ポケモンスリープ 経験値計算ツール</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header>
@@ -23,7 +24,7 @@
                 
                 <fieldset>
                     <legend>ポケモンの性格補正:</legend>
-                    <select id="pokemonNature1" name="pokemonNature">
+                    <select id="pokemonNature1" name="pokemonNature1">
                         <option value="normal">通常</option>
                         <option value="expUp">EXP↑</option>
                         <option value="expDown">EXP↓</option>
@@ -35,16 +36,37 @@
             </form>
         </section>
         <section>
+            <h2>ポケモン個体情報登録</h2>
+            <form id="pokemonRegistry">
+                <label for="pokemonName">ポケモン名:</label>
+                <input type="text" id="pokemonName" name="pokemonName" required>
+
+                <label for="pokemonSkill">サブスキル:</label>
+                <input type="text" id="pokemonSkill" name="pokemonSkill" required>
+
+                <label for="pokemonNature">性格:</label>
+                <select id="pokemonNature" name="pokemonNature">
+                    <option value="normal">通常</option>
+                    <option value="expUp">EXP↑</option>
+                    <option value="expDown">EXP↓</option>
+                </select>
+
+                <button type="submit">登録</button>
+            </form>
+            <div id="registeredPokemons"></div>
+        </section>
+        <section>
             <h2>結果表示</h2>
             <div id="results"></div>
         </section>
         <section>
             <h2>目標レベル計算</h2>
-            <form id="levelTargetCalculator">
+            <form id="levelCalculator">
                 <label for="targetLevel">目標レベル:</label>
                 <input type="number" id="targetLevel" name="targetLevel" required>
                 <button type="submit">必要な睡眠回数を計算</button>
             </form>
+            <div id="levelResults"></div>
         </section>
     </main>
     <footer>
