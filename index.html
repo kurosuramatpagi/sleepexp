@@ -3,47 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>計算サイト</title>
+    <title>ポケスリープツール風サイト</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+
+        header {
+            text-align: center;
             padding: 20px;
+            background-color: #007bff;
+            color: white;
         }
-        input {
-            margin: 5px;
-            padding: 8px;
-            width: 150px;
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8em;
         }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        main h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        input[type="number"],
         button {
-            margin-top: 10px;
-            padding: 10px 15px;
+            padding: 10px;
+            font-size: 1em;
+            width: 100%;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
             cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            font-size: 1.2em;
+            margin-top: 10px;
+            color: #28a745;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <h1>計算サイト</h1>
-    <p>数値を入力して計算してください。</p>
-    <label for="input1">数値1:</label>
-    <input type="number" id="input1" placeholder="数値を入力">
-    <br>
-    <label for="input2">数値2:</label>
-    <input type="number" id="input2" placeholder="数値を入力">
-    <br>
-    <button onclick="calculate()">計算する</button>
-    <h2>結果: <span id="result">-</span></h2>
+    <header>
+        <h1>ポケスリープツール風計算ツール</h1>
+    </header>
+
+    <main>
+        <h2>個体値計算</h2>
+        <p>ポケモンのステータスを入力し、計算結果を確認してください。</p>
+
+        <label for="hp">HP (体力):</label>
+        <input type="number" id="hp" placeholder="例: 120">
+
+        <label for="attack">攻撃:</label>
+        <input type="number" id="attack" placeholder="例: 85">
+
+        <label for="defense">防御:</label>
+        <input type="number" id="defense" placeholder="例: 70">
+
+        <button onclick="calculateIV()">計算する</button>
+
+        <div id="result" class="result">結果がここに表示されます。</div>
+    </main>
 
     <script>
-        function calculate() {
-            // 入力された数値を取得
-            const input1 = parseFloat(document.getElementById('input1').value) || 0;
-            const input2 = parseFloat(document.getElementById('input2').value) || 0;
+        function calculateIV() {
+            const hp = parseFloat(document.getElementById('hp').value) || 0;
+            const attack = parseFloat(document.getElementById('attack').value) || 0;
+            const defense = parseFloat(document.getElementById('defense').value) || 0;
 
-            // 計算式: ここで好きな計算を行う
-            const result = (input1 + input2) * 2;
+            // 個体値計算式（例として適当に作成）
+            const iv = ((hp * 2 + attack * 1.5 + defense * 1.2) / 3).toFixed(2);
 
-            // 結果を画面に表示
-            document.getElementById('result').textContent = result;
+            // 結果を表示
+            const resultElement = document.getElementById('result');
+            resultElement.textContent = `計算結果: ${iv}`;
         }
     </script>
 </body>
