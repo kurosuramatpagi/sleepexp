@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>自動計算サイト</title>
+    <title>計算サイト</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             padding: 20px;
-            line-height: 1.6;
         }
         input {
             margin: 5px;
@@ -36,9 +35,14 @@
 
     <script>
         function calculate() {
+            // 入力された数値を取得
             const input1 = parseFloat(document.getElementById('input1').value) || 0;
             const input2 = parseFloat(document.getElementById('input2').value) || 0;
-            const result = (input1 + input2) * 2; // 計算式（好きな式に変更可能）
+
+            // 計算式: ここで好きな計算を行う
+            const result = (input1 + input2) * 2;
+
+            // 結果を画面に表示
             document.getElementById('result').textContent = result;
         }
     </script>
