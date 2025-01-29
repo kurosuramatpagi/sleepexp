@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // 入力されたデータを取得
         const pokemonName = document.getElementById('pokemonSelect').value;
         const nickname = document.getElementById('nickname').value.trim() || pokemonName; // ニックネーム未入力ならポケモン名
+        const currentLevel = document.getElementById('currentLevel').value || "??"; // 未入力なら「??」
         const nextLevelExp = document.getElementById('nextLevelExp').value;
 
         // ポケモンカードを作成
@@ -18,10 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const imageDiv = document.createElement('div');
         imageDiv.classList.add('pokemon-image');
 
-        // レベル表示（仮に「Lv.??」としておく）
+        // レベル表示（入力されたレベルを反映）
         const levelText = document.createElement('div');
         levelText.classList.add('pokemon-level');
-        levelText.textContent = `Lv.??`;
+        levelText.textContent = `Lv.${currentLevel}`;
 
         // ニックネームまたはポケモン名
         const nicknameText = document.createElement('div');
