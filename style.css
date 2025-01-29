@@ -1,10 +1,12 @@
 body {
-    font-family: 'M+1p', sans-serif;
+    font-family: 'M PLUS 1p', sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
+    background-color: #f8f8f8;
 }
 
+/* バナー */
 .banner {
     background-color: #09f;
     padding: 10px 0;
@@ -12,19 +14,43 @@ body {
     margin-bottom: 20px;
 }
 
+/* フォームの中央寄せ */
 .form-container {
     width: 80%;
     margin: 0 auto;
     text-align: left;
 }
 
+/* 各入力フィールドを中央寄りの左揃えに */
 .form-group {
-    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
+/* 登録されたポケモンの表示 */
 #pokemonDisplay {
     margin-top: 20px;
-    font-size: 0.8em; /* 小さく表示 */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.pokemon-box {
+    width: 150px;
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+}
+
+.pokemon-box img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
 }
 
 button {
@@ -32,4 +58,8 @@ button {
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
+    background-color: #09f;
+    color: white;
+    border: none;
+    border-radius: 5px;
 }
