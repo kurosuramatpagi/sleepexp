@@ -1,18 +1,39 @@
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('pokemon_names.txt')
-        .then(response => response.text())
-        .then(data => {
-            const pokemonArray = data.split('\n');
-            const selectElement = document.getElementById('pokemonSelect');
+    const form = document.getElementById('pokemonRegistry');
+    const registeredPokemonsContainer = document.getElementById('registeredPokemons');
 
-            pokemonArray.forEach(pokemon => {
-                if (pokemon.trim() !== '') {
-                    const option = document.createElement('option');
-                    option.value = pokemon;
-                    option.textContent = pokemon;
-                    selectElement.appendChild(option);
-                }
-            });
-        })
-        .catch(error => console.error('Error loading the pokemon names:', error));
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // 入力されたデータを取得
+        const pokemonName = document.getElementById('pokemonSelect').value;
+        const nickname = document.getElementById('nickname').value.trim() || pokemonName; // ニックネーム未入力ならポケモン名
+        const nextLevelExp = document.getElementById('nextLevelExp').value;
+
+        // ポケモンカードを作成
+        const pokemonCard = document.createElement('div');
+        pokemonCard.classList.add('pokemon-card');
+
+        // ポケモン画像（仮の四角）
+        const imageDiv = document.createElement('div');
+        imageDiv.classList.add('pokemon-image');
+
+        // レベル表示（仮に「Lv.??」としておく）
+        const levelText = document.createElement('div');
+        levelText.classList.add('pokemon-level');
+        levelText.textContent = `Lv.??`;
+
+        // ニックネームまたはポケモン名
+        const nicknameText = document.createElement('div');
+        nicknameText.classList.add('pokemon-nickname');
+        nicknameText.textContent = nickname;
+
+        // カードに追加
+        pokemonCard.appendChild(levelText);
+        pokemonCard.appendChild(imageDiv);
+        pokemonCard.appendChild(nicknameText);
+
+        // 登録リストに追加
+        registeredPokemonsContainer.appendChild(pokemonCard);
+    });
 });
