@@ -32,7 +32,7 @@ function registerPokemon() {
     if (nature === "expDown") natureSymbol = "↓";
 
     // ✅ マークの処理
-    const sleepExpBonusIcon = sleepExpBonus ? '<span class="bonus-check">✅</span>' : '';
+    const sleepExpBonusIcon = sleepExpBonus ? '<span class="bonus-check">✓</span>' : '';
 
     const pokemonData = {
         name: pokemonName,
