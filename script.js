@@ -4,7 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
     fetch('pokemon_names.txt')
         .then(response => response.text())
         .then(data => {
+            // 改行で分割し、リストを作成
             const pokemonNames = data.split('\n').map(name => name.trim()).filter(name => name !== '');
+            
+            // ひらがな→カタカナ変換用のマップを作成
             window.pokemonNamesList = pokemonNames;
             window.pokemonNamesSet = new Set(pokemonNames);
         })
