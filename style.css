@@ -122,44 +122,46 @@ button {
     border: none;
     border-radius: 5px;
 }
-
-/* ポケモン表示エリア */
+/* カードエリアの幅を情報入力エリアと統一 */
 #pokemonDisplay {
-    margin-top: 20px;
+    width: 80%; /* .form-container と統一 */
+    margin: 20px auto; /* 中央揃え */
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start; /* 左寄せ配置 */
+    gap: 8px; /* カードの間隔を調整 */
 }
 
-/* 登録されたポケモン */
+/* カードのサイズを2段階小さくする */
 .pokemon-box {
-    width: 120px;
+    width: calc(20% - 8px); /* 横に5枚並ぶように設定 */
+    max-width: 100px; /* 小さくする */
     text-align: center;
     border: 2px solid #ccc;
     border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
+    padding: 6px; /* 余白を小さく */
     background-color: white;
+    font-size: 0.8em; /* テキストを縮小 */
 }
 
-/* ポケモン画像 */
+/* ポケモン画像のサイズも調整 */
 .pokemon-box img {
-    width: 80px;
-    height: 80px;
+    width: 60px; /* 小さくする */
+    height: 60px;
     border-radius: 50%;
 }
 
-/* ニックネーム */
+/* ニックネーム・レベル・EXPのフォントサイズ調整 */
 .pokemon-box .nickname {
     font-weight: bold;
+    font-size: 0.9em;
 }
 
-/* レベルとEXP表示 */
 .pokemon-box .level,
 .pokemon-box .exp-bonus,
 .pokemon-box .exp-next {
-    font-size: 0.9em;
-    margin-top: 5px;
+    font-size: 0.8em;
+    margin-top: 3px;
 }
 
 /* 性格の矢印背景 */
@@ -210,44 +212,3 @@ button {
     background-color: #f0f0f0;
 }
 
-/* カードエリアの幅を情報入力エリアと統一 */
-#pokemonDisplay {
-    width: 80%; /* .form-container と統一 */
-    margin: 20px auto; /* 中央揃え */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start; /* 左寄せ配置 */
-    gap: 8px; /* カードの間隔を調整 */
-}
-
-/* カードのサイズを2段階小さくする */
-.pokemon-box {
-    width: calc(20% - 8px); /* 横に5枚並ぶように設定 */
-    max-width: 100px; /* 小さくする */
-    text-align: center;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    padding: 6px; /* 余白を小さく */
-    background-color: white;
-    font-size: 0.8em; /* テキストを縮小 */
-}
-
-/* ポケモン画像のサイズも調整 */
-.pokemon-box img {
-    width: 60px; /* 小さくする */
-    height: 60px;
-    border-radius: 50%;
-}
-
-/* ニックネーム・レベル・EXPのフォントサイズ調整 */
-.pokemon-box .nickname {
-    font-weight: bold;
-    font-size: 0.9em;
-}
-
-.pokemon-box .level,
-.pokemon-box .exp-bonus,
-.pokemon-box .exp-next {
-    font-size: 0.8em;
-    margin-top: 3px;
-}
