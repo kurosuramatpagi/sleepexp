@@ -132,18 +132,48 @@ button {
 
 /* 登録されたポケモン */
 .pokemon-box {
-    width: 120px;  /* ポケモンボックスの幅 */
-    text-align: center;
     border: 2px solid #ccc;
-    border-radius: 10px;  /* ポケモンボックスの角の丸み */
+    background-color: white;
     padding: 10px;
     margin: 10px;
-    background-color: white;  /* ポケモンボックスの背景色 */
+    border-radius: 10px;
+    text-align: center;
+    width: 180px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.pokemon-box img {
-    width: 80px;  /* 画像の幅 */
-    height: 80px;  /* 画像の高さ */
-    border-radius: 50%;  /* 画像の角の丸み */
+.pokemon-image {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+}
+
+.nickname {
+    font-weight: bold;
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.level {
+    font-size: 16px;
+    color: #555;
+}
+
+.exp-bonus {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+
+.bonus-check {
+    color: green;
+    font-size: 18px;
+}
+
+.exp-next {
+    font-size: 14px;
+    color: #888;
 }
 
