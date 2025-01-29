@@ -122,58 +122,87 @@ button {
     border-radius: 5px;
 }
 
-/* ポケモン表示エリア */
+/* カードエリアのレイアウト調整（スマホ版で横5列に配置） */
 #pokemonDisplay {
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 横5列 */
+    gap: 8px; /* カード間の余白 */
     justify-content: center;
+    padding: 10px;
 }
 
-/* 登録されたポケモン */
+/* カードのスタイル調整 */
 .pokemon-box {
     border: 2px solid #ccc;
     background-color: white;
     padding: 10px;
-    margin: 10px;
     border-radius: 10px;
     text-align: center;
-    width: 180px;
+    width: 100%;
+    max-width: 100px; /* カードサイズを調整 */
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
+/* ポケモン画像のサイズ調整 */
 .pokemon-image {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     object-fit: contain;
 }
 
+/* ニックネーム */
 .nickname {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
     margin: 5px 0;
 }
 
+/* レベル */
 .level {
-    font-size: 16px;
+    font-size: 12px;
     color: #555;
 }
 
+/* 睡ボと性格のレイアウト */
 .exp-bonus {
-    font-size: 14px;
+    font-size: 12px;
     display: flex;
     justify-content: center;
     gap: 10px;
     align-items: center;
 }
 
+/* 睡ボのチェックマーク変更 */
 .bonus-check {
     color: green;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: bold;
 }
 
+/* 次のレベルまでのEXP */
 .exp-next {
-    font-size: 14px;
+    font-size: 12px;
     color: #888;
 }
 
+/* スマホ向けの調整 */
+@media (max-width: 768px) {
+    .pokemon-box {
+        max-width: 80px; /* スマホでのカードサイズを調整 */
+    }
+
+    .pokemon-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .nickname {
+        font-size: 12px;
+    }
+
+    .level,
+    .exp-bonus,
+    .exp-next {
+        font-size: 10px;
+    }
+}
