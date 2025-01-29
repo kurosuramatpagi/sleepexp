@@ -7,12 +7,11 @@ document.addEventListener('DOMContentLoaded', function () {
             pokemonNames.forEach(name => {
                 const option = document.createElement('option');
                 option.value = name.trim();
-                option.textContent = name.trim().replace(/[\(\)]/g, ''); // 括弧を削除して問題の回避
+                option.textContent = name.trim();
                 select.appendChild(option);
             });
-            console.log(pokemonNames); // プルダウンの内容をコンソールに表示して確認
         })
-        .catch(error => console.error('Error loading the pokemon names:', error)); // エラーがあればコンソールに表示
+        .catch(error => console.error('Error loading the pokemon names:', error));
 });
 
 function registerPokemon() {
@@ -24,7 +23,6 @@ function registerPokemon() {
     const expToNextLevel = document.getElementById('expToNextLevel').value;
 
     const displayArea = document.getElementById('pokemonDisplay');
-    displayArea.innerHTML = ''; // Clear previous entries
 
     const pokemonBox = document.createElement('div');
     pokemonBox.className = 'pokemon-box';
