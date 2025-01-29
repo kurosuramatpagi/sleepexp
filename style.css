@@ -41,7 +41,7 @@ body {
 /* iOS のときだけバナーを70px下げる */
 @supports (-webkit-touch-callout: none) {
     .banner {
-        top: 70px !important;
+        top: 40px !important;
     }
 }
 
