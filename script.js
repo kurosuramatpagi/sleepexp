@@ -30,15 +30,14 @@ function registerPokemon() {
         return;
     }
 
-    // 性格の記号を色付きで設定
+    // 性格の記号を背景付きで設定
     let natureSymbol = `<span class="nature-symbol">-</span>`;
     if (nature === "expUp") natureSymbol = `<span class="nature-symbol exp-up">↑</span>`;
     if (nature === "expDown") natureSymbol = `<span class="nature-symbol exp-down">↓</span>`;
 
-    // 「睡ボ」アイコンの処理（背景#ffcc00の角丸）
+    // 「睡ボ」アイコンの処理
     const sleepBonusIcon = sleepExpBonus ? '<span class="sleep-bonus">睡ボ</span>' : '';
 
-    // ポケモンデータのオブジェクトを作成
     const pokemonData = {
         name: pokemonName,
         nickname: nickname || pokemonName,
@@ -53,7 +52,6 @@ function registerPokemon() {
     addPokemonToList(pokemonData);
 }
 
-// ポケモンをリストに追加する関数
 function addPokemonToList(pokemon) {
     const displayArea = document.getElementById('pokemonDisplay');
     const pokemonElement = document.createElement('div');
@@ -66,52 +64,4 @@ function addPokemonToList(pokemon) {
         <p class="exp-next">次のレベルまで ${pokemon.expToNextLevel} EXP</p>
     `;
     displayArea.appendChild(pokemonElement);
-}
-
-// ひらがなをカタカナに変換する関数
-function toKatakana(str) {
-    return str.replace(/[\u3041-\u3096]/g, function(ch) {
-        return String.fromCharCode(ch.charCodeAt(0) + 0x60);
-    });
-}
-
-// 検索サジェスチョン機能（ひらがな対応）
-function showSuggestions() {
-    const input = document.getElementById('pokemonName');
-    const suggestionBox = document.getElementById('suggestionBox');
-    let query = input.value.trim();
-
-    if (!query) {
-        suggestionBox.innerHTML = '';
-        suggestionBox.style.display = 'none';
-        return;
-    }
-
-    // ひらがなをカタカナに変換
-    const katakanaQuery = toKatakana(query);
-
-    // ひらがなとカタカナの両方で検索
-    const matches = window.pokemonNames.filter(name => 
-        name.startsWith(katakanaQuery) || name.startsWith(query)
-    );
-
-    if (matches.length === 0) {
-        suggestionBox.innerHTML = '';
-        suggestionBox.style.display = 'none';
-        return;
-    }
-
-    suggestionBox.innerHTML = '';
-    matches.forEach(match => {
-        const suggestion = document.createElement('div');
-        suggestion.textContent = match;
-        suggestion.onclick = () => {
-            input.value = match;
-            suggestionBox.innerHTML = '';
-            suggestionBox.style.display = 'none';
-        };
-        suggestionBox.appendChild(suggestion);
-    });
-
-    suggestionBox.style.display = 'block';
 }
