@@ -27,15 +27,22 @@ body {
 /* バナーのデザイン */
 .banner {
     width: 100%;
-    height: 40px; /* 高さを小さく */
-    background-color: #09f; /* バナー部分だけ青にする */
+    height: 40px;
+    background-color: #09f;
     display: flex;
     align-items: center;
     padding-left: 15px;
     position: fixed;
-    top: 0;
+    top: 0; /* デフォルトは 0 */
     left: 0;
     z-index: 1000;
+}
+
+/* iOS のときだけ適用 */
+@supports (-webkit-touch-callout: none) {
+    .banner {
+        top: 15px !important; /* iOSだけ15px下げる */
+    }
 }
 
 /* タイトルのデザイン */
