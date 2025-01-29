@@ -2,67 +2,35 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ポケモンスリープ 経験値計算ツール</title>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body { 
-            font-family: 'M PLUS 1p', sans-serif; 
-        }
-        label, button { 
-            display: block; 
-            margin-top: 10px; 
-        }
-        input, select { 
-            margin-top: 5px; 
-        }
-        #results, #registeredPokemons { 
-            margin-top: 20px; 
-            border: 1px solid #ccc; 
-            padding: 10px; 
-        }
-    </style>
+    <title>ポケモン選択</title>
 </head>
 <body>
-    <header>
-        <h1>ポケモンスリープ 経験値計算ツール</h1>
-    </header>
-    <main>
-        <section>
-            <h2>ポケモン個体情報登録</h2>
-            <form id="pokemonRegistry">
-                <label for="pokemonSelect">ポケモンの名前:</label>
-                <select id="pokemonSelect" name="pokemonName">
-                    <!-- ポケモンの名前がここに挿入される -->
-                </select>
+    <label for="pokemonSelect">ポケモンの名前:</label>
+    <select id="pokemonSelect">
+        <!-- ここにポケモンの名前が挿入される -->
+    </select>
 
-                <label for="expBonusPresent">睡眠EXPボーナスがある:</label>
-                <input type="checkbox" id="expBonusPresent" name="expBonusPresent">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const url = https://docs.google.com/spreadsheets/d/e/2PACX-1vQU1dwLgajIU3QizNSLCBiHl8Io3tBD0CEc-TFElV3JG12lP5-TO_f6Nqrdg2AKT325pgmrBp5hyGlh/pubhtml;
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(data, 'text/html');
+                    const options = doc.querySelectorAll('td');  // スプレッドシートがHTMLテーブルとして出力することを想定
 
-                <label for="pokemonNature">性格:</label>
-                <select id="pokemonNature" name="pokemonNature">
-                    <option value="normal">通常</option>
-                    <option value="expUp">EXP↑</option>
-                    <option value="expDown">EXP↓</option>
-                </select>
-
-                <button type="submit">登録</button>
-            </form>
-            <div id="registeredPokemons"></div>
-        </section>
-        <section>
-            <h2>経験値計算</h2>
-            <form id="expCalculator">
-                <label for="sleepScore">睡眠スコア (0-100):</label>
-                <input type="number" id="sleepScore" name="sleepScore" min="0" max="100" required>
-                <button type="submit">計算する</button>
-            </form>
-            <div id="results"></div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 ポケモンスリープファンサイト</p>
-    </footer>
-    <script src="script.js"></script>
+                    const select = document.getElementById('pokemonSelect');
+                    options.forEach(option => {
+                        const value = option.textContent;
+                        const optionElement = document.createElement('option');
+                        optionElement.value = value;
+                        optionElement.textContent = value;
+                        select.appendChild(optionElement);
+                    });
+                })
+                .catch(error => console.error('Error loading the data:', error));
+        });
+    </script>
 </body>
 </html>
