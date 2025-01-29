@@ -1,31 +1,42 @@
 document.addEventListener('DOMContentLoaded', function () {
     loadPokemonData(); // ページ読み込み時に保存データを読み込む
 
-    // ポケモン名リストを読み込む
+    // ポケモン名リストを読み込む & オートコンプリート用データリストを作成
     fetch('pokemon_names.txt')
         .then(response => response.text())
         .then(data => {
-            const pokemonNames = data.split('\n').filter(name => name.trim() !== '');
-            const select = document.getElementById('pokemonName');
+            const pokemonNames = data.split('\n').map(name => name.trim()).filter(name => name !== '');
+            const dataList = document.getElementById('pokemonList');
+
             pokemonNames.forEach(name => {
                 const option = document.createElement('option');
-                option.value = name.trim();
-                option.textContent = name.trim();
-                select.appendChild(option);
+                option.value = name;
+                dataList.appendChild(option);
             });
+
+            // 入力検証のためにグローバルに保存
+            window.pokemonNamesSet = new Set(pokemonNames);
         })
         .catch(error => console.error('Error loading the pokemon names:', error));
 });
 
+// 登録時にポケモン名がリスト内のものかチェック
 function registerPokemon() {
-    const pokemonName = document.getElementById('pokemonName').value;
-    const nickname = document.getElementById('nickname').value || pokemonName;
+    const pokemonNameInput = document.getElementById('pokemonName').value;
+    
+    // 入力がリスト内にあるかチェック
+    if (!window.pokemonNamesSet.has(pokemonNameInput)) {
+        alert('正しいポケモン名を入力してください！');
+        return;
+    }
+
+    const nickname = document.getElementById('nickname').value || pokemonNameInput;
     const sleepExpBonus = document.getElementById('sleepExpBonus').checked;
     const nature = document.getElementById('nature').value;
     const currentLevel = document.getElementById('currentLevel').value;
     const expToNextLevel = document.getElementById('expToNextLevel').value;
 
-    const pokemonData = { name: pokemonName, nickname, sleepExpBonus, nature, currentLevel, expToNextLevel };
+    const pokemonData = { name: pokemonNameInput, nickname, sleepExpBonus, nature, currentLevel, expToNextLevel };
 
     savePokemonData(pokemonData); // ローカルストレージに保存
     displayPokemon(pokemonData); // 画面に追加表示
