@@ -122,4 +122,18 @@ button {
     height: 80px;
     border-radius: 50%;
 }
+/* ポケモン名入力欄のスタイル */
+input[list] {
+    width: 100%;
+    padding: 5px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Datalist のスタイル（デフォルトで適用される） */
+datalist option {
+    font-size: 1em;
+    padding: 5px;
+}
 
