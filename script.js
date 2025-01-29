@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // ポケモン名リストの読み込み
     fetch('pokemon_names.txt')
         .then(response => response.text())
         .then(data => {
@@ -6,13 +7,15 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => console.error('Error loading the pokemon names:', error));
 
+    // 登録ボタンのイベントリスナー設定
     const registerButton = document.getElementById('registerButton');
     registerButton.addEventListener('click', registerPokemon);
 
-    // 入力フィールドのイベントリスナー
+    // 検索サジェスチョンのイベントリスナー設定
     document.getElementById('pokemonName').addEventListener('input', showSuggestions);
 });
 
+// ポケモンを登録する関数
 function registerPokemon() {
     const pokemonName = document.getElementById('pokemonName').value.trim();
     const nickname = document.getElementById('nickname').value.trim();
@@ -21,6 +24,7 @@ function registerPokemon() {
     const currentLevel = parseInt(document.getElementById('currentLevel').value, 10);
     const expToNextLevel = parseInt(document.getElementById('expToNextLevel').value, 10);
 
+    // 入力チェック
     if (!pokemonName || !window.pokemonNames.includes(pokemonName)) {
         alert('正しいポケモン名を入力してください！');
         return;
@@ -31,13 +35,14 @@ function registerPokemon() {
     if (nature === "expUp") natureSymbol = "↑";
     if (nature === "expDown") natureSymbol = "↓";
 
-    // ✅ マークの処理
-    const sleepExpBonusIcon = sleepExpBonus ? '<span class="bonus-check">✓</span>' : '';
+    // 「睡ボ」アイコンの処理
+    const sleepBonusIcon = sleepExpBonus ? '<span class="sleep-bonus">睡ボ</span>' : '';
 
+    // ポケモンデータのオブジェクトを作成
     const pokemonData = {
         name: pokemonName,
         nickname: nickname || pokemonName,
-        sleepExpBonusIcon: sleepExpBonusIcon,
+        sleepBonusIcon: sleepBonusIcon,
         natureSymbol: natureSymbol,
         currentLevel: isNaN(currentLevel) ? 1 : currentLevel,
         expToNextLevel: isNaN(expToNextLevel) ? 0 : expToNextLevel,
@@ -48,6 +53,7 @@ function registerPokemon() {
     addPokemonToList(pokemonData);
 }
 
+// ポケモンをリストに追加する関数
 function addPokemonToList(pokemon) {
     const displayArea = document.getElementById('pokemonDisplay');
     const pokemonElement = document.createElement('div');
@@ -56,7 +62,7 @@ function addPokemonToList(pokemon) {
         <img src="${pokemon.imagePath}" alt="${pokemon.name}" class="pokemon-image">
         <p class="nickname">${pokemon.nickname}</p>
         <p class="level">Lv.${pokemon.currentLevel}</p>
-        <p class="exp-bonus">睡ボ ${pokemon.sleepExpBonusIcon} 性格${pokemon.natureSymbol}</p>
+        <p class="exp-bonus">${pokemon.sleepBonusIcon} 性格${pokemon.natureSymbol}</p>
         <p class="exp-next">次のレベルまで ${pokemon.expToNextLevel} EXP</p>
     `;
     displayArea.appendChild(pokemonElement);
