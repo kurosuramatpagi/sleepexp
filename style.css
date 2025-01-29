@@ -1,4 +1,4 @@
-/* ローカルフォントの適用 */
+/* ローカルフォント適用 */
 @font-face {
     font-family: 'M+1p';
     src: url('fonts/MPLUS1p-Regular.ttf') format('truetype');
@@ -24,34 +24,57 @@ body {
     justify-content: center;
 }
 
-/* バナー */
+/* バナーの位置を固定して、ページ最上部に */
 .banner {
     background-color: #09f;
     padding: 10px 0;
     color: white;
-    margin-bottom: 20px;
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
-/* フォームの中央寄せ */
+/* フォームのレイアウト */
 .form-container {
     width: 80%;
-    margin: 0 auto;
+    margin: 80px auto 0;  /* 上に余白を追加 */
     text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 }
 
-/* 各入力フィールドを左揃え */
+/* 各入力フィールドの整列 */
 .form-group {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
     width: 100%;
-    max-width: 400px;  /* フォームの幅を固定 */
-    gap: 10px;
+    max-width: 400px;  /* フォームの最大幅を固定 */
     margin-bottom: 15px;
+}
+
+/* 入力欄の幅を統一 */
+input, select {
+    width: 100%;
+    padding: 5px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* ボタンのデザイン */
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #09f;
+    color: white;
+    border: none;
+    border-radius: 5px;
 }
 
 /* ポケモン表示エリア */
@@ -79,13 +102,3 @@ body {
     border-radius: 50%;
 }
 
-button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    background-color: #09f;
-    color: white;
-    border: none;
-    border-radius: 5px;
-}
