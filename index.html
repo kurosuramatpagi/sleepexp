@@ -7,22 +7,22 @@
 <body>
     <label for="pokemonSelect">ポケモンの名前:</label>
     <select id="pokemonSelect">
-        <!-- ここにポケモンの名前が挿入される -->
+        <!-- ポケモンの名前がここに挿入される -->
     </select>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const url = https://docs.google.com/spreadsheets/d/e/2PACX-1vQU1dwLgajIU3QizNSLCBiHl8Io3tBD0CEc-TFElV3JG12lP5-TO_f6Nqrdg2AKT325pgmrBp5hyGlh/pubhtml;
+            const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQU1dwLgajIU3QizNSLCBiHl8Io3tBD0CEc-TFElV3JG12lP5-TO_f6Nqrdg2AKT325pgmrBp5hyGlh/pubhtml";
             fetch(url)
                 .then(response => response.text())
                 .then(data => {
                     const parser = new DOMParser();
                     const doc = parser.parseFromString(data, 'text/html');
-                    const options = doc.querySelectorAll('td');  // スプレッドシートがHTMLテーブルとして出力することを想定
+                    const options = doc.querySelectorAll('table tr td:first-child'); // 1列目のデータのみを取得するセレクタ
 
                     const select = document.getElementById('pokemonSelect');
                     options.forEach(option => {
-                        const value = option.textContent;
+                        const value = option.textContent.trim(); // テキストをトリムして余分なスペースを除去
                         const optionElement = document.createElement('option');
                         optionElement.value = value;
                         optionElement.textContent = value;
