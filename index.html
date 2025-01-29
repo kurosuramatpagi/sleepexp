@@ -2,84 +2,55 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ポケモンスリープ 経験値計算ツール</title>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
+    <title>ポケモンスリープ管理</title>
     <style>
         body {
-            font-family: 'M PLUS 1p', sans-serif;
-            margin: 20px;
+            font-family: 'M+1p', sans-serif;
             text-align: center;
+            padding: 20px;
         }
-        label, button {
-            display: block;
-            margin: 10px auto;
-        }
-        select, input {
-            padding: 5px;
-            margin-top: 5px;
-        }
-        .pokemon-card {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            padding: 10px;
-            margin: 10px auto;
+        #pokemonList, #characteristic, #nextLevelExp, #currentLevel {
+            margin-bottom: 10px;
             width: 200px;
-            background-color: #f9f9f9;
+        }
+        #registerButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .pokemon-container {
+            margin-top: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            width: 150px;
+            text-align: center;
+            vertical-align: top;
         }
         .pokemon-image {
-            width: 80px;
-            height: 80px;
-            background-color: #ddd;
-            border-radius: 50%;
-            margin-bottom: 5px;
+            width: 100%;
+            border-radius: 10px 10px 0 0;
         }
-        .pokemon-level {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .pokemon-nickname {
-            font-size: 14px;
+        .pokemon-info {
+            background-color: #f0f0f0;
+            border-radius: 0 0 10px 10px;
+            padding: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>ポケモンスリープ 経験値計算ツール</h1>
-
-    <section>
-        <h2>ポケモン個体情報登録</h2>
-        <form id="pokemonRegistry">
-            <label for="pokemonSelect">ポケモンの名前:</label>
-            <select id="pokemonSelect" name="pokemonName"></select>
-
-            <input type="text" id="nickname" placeholder="ニックネーム (任意)">
-
-            <label>
-                <input type="checkbox" id="expBonusPresent" name="expBonusPresent">
-                睡眠EXPボーナス
-            </label>
-
-            <label for="pokemonNature">性格:</label>
-            <select id="pokemonNature" name="pokemonNature">
-                <option value="normal">通常</option>
-                <option value="expUp">EXP↑</option>
-                <option value="expDown">EXP↓</option>
-            </select>
-
-            <label for="currentLevel">現在のレベル:</label>
-            <input type="number" id="currentLevel" min="1" max="60" placeholder="例: 25">
-
-            <label for="nextLevelExp">次のレベルまでのEXP:</label>
-            <input type="number" id="nextLevelExp" min="0" placeholder="例: 1500">
-
-            <button type="submit">登録</button>
-        </form>
-
-        <div id="registeredPokemons"></div>
-    </section>
+    <h1>ポケモンスリープ管理</h1>
+    <select id="pokemonList"></select>
+    <input type="text" id="nickname" placeholder="ニックネーム">
+    <input type="checkbox" id="hasSleepBonus"> 睡眠EXPボーナス
+    <select id="characteristic">
+        <option value="normal">通常</option>
+        <!-- その他の性格オプション -->
+    </select>
+    <input type="number" id="nextLevelExp" placeholder="次のレベルまでのEXP">
+    <input type="number" id="currentLevel" placeholder="現在のレベル">
+    <button id="registerButton">登録</button>
+    <div id="pokemonDisplayArea"></div>
 
     <script src="script.js"></script>
 </body>
