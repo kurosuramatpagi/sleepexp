@@ -30,12 +30,12 @@ function registerPokemon() {
         return;
     }
 
-    // 性格を記号化
-    let natureSymbol = "-";
-    if (nature === "expUp") natureSymbol = "↑";
-    if (nature === "expDown") natureSymbol = "↓";
+    // 性格の記号を色付きで設定
+    let natureSymbol = `<span class="nature-symbol">-</span>`;
+    if (nature === "expUp") natureSymbol = `<span class="nature-symbol exp-up">↑</span>`;
+    if (nature === "expDown") natureSymbol = `<span class="nature-symbol exp-down">↓</span>`;
 
-    // 「睡ボ」アイコンの処理
+    // 「睡ボ」アイコンの処理（背景#ffcc00の角丸）
     const sleepBonusIcon = sleepExpBonus ? '<span class="sleep-bonus">睡ボ</span>' : '';
 
     // ポケモンデータのオブジェクトを作成
