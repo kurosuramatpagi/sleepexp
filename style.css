@@ -209,3 +209,45 @@ button {
 .suggestion-box div:hover {
     background-color: #f0f0f0;
 }
+
+/* カードエリアの幅を情報入力エリアと統一 */
+#pokemonDisplay {
+    width: 80%; /* .form-container と統一 */
+    margin: 20px auto; /* 中央揃え */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* 左寄せ配置 */
+    gap: 8px; /* カードの間隔を調整 */
+}
+
+/* カードのサイズを2段階小さくする */
+.pokemon-box {
+    width: calc(20% - 8px); /* 横に5枚並ぶように設定 */
+    max-width: 100px; /* 小さくする */
+    text-align: center;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 6px; /* 余白を小さく */
+    background-color: white;
+    font-size: 0.8em; /* テキストを縮小 */
+}
+
+/* ポケモン画像のサイズも調整 */
+.pokemon-box img {
+    width: 60px; /* 小さくする */
+    height: 60px;
+    border-radius: 50%;
+}
+
+/* ニックネーム・レベル・EXPのフォントサイズ調整 */
+.pokemon-box .nickname {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.pokemon-box .level,
+.pokemon-box .exp-bonus,
+.pokemon-box .exp-next {
+    font-size: 0.8em;
+    margin-top: 3px;
+}
