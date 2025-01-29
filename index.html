@@ -6,7 +6,7 @@
     
     <title>ポケスリ育成支援サイト</title>
 
-    <!-- ローカルフォントを適用 -->
+    <!-- ローカルフォントとスタイル適用 -->
     <link rel="stylesheet" href="style.css">
 
     <!-- iOS向けのフルスクリーン設定 -->
@@ -22,19 +22,23 @@
     </div>
 
     <div class="form-container">
-        <!-- ポケモン選択 & ニックネーム -->
+        <!-- ポケモン名 & ニックネーム -->
         <div class="form-group">
-            <label>ポケモン名</label>
+            <label for="pokemonName">ポケモン名</label>
             <select id="pokemonName"></select>
-            <label>ニックネーム</label>
+        </div>
+        <div class="form-group">
+            <label for="nickname">ニックネーム</label>
             <input type="text" id="nickname">
         </div>
 
         <!-- EXPボーナス & 性格 -->
         <div class="form-group">
-            <label>睡眠EXPボーナス</label>
+            <label for="sleepExpBonus">睡眠EXPボーナス</label>
             <input type="checkbox" id="sleepExpBonus">
-            <label>性格</label>
+        </div>
+        <div class="form-group">
+            <label for="nature">性格</label>
             <select id="nature">
                 <option value="normal">通常</option>
                 <option value="expUp">EXP↑</option>
@@ -44,9 +48,11 @@
 
         <!-- レベル関連 -->
         <div class="form-group">
-            <label>現在のレベル</label>
+            <label for="currentLevel">現在のレベル</label>
             <input type="number" id="currentLevel">
-            <label>次のレベルまでのEXP</label>
+        </div>
+        <div class="form-group">
+            <label for="expToNextLevel">次のレベルまでのEXP</label>
             <input type="number" id="expToNextLevel">
         </div>
 
