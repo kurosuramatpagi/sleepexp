@@ -1,63 +1,36 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const pokemonSelect = document.getElementById('pokemonSelect');
-    const registeredPokemonsContainer = document.getElementById('registeredPokemons');
-
-    // 📌 1. テキストファイルからポケモン名を読み込んでプルダウンにセット
+document.addEventListener('DOMContentLoaded', function () {
     fetch('pokemon_names.txt')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`HTTPエラー: ステータスコード ${response.status}`);
-            }
-            return response.text();
-        })
-        .then(text => {
-            console.log("読み込んだテキスト:", text); // ← デバッグ用ログ
-            const pokemonNames = text.split('\n').map(name => name.trim()).filter(name => name !== "");
-            pokemonNames.forEach(name => {
-                const option = document.createElement('option');
-                option.value = name;
-                option.textContent = name;
-                pokemonSelect.appendChild(option);
+        .then(response => response.text())
+        .then(data => {
+            const pokemonArray = data.split('\n');
+            const select = document.getElementById('pokemonSelect');
+            pokemonArray.forEach(function (pokemon) {
+                if (pokemon) { // 空の行は無視する
+                    const option = document.createElement('option');
+                    option.value = option.textContent = pokemon;
+                    select.appendChild(option);
+                }
             });
-        })
-        .catch(error => {
-            console.error('Error loading pokemon_names.txt:', error);
         });
-
-    // 📌 2. ポケモン登録処理
-    document.getElementById('pokemonRegistry').addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        // 入力データの取得
-        const pokemonName = pokemonSelect.value;
-        const nickname = document.getElementById('nickname').value.trim() || pokemonName; // ニックネームがない場合はポケモン名
-        const currentLevel = document.getElementById('currentLevel').value || "??"; // 未入力なら「??」
-        const nextLevelExp = document.getElementById('nextLevelExp').value;
-
-        // 📌 3. ポケモンカードを作成
-        const pokemonCard = document.createElement('div');
-        pokemonCard.classList.add('pokemon-card');
-
-        // 📌 画像枠（仮）
-        const imageDiv = document.createElement('div');
-        imageDiv.classList.add('pokemon-image');
-
-        // 📌 レベル表示
-        const levelText = document.createElement('div');
-        levelText.classList.add('pokemon-level');
-        levelText.textContent = `Lv.${currentLevel}`;
-
-        // 📌 ニックネーム表示
-        const nicknameText = document.createElement('div');
-        nicknameText.classList.add('pokemon-nickname');
-        nicknameText.textContent = nickname;
-
-        // 📌 すべての要素をカードに追加
-        pokemonCard.appendChild(levelText);
-        pokemonCard.appendChild(imageDiv);
-        pokemonCard.appendChild(nicknameText);
-
-        // 📌 登録リストに追加
-        registeredPokemonsContainer.appendChild(pokemonCard);
-    });
 });
+
+function registerPokemon() {
+    const pokemonName = document.getElementById('pokemonSelect').value;
+    const nickname = document.getElementById('nickname').value || pokemonName;
+    const nature = document.getElementById('natureSelect').value;
+    const expBonus = document.getElementById('expBonus').checked ? 'あり' : 'なし';
+    const nextLevelExp = document.getElementById('nextLevelExp').value;
+    const currentLevel = document.getElementById('currentLevel').value;
+    
+    const container = document.getElementById('pokemonList');
+    const pokemonDiv = document.createElement('div');
+    pokemonDiv.className = 'pokemonProfile';
+    pokemonDiv.innerHTML = `
+        <img src="images/${pokemonName}.png" alt="${pokemonName}" style="width: 100px; height: 100px; border-radius: 50%;">
+        <div>Lv.${currentLevel} ${nickname}</div>
+        <div>性格: ${nature}</div>
+        <div>EXPボーナス: ${expBonus}</div>
+        <div>次のレベルまでのEXP: ${nextLevelExp}</div>
+    `;
+    container.appendChild(pokemonDiv);
+}
