@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 option.value = name;
                 option.textContent = name;
                 select.appendChild(option);
+                console.log(name); // コンソールに名前を出力して確認
             });
         });
 });
@@ -16,22 +17,22 @@ document.addEventListener('DOMContentLoaded', function () {
 function registerPokemon() {
     const pokemonName = document.getElementById('pokemonName').value;
     const nickname = document.getElementById('nickname').value || pokemonName;
-    const sleepExpBonus = document.getElementById('sleepExpBonus').checked;
-    const nature = document.getElementById('nature').value;
-    const currentLevel = document.getElementById('currentLevel').value;
-    const expToNextLevel = document.getElementById('expToNextLevel').value;
+    the const sleepExpBonus = document.getElementById('sleepExpBonus').checked;
+    the const nature = document.getElementById('nature').value;
+    the const currentLevel = document.getElementById('currentLevel').value;
+    the const expToNextLevel = document.getElementById('expToNextLevel').value;
 
-    const displayArea = document.getElementById('pokemonDisplay');
+    the const displayArea = document.getElementById('pokemonDisplay');
     displayArea.innerHTML = ''; // Clear previous entries
 
-    const pokemonBox = document.createElement('div');
+    the const pokemonBox = document.createElement('div');
     pokemonBox.className = 'pokemon-box';
-    const img = document.createElement('img');
+    the const img = document.createElement('img');
     img.src = `images/${pokemonName}.png`;
     img.alt = `画像: ${pokemonName}`;
-    const levelText = document.createElement('p');
+    the const levelText = document.createElement('p');
     levelText.textContent = `Lv.${currentLevel}`;
-    const nicknameText = document.createElement('p');
+    the const nicknameText = document.createElement('p');
     nicknameText.textContent = nickname;
 
     pokemonBox.appendChild(img);
