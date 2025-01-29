@@ -6,84 +6,81 @@
     <title>ポケモンスリープ 経験値計算ツール</title>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'M PLUS 1p', sans-serif; }
-        label, button { display: block; margin-top: 10px; }
-        input, select { margin-top: 5px; }
-        
-        /* 登録されたポケモンを表示する枠 */
-        .pokemon-card {
-            display: inline-block;
-            width: 120px;
-            padding: 10px;
-            margin: 10px;
+        body {
+            font-family: 'M PLUS 1p', sans-serif;
+            margin: 20px;
             text-align: center;
-            border-radius: 15px;
+        }
+        label, button {
+            display: block;
+            margin: 10px auto;
+        }
+        select, input {
+            padding: 5px;
+            margin-top: 5px;
+        }
+        .pokemon-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px auto;
+            width: 200px;
             background-color: #f9f9f9;
         }
-
-        /* ポケモン画像（仮の角丸枠） */
         .pokemon-image {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             background-color: #ddd;
-            border-radius: 10px;
+            border-radius: 50%;
             margin-bottom: 5px;
         }
-
-        /* レベルの表示 */
         .pokemon-level {
             font-weight: bold;
+            margin-bottom: 5px;
         }
-
-        /* ニックネーム（またはポケモン名） */
         .pokemon-nickname {
             font-size: 14px;
-            color: #555;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>ポケモンスリープ 経験値計算ツール</h1>
-    </header>
-    <main>
-        <section>
-            <h2>ポケモン個体情報登録</h2>
-            <form id="pokemonRegistry">
-                <select id="pokemonSelect" name="pokemonName">
-                    <!-- JavaScriptでポケモンの名前がここに挿入される -->
-                </select>
+    <h1>ポケモンスリープ 経験値計算ツール</h1>
 
-                <input type="text" id="nickname" name="nickname" placeholder="ニックネーム">
+    <section>
+        <h2>ポケモン個体情報登録</h2>
+        <form id="pokemonRegistry">
+            <label for="pokemonSelect">ポケモンの名前:</label>
+            <select id="pokemonSelect" name="pokemonName"></select>
 
-                <label>
-                    睡眠EXPボーナス
-                    <input type="checkbox" id="expBonusPresent" name="expBonusPresent">
-                </label>
+            <input type="text" id="nickname" placeholder="ニックネーム (任意)">
 
-                <label>性格</label>
-                <select id="pokemonNature" name="pokemonNature">
-                    <option value="normal">通常</option>
-                    <option value="expUp">EXP↑</option>
-                    <option value="expDown">EXP↓</option>
-                </select>
+            <label>
+                <input type="checkbox" id="expBonusPresent" name="expBonusPresent">
+                睡眠EXPボーナス
+            </label>
 
-                <!-- 現在のレベル入力欄 -->
-                <label>現在のレベル</label>
-                <input type="number" id="currentLevel" name="currentLevel" min="1" placeholder="現在のレベル">
+            <label for="pokemonNature">性格:</label>
+            <select id="pokemonNature" name="pokemonNature">
+                <option value="normal">通常</option>
+                <option value="expUp">EXP↑</option>
+                <option value="expDown">EXP↓</option>
+            </select>
 
-                <label>次のレベルまでのEXP</label>
-                <input type="number" id="nextLevelExp" name="nextLevelExp" min="0" placeholder="次のレベルまでのEXP">
+            <label for="currentLevel">現在のレベル:</label>
+            <input type="number" id="currentLevel" min="1" max="60" placeholder="例: 25">
 
-                <button type="submit">登録</button>
-            </form>
-            <div id="registeredPokemons"></div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 ポケモンスリープファンサイト</p>
-    </footer>
+            <label for="nextLevelExp">次のレベルまでのEXP:</label>
+            <input type="number" id="nextLevelExp" min="0" placeholder="例: 1500">
+
+            <button type="submit">登録</button>
+        </form>
+
+        <div id="registeredPokemons"></div>
+    </section>
+
     <script src="script.js"></script>
 </body>
 </html>
