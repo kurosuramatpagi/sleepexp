@@ -12,23 +12,21 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const url = "https://spreadsheets.google.com/feeds/cells/1lO9M-TM4DRPp7CYlKJx3xBhYmbFB-YwXc42eiDD_K5o/1/public/full?alt=json";
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    const entries = data.feed.entry;
-                    const select = document.getElementById('pokemonSelect');
-                    entries.forEach(entry => {
-                        if (entry.gs$cell.col === '1') { // A列のデータのみを確認
-                            const value = entry.content.$t;
-                            const optionElement = document.createElement('option');
-                            optionElement.value = value;
-                            optionElement.textContent = value;
-                            select.appendChild(optionElement);
+            fetch('pokemon_names.txt')
+                .then(response => response.text())
+                .then(text => {
+                    const pokemonNames = text.split('\n');
+                    const selectElement = document.getElementById('pokemonSelect');
+                    pokemonNames.forEach(name => {
+                        if (name.trim() !== '') { // 空行を無視する
+                            const option = document.createElement('option');
+                            option.value = name.trim();
+                            option.textContent = name.trim();
+                            selectElement.appendChild(option);
                         }
                     });
                 })
-                .catch(error => console.error('Error loading the data:', error));
+                .catch(error => console.error('Error loading the Pokemon names:', error));
         });
     </script>
 </body>
