@@ -3,17 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-    
     <title>ポケスリ育成支援ツール</title>
-
-    <!-- ローカルフォントとスタイル適用 -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- iOS向けのフルスクリーン設定 -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <!-- ホーム画面用アイコン -->
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 </head>
 <body>
@@ -22,7 +15,6 @@
     </div>
 
     <div class="form-container">
-        <!-- ポケモン名 (入力欄 & 予測候補) -->
         <div class="form-group">
             <label for="pokemonName">ポケモン名</label>
             <input type="text" id="pokemonName" autocomplete="off">
@@ -32,8 +24,6 @@
             <label for="nickname">ニックネーム</label>
             <input type="text" id="nickname">
         </div>
-
-        <!-- EXPボーナス & 性格 -->
         <div class="form-group">
             <label for="sleepExpBonus">睡眠EXPボーナス</label>
             <input type="checkbox" id="sleepExpBonus">
@@ -46,8 +36,6 @@
                 <option value="expDown">EXP↓</option>
             </select>
         </div>
-
-        <!-- レベル関連 -->
         <div class="form-group">
             <label for="currentLevel">現在のレベル</label>
             <input type="number" id="currentLevel">
@@ -56,8 +44,7 @@
             <label for="expToNextLevel">次のレベルまでのEXP</label>
             <input type="number" id="expToNextLevel">
         </div>
-
-        <button onclick="registerPokemon()">登録</button>
+        <button id="registerButton">登録</button>
     </div>
 
     <div id="pokemonDisplay"></div>
