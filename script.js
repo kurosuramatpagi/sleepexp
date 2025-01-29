@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('pokemonName').addEventListener('input', showSuggestions);
 });
 
+// 入力中に予測候補を表示
 function showSuggestions() {
     const input = document.getElementById('pokemonName');
     const suggestionBox = document.getElementById('suggestionBox');
