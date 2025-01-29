@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // ローカルストレージからポケモンデータを読み込む
-    loadPokemonData();
+    loadPokemonData(); // ページ読み込み時に保存データを読み込む
 
-    // ポケモン名のリストをロードする
+    // ポケモン名リストを読み込む
     fetch('pokemon_names.txt')
         .then(response => response.text())
         .then(data => {
@@ -26,22 +25,10 @@ function registerPokemon() {
     const currentLevel = document.getElementById('currentLevel').value;
     const expToNextLevel = document.getElementById('expToNextLevel').value;
 
-    const displayArea = document.getElementById('pokemonDisplay');
+    const pokemonData = { name: pokemonName, nickname, sleepExpBonus, nature, currentLevel, expToNextLevel };
 
-    const pokemonData = {
-        name: pokemonName,
-        nickname: nickname,
-        sleepExpBonus: sleepExpBonus,
-        nature: nature,
-        currentLevel: currentLevel,
-        expToNextLevel: expToNextLevel
-    };
-
-    // ポケモン情報をローカルストレージに保存
-    savePokemonData(pokemonData);
-
-    // 画面に表示
-    displayPokemon(pokemonData);
+    savePokemonData(pokemonData); // ローカルストレージに保存
+    displayPokemon(pokemonData); // 画面に追加表示
 }
 
 function savePokemonData(pokemonData) {
@@ -52,20 +39,21 @@ function savePokemonData(pokemonData) {
 
 function loadPokemonData() {
     const pokemonList = JSON.parse(localStorage.getItem('pokemonList')) || [];
-    pokemonList.forEach(pokemonData => {
-        displayPokemon(pokemonData);
-    });
+    pokemonList.forEach(displayPokemon);
 }
 
 function displayPokemon(pokemonData) {
     const displayArea = document.getElementById('pokemonDisplay');
     const pokemonBox = document.createElement('div');
     pokemonBox.className = 'pokemon-box';
+
     const img = document.createElement('img');
     img.src = `images/${pokemonData.name}.png`;
     img.alt = `画像: ${pokemonData.name}`;
+
     const levelText = document.createElement('p');
     levelText.textContent = `Lv.${pokemonData.currentLevel}`;
+
     const nicknameText = document.createElement('p');
     nicknameText.textContent = pokemonData.nickname;
 
