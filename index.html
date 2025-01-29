@@ -3,42 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>ポケモンスリープ管理</title>
-    <style>
-        body {
-            font-family: 'M+1p', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .pokemon-box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            padding: 10px;
-            margin-top: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <select id="pokemonName"></select>
-    <input type="text" id="nickname" placeholder="ニックネーム">
-    <input type="checkbox" id="sleepExpBonus">
-    <label for="sleepExpBonus">睡眠EXPボーナス</label>
-    <select id="nature">
-        <option value="normal">通常</option>
-        <option value="expUp">EXP↑</option>
-        <option value="expDown">EXP↓</option>
-    </select>
-    <input type="number" id="currentLevel" placeholder="現在のレベル">
-    <input type="number" id="expToNextLevel" placeholder="次のレベルまでのEXP">
+    <h1>ポケスリ育成支援サイト</h1>
+    <div class="form-group">
+        <select id="pokemonName"></select>
+        <input type="text" id="nickname" placeholder="ニックネーム">
+    </div>
+    <div class="form-group">
+        <label>
+            <input type="checkbox" id="sleepExpBonus"> 睡眠EXPボーナス
+        </label>
+        <select id="nature">
+            <option value="normal">通常</option>
+            <option value="expUp">EXP↑</option>
+            <option value="expDown">EXP↓</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="number" id="currentLevel" placeholder="現在のレベル">
+        <input type="number" id="expToNextLevel" placeholder="次のレベルまで">
+    </div>
     <button onclick="registerPokemon()">登録</button>
     <div id="pokemonDisplay"></div>
-
     <script src="script.js"></script>
 </body>
 </html>
