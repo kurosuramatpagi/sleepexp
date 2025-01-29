@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
             pokemonNames.forEach(name => {
                 const option = document.createElement('option');
                 option.value = name.trim();
-                option.textContent = name.trim();
+                option.textContent = name.trim().replace(/[\(\)]/g, ''); // 括弧を削除して問題の回避
                 select.appendChild(option);
             });
             console.log(pokemonNames); // プルダウンの内容をコンソールに表示して確認
