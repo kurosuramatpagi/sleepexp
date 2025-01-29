@@ -6,51 +6,33 @@
     <style>
         body {
             font-family: 'M+1p', sans-serif;
-            text-align: center;
-            padding: 20px;
         }
-        #pokemonList, #characteristic, #nextLevelExp, #currentLevel {
-            margin-bottom: 10px;
-            width: 200px;
-        }
-        #registerButton {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .pokemon-container {
-            margin-top: 20px;
+        .pokemon-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border: 2px solid #ccc;
             border-radius: 10px;
-            display: inline-block;
-            width: 150px;
-            text-align: center;
-            vertical-align: top;
-        }
-        .pokemon-image {
-            width: 100%;
-            border-radius: 10px 10px 0 0;
-        }
-        .pokemon-info {
-            background-color: #f0f0f0;
-            border-radius: 0 0 10px 10px;
             padding: 10px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>ポケモンスリープ管理</h1>
-    <select id="pokemonList"></select>
+    <select id="pokemonName"></select>
     <input type="text" id="nickname" placeholder="ニックネーム">
-    <input type="checkbox" id="hasSleepBonus"> 睡眠EXPボーナス
-    <select id="characteristic">
+    <input type="checkbox" id="sleepExpBonus">
+    <label for="sleepExpBonus">睡眠EXPボーナス</label>
+    <select id="nature">
         <option value="normal">通常</option>
-        <!-- その他の性格オプション -->
+        <option value="expUp">EXP↑</option>
+        <option value="expDown">EXP↓</option>
     </select>
-    <input type="number" id="nextLevelExp" placeholder="次のレベルまでのEXP">
     <input type="number" id="currentLevel" placeholder="現在のレベル">
-    <button id="registerButton">登録</button>
-    <div id="pokemonDisplayArea"></div>
+    <input type="number" id="expToNextLevel" placeholder="次のレベルまでのEXP">
+    <button onclick="registerPokemon()">登録</button>
+    <div id="pokemonDisplay"></div>
 
     <script src="script.js"></script>
 </body>
