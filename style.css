@@ -125,30 +125,30 @@ button {
 /* カードエリアの幅を情報入力エリアと統一 */
 /* カードエリアの幅を情報入力エリアと統一 */
 #pokemonDisplay {
-    width: 80%; /* .form-container と統一 */
-    margin: 20px auto; /* 中央揃え */
+    width: 80%; /* .form-container と同じ幅に */
+    margin: 20px auto; /* 中央配置で左右の余白を確保 */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between; /* 均等配置 */
-    gap: 5px; /* カードの間隔を微調整 */
+    gap: 6px; /* カード間の間隔を微調整 */
 }
 
-/* カードのサイズを調整（5枚が綺麗に並ぶように） */
+/* カードのサイズを調整（カードエリア内で5枚並ぶように） */
 .pokemon-box {
-    width: calc(20% - 5px); /* 5枚横並びを保証 */
-    max-width: 72px; /* 横幅を調整 */
+    width: calc(100% / 5 - 6px); /* カードエリア内で5枚が均等に並ぶ */
+    max-width: 80px; /* 必要に応じて微調整 */
     text-align: center;
     border: 2px solid #ccc;
     border-radius: 10px;
-    padding: 3px; /* 余白を縮小 */
+    padding: 4px; /* 余白を縮小 */
     background-color: white;
     font-size: 0.7em; /* テキストを少し縮小 */
 }
 
-/* ポケモン画像のサイズを調整 */
+/* ポケモン画像のサイズを縮小 */
 .pokemon-box img {
-    width: 45px; /* 画像を小さく */
-    height: 45px;
+    width: 50px; /* 画像を小さく */
+    height: 50px;
     border-radius: 50%;
 }
 
@@ -166,7 +166,6 @@ button {
     margin-top: 1px;
     line-height: 1; /* 行間をさらに狭める */
 }
-
 /* 性格の矢印背景 */
 .nature-symbol {
     display: inline-block;
