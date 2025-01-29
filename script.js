@@ -4,10 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fetch('pokemon_names.txt')
         .then(response => response.text())
         .then(data => {
-            // 改行で分割し、リストを作成
             const pokemonNames = data.split('\n').map(name => name.trim()).filter(name => name !== '');
-            
-            // ひらがな→カタカナ変換用のマップを作成
             window.pokemonNamesList = pokemonNames;
             window.pokemonNamesSet = new Set(pokemonNames);
         })
@@ -17,7 +14,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('pokemonName').addEventListener('input', showSuggestions);
 });
 
-// 入力中に予測候補を表示
+function loadPokemonData() {
+    console.log("Loading Pokemon data...");
+    // ここにデータを読み込む具体的な処理を追加
+}
+
 function showSuggestions() {
     const input = document.getElementById('pokemonName');
     const suggestionBox = document.getElementById('suggestionBox');
@@ -29,10 +30,7 @@ function showSuggestions() {
         return;
     }
 
-    // ひらがなをカタカナに変換
     const kanaQuery = toKatakana(query);
-
-    // 予測候補をフィルタリング
     const matches = window.pokemonNamesList.filter(name => name.startsWith(kanaQuery));
 
     if (matches.length === 0) {
@@ -41,7 +39,6 @@ function showSuggestions() {
         return;
     }
 
-    // 候補を表示
     suggestionBox.innerHTML = '';
     matches.forEach(match => {
         const suggestion = document.createElement('div');
@@ -57,30 +54,17 @@ function showSuggestions() {
     suggestionBox.style.display = 'block';
 }
 
-// ひらがなをカタカナに変換する関数
 function toKatakana(str) {
-    return str.replace(/[\u3041-\u3096]/g, function(ch) {
-        return String.fromCharCode(ch.charCodeAt(0) + 0x60);
-    });
+    return str.replace(/[\u3041-\u3096]/g, ch => 
+        String.fromCharCode(ch.charCodeAt(0) + 0x60));
 }
 
-// 登録時にポケモン名がリスト内のものかチェック
 function registerPokemon() {
     const pokemonNameInput = document.getElementById('pokemonName').value;
-    
     if (!window.pokemonNamesSet.has(pokemonNameInput)) {
         alert('正しいポケモン名を入力してください！');
         return;
     }
 
-    const nickname = document.getElementById('nickname').value || pokemonNameInput;
-    const sleepExpBonus = document.getElementById('sleepExpBonus').checked;
-    const nature = document.getElementById('nature').value;
-    const currentLevel = document.getElementById('currentLevel').value;
-    const expToNextLevel = document.getElementById('expToNextLevel').value;
-
-    const pokemonData = { name: pokemonNameInput, nickname, sleepExpBonus, nature, currentLevel, expToNextLevel };
-
-    savePokemonData(pokemonData);
-    displayPokemon(pokemonData);
+    // 以下、ポケモンの登録処理を追加...
 }
