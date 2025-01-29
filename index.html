@@ -2,28 +2,38 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>ポケスリ育成支援サイト</title>
-    <link rel="stylesheet" href="style.css">
-<head>
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>ポケスリ育成支援サイト</title>
+    
+    <!-- フォント指定 -->
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p&display=swap" rel="stylesheet">
+
+    <!-- スタイルシート -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- iOS向けのフルスクリーン設定 -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="images/app-icon.png">
-    <title>ポケスリ育成支援サイト</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- ホーム画面用アイコン -->
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 </head>
-    <body>
+<body>
     <div class="banner">
         <h1>ポケスリ育成支援サイト</h1>
     </div>
+
     <div class="form-container">
+        <!-- ポケモン選択 & ニックネーム -->
         <div class="form-group">
             <label>ポケモン名</label>
             <select id="pokemonName"></select>
             <label>ニックネーム</label>
             <input type="text" id="nickname">
         </div>
+
+        <!-- EXPボーナス & 性格 -->
         <div class="form-group">
             <label>睡眠EXPボーナス</label>
             <input type="checkbox" id="sleepExpBonus">
@@ -34,15 +44,20 @@
                 <option value="expDown">EXP↓</option>
             </select>
         </div>
+
+        <!-- レベル関連 -->
         <div class="form-group">
             <label>現在のレベル</label>
             <input type="number" id="currentLevel">
-            <label>次のレベルまで</label>
+            <label>次のレベルまでのEXP</label>
             <input type="number" id="expToNextLevel">
         </div>
+
         <button onclick="registerPokemon()">登録</button>
     </div>
+
     <div id="pokemonDisplay"></div>
+
     <script src="script.js"></script>
 </body>
 </html>
