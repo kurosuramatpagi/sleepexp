@@ -122,73 +122,74 @@ button {
     border-radius: 5px;
 }
 
-/* カードエリアのレイアウト調整（スマホ版で横5列に配置） */
+/* カードエリアのレイアウト（横5列配置） */
 #pokemonDisplay {
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* 横5列 */
-    gap: 8px; /* カード間の余白 */
+    gap: 5px; /* カード間の余白を少し縮小 */
     justify-content: center;
     padding: 10px;
 }
 
-/* カードのスタイル調整 */
+/* カードのスタイル調整（全体を一回り小さく） */
 .pokemon-box {
     border: 2px solid #ccc;
     background-color: white;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 8px; /* パディングを縮小 */
+    border-radius: 8px;
     text-align: center;
     width: 100%;
-    max-width: 100px; /* カードサイズを調整 */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    max-width: 80px; /* 一回り小さくする */
+    height: auto;
+    min-height: 130px; /* 縦長すぎるのを短く調整 */
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* ポケモン画像のサイズ調整 */
+/* ポケモン画像（サイズは変更しない） */
 .pokemon-image {
     width: 80px;
     height: 80px;
     object-fit: contain;
 }
 
-/* ニックネーム */
+/* 文字サイズを一回り小さく */
 .nickname {
     font-weight: bold;
-    font-size: 14px;
-    margin: 5px 0;
+    font-size: 12px;
+    margin: 3px 0;
 }
 
-/* レベル */
 .level {
-    font-size: 12px;
+    font-size: 10px;
     color: #555;
 }
 
-/* 睡ボと性格のレイアウト */
 .exp-bonus {
-    font-size: 12px;
+    font-size: 10px;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 5px;
     align-items: center;
 }
 
-/* 睡ボのチェックマーク変更 */
+/* 睡ボのチェックマーク */
 .bonus-check {
     color: green;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: bold;
 }
 
 /* 次のレベルまでのEXP */
 .exp-next {
-    font-size: 12px;
+    font-size: 10px;
     color: #888;
 }
 
-/* スマホ向けの調整 */
+/* スマホ向けの調整（さらに縮小） */
 @media (max-width: 768px) {
     .pokemon-box {
-        max-width: 80px; /* スマホでのカードサイズを調整 */
+        max-width: 70px; /* スマホ版はさらに小さく */
+        min-height: 110px; /* 縦の長さを短縮 */
     }
 
     .pokemon-image {
@@ -197,12 +198,12 @@ button {
     }
 
     .nickname {
-        font-size: 12px;
+        font-size: 10px;
     }
 
     .level,
     .exp-bonus,
     .exp-next {
-        font-size: 10px;
+        font-size: 9px;
     }
 }
