@@ -26,11 +26,19 @@ function registerPokemon() {
         return;
     }
 
+    // 性格を記号化
+    let natureSymbol = "-";
+    if (nature === "expUp") natureSymbol = "↑";
+    if (nature === "expDown") natureSymbol = "↓";
+
+    // ✅ マークの処理
+    const sleepExpBonusIcon = sleepExpBonus ? '<span class="bonus-check">✅</span>' : '';
+
     const pokemonData = {
         name: pokemonName,
         nickname: nickname || pokemonName,
-        sleepExpBonus: sleepExpBonus,
-        nature: nature,
+        sleepExpBonusIcon: sleepExpBonusIcon,
+        natureSymbol: natureSymbol,
         currentLevel: isNaN(currentLevel) ? 1 : currentLevel,
         expToNextLevel: isNaN(expToNextLevel) ? 0 : expToNextLevel,
         imagePath: `images/${pokemonName}.png`
@@ -46,11 +54,10 @@ function addPokemonToList(pokemon) {
     pokemonElement.className = 'pokemon-box';
     pokemonElement.innerHTML = `
         <img src="${pokemon.imagePath}" alt="${pokemon.name}" class="pokemon-image">
-        <p>名前: ${pokemon.name} (${pokemon.nickname})</p>
-        <p>レベル: ${pokemon.currentLevel}</p>
-        <p>次のレベルまで: ${pokemon.expToNextLevel} EXP</p>
-        <p>性格: ${pokemon.nature}</p>
-        <p>睡眠EXPボーナス: ${pokemon.sleepExpBonus ? 'あり' : 'なし'}</p>
+        <p class="nickname">${pokemon.nickname}</p>
+        <p class="level">Lv.${pokemon.currentLevel}</p>
+        <p class="exp-bonus">睡ボ ${pokemon.sleepExpBonusIcon} 性格${pokemon.natureSymbol}</p>
+        <p class="exp-next">次のレベルまで ${pokemon.expToNextLevel} EXP</p>
     `;
     displayArea.appendChild(pokemonElement);
 }
@@ -74,10 +81,13 @@ function showSuggestions() {
         return;
     }
 
-    // ひらがな入力の場合はカタカナに変換
+    // ひらがなをカタカナに変換
     const katakanaQuery = toKatakana(query);
 
-    const matches = window.pokemonNames.filter(name => name.startsWith(katakanaQuery));
+    // ひらがなとカタカナの両方で検索
+    const matches = window.pokemonNames.filter(name => 
+        name.startsWith(katakanaQuery) || name.startsWith(query)
+    );
 
     if (matches.length === 0) {
         suggestionBox.innerHTML = '';
