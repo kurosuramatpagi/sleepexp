@@ -59,4 +59,18 @@ document.addEventListener('DOMContentLoaded', function() {
         // 📌 登録リストに追加
         registeredPokemonsContainer.appendChild(pokemonCard);
     });
+fetch('pokemon_names.txt')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.text();
+    })
+    .then(text => {
+        console.log("読み込んだテキスト:", text);  // ← テキストデータを出力
+    })
+    .catch(error => {
+        console.error('Error loading pokemon_names.txt:', error);
+    });
+
 });
