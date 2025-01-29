@@ -55,11 +55,18 @@ function addPokemonToList(pokemon) {
     displayArea.appendChild(pokemonElement);
 }
 
-// 検索サジェスチョン機能
+// ひらがなをカタカナに変換する関数
+function toKatakana(str) {
+    return str.replace(/[\u3041-\u3096]/g, function(ch) {
+        return String.fromCharCode(ch.charCodeAt(0) + 0x60);
+    });
+}
+
+// 検索サジェスチョン機能（ひらがな対応）
 function showSuggestions() {
     const input = document.getElementById('pokemonName');
     const suggestionBox = document.getElementById('suggestionBox');
-    const query = input.value.trim();
+    let query = input.value.trim();
 
     if (!query) {
         suggestionBox.innerHTML = '';
@@ -67,7 +74,10 @@ function showSuggestions() {
         return;
     }
 
-    const matches = window.pokemonNames.filter(name => name.startsWith(query));
+    // ひらがな入力の場合はカタカナに変換
+    const katakanaQuery = toKatakana(query);
+
+    const matches = window.pokemonNames.filter(name => name.startsWith(katakanaQuery));
 
     if (matches.length === 0) {
         suggestionBox.innerHTML = '';
