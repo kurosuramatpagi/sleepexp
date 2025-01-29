@@ -9,7 +9,38 @@
         body { font-family: 'M PLUS 1p', sans-serif; }
         label, button { display: block; margin-top: 10px; }
         input, select { margin-top: 5px; }
-        #results, #registeredPokemons { margin-top: 20px; border: 1px solid #ccc; padding: 10px; }
+        
+        /* 登録されたポケモンを表示する枠 */
+        .pokemon-card {
+            display: inline-block;
+            width: 120px;
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+            border-radius: 15px;
+            border: 2px solid #ccc;
+            background-color: #f9f9f9;
+        }
+
+        /* ポケモン画像（仮の角丸枠） */
+        .pokemon-image {
+            width: 100px;
+            height: 100px;
+            background-color: #ddd;
+            border-radius: 10px;
+            margin-bottom: 5px;
+        }
+
+        /* レベルの表示 */
+        .pokemon-level {
+            font-weight: bold;
+        }
+
+        /* ニックネーム（またはポケモン名） */
+        .pokemon-nickname {
+            font-size: 14px;
+            color: #555;
+        }
     </style>
 </head>
 <body>
@@ -20,21 +51,17 @@
         <section>
             <h2>ポケモン個体情報登録</h2>
             <form id="pokemonRegistry">
-                <!-- ポケモンの名前（プルダウン） -->
                 <select id="pokemonSelect" name="pokemonName">
                     <!-- JavaScriptでポケモンの名前がここに挿入される -->
                 </select>
 
-                <!-- ニックネーム入力欄（説明なし） -->
                 <input type="text" id="nickname" name="nickname" placeholder="ニックネーム">
 
-                <!-- 睡眠EXPボーナス（チェックボックス） -->
                 <label>
                     睡眠EXPボーナス
                     <input type="checkbox" id="expBonusPresent" name="expBonusPresent">
                 </label>
 
-                <!-- 性格の選択 -->
                 <label>性格</label>
                 <select id="pokemonNature" name="pokemonNature">
                     <option value="normal">通常</option>
@@ -42,22 +69,12 @@
                     <option value="expDown">EXP↓</option>
                 </select>
 
-                <!-- 次のレベルまでのEXP -->
                 <label>次のレベルまでのEXP</label>
                 <input type="number" id="nextLevelExp" name="nextLevelExp" min="0" placeholder="次のレベルまでのEXP">
 
                 <button type="submit">登録</button>
             </form>
             <div id="registeredPokemons"></div>
-        </section>
-        <section>
-            <h2>経験値計算</h2>
-            <form id="expCalculator">
-                <label for="sleepScore">睡眠スコア (0-100):</label>
-                <input type="number" id="sleepScore" name="sleepScore" min="0" max="100" required>
-                <button type="submit">計算する</button>
-            </form>
-            <div id="results"></div>
         </section>
     </main>
     <footer>
