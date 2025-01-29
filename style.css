@@ -17,7 +17,7 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8; /* 画面の背景を白系に戻す */
+    background-color: #f8f8f8;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -33,21 +33,21 @@ body {
     align-items: center;
     padding-left: 15px;
     position: fixed;
-    top: 0; /* デフォルトは 0 */
+    top: 0; /* デフォルトでは上部に配置 */
     left: 0;
     z-index: 1000;
 }
 
-/* iOS のときだけ適用 */
+/* iOS のときだけバナーを70px下げる */
 @supports (-webkit-touch-callout: none) {
     .banner {
-        top: 15px !important; /* iOSだけ15px下げる */
+        top: 70px !important;
     }
 }
 
 /* タイトルのデザイン */
 .banner h1 {
-    font-size: 16px; /* 文字を小さく */
+    font-size: 16px;
     color: white;
     margin: 0;
     font-weight: bold;
@@ -56,12 +56,12 @@ body {
 /* フォームのレイアウト */
 .form-container {
     width: 80%;
-    margin: 60px auto 0;  /* 上部に余白を追加 */
+    margin: 80px auto 0;  /* 上部に余白を追加 */
     text-align: left;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    background-color: white; /* フォーム部分の背景色を白に */
+    background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -122,18 +122,24 @@ button {
     height: 80px;
     border-radius: 50%;
 }
-/* ポケモン名入力欄のスタイル */
-input[list] {
-    width: 100%;
-    padding: 5px;
-    font-size: 1em;
+
+/* 予測候補ボックス */
+.suggestion-box {
+    position: absolute;
+    background-color: white;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    width: 100%;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
 }
 
-/* Datalist のスタイル（デフォルトで適用される） */
-datalist option {
-    font-size: 1em;
-    padding: 5px;
+.suggestion-box div {
+    padding: 8px;
+    cursor: pointer;
 }
 
+.suggestion-box div:hover {
+    background-color: #f0f0f0;
+}
