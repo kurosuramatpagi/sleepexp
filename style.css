@@ -122,16 +122,16 @@ button {
     border-radius: 5px;
 }
 
-/* カードエリアのレイアウト（横5列配置） */
+/* カードエリア（横5列配置） */
 #pokemonDisplay {
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* 横5列 */
-    gap: 5px; /* カード間の余白を少し縮小 */
+    gap: 5px; /* カード間の余白 */
     justify-content: center;
     padding: 10px;
 }
 
-/* カードのスタイル調整（全体を一回り小さく） */
+/* カードのスタイル（全体を一回り小さく） */
 .pokemon-box {
     border: 2px solid #ccc;
     background-color: white;
@@ -139,7 +139,7 @@ button {
     border-radius: 8px;
     text-align: center;
     width: 100%;
-    max-width: 80px; /* 一回り小さくする */
+    max-width: 80px; /* 一回り小さく */
     height: auto;
     min-height: 130px; /* 縦長すぎるのを短く調整 */
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
@@ -164,19 +164,15 @@ button {
     color: #555;
 }
 
-.exp-bonus {
-    font-size: 10px;
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    align-items: center;
-}
-
-/* 睡ボのチェックマーク */
-.bonus-check {
-    color: green;
-    font-size: 12px;
+/* 「睡ボ」のスタイル（黄色の角丸長方形） */
+.sleep-bonus {
+    display: inline-block;
+    background-color: #ffcc00; /* 黄色 */
+    color: black;
     font-weight: bold;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 8px; /* 角丸 */
 }
 
 /* 次のレベルまでのEXP */
