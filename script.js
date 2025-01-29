@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
             window.pokemonNames = data.split('\n').map(name => name.trim()).filter(name => name !== '');
         })
         .catch(error => console.error('Error loading the pokemon names:', error));
+
     const registerButton = document.getElementById('registerButton');
     registerButton.addEventListener('click', registerPokemon);
 });
@@ -16,10 +17,12 @@ function registerPokemon() {
     const nature = document.getElementById('nature').value;
     const currentLevel = document.getElementById('currentLevel').value;
     const expToNextLevel = document.getElementById('expToNextLevel').value;
+
     if (!pokemonNameInput) {
         alert('ポケモン名を入力してください！');
         return;
     }
+
     const pokemonData = {
         name: pokemonNameInput,
         nickname: nickname || '無し',
@@ -28,7 +31,9 @@ function registerPokemon() {
         currentLevel: parseInt(currentLevel, 10),
         expToNextLevel: parseInt(expToNextLevel, 10)
     };
+
     console.log("登録されたポケモン: ", pokemonData);
+
     updatePokemonList(pokemonData);
 }
 
