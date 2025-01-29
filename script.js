@@ -4,6 +4,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
     form.addEventListener('submit', function(event) {
         event.preventDefault();
+document.addEventListener('DOMContentLoaded', function() {
+    const pokemonSelect = document.getElementById('pokemonSelect');
+
+    // テキストファイルを読み込んでプルダウンにセットする
+    fetch('pokemon_names.txt')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(text => {
+            const pokemonNames = text.split('\n').map(name => name.trim()).filter(name => name !== "");
+            pokemonNames.forEach(name => {
+                const option = document.createElement('option');
+                option.value = name;
+                option.textContent = name;
+                pokemonSelect.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Error loading pokemon_names.txt:', error);
+        });
+});
+
 
         // 入力されたデータを取得
         const pokemonName = document.getElementById('pokemonSelect').value;
