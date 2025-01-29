@@ -14,15 +14,15 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function registerPokemon() {
-    const pokemonName = document.getElementById('pokemonName').value;
-    const nickname = document.getElementById('nickname').value;
+    const pokemonName = document.getElementById('pokemonName').value.trim();
+    const nickname = document.getElementById('nickname').value.trim();
     const sleepExpBonus = document.getElementById('sleepExpBonus').checked;
     const nature = document.getElementById('nature').value;
     const currentLevel = parseInt(document.getElementById('currentLevel').value, 10);
     const expToNextLevel = parseInt(document.getElementById('expToNextLevel').value, 10);
 
-    if (!pokemonName) {
-        alert('ポケモン名を入力してください！');
+    if (!pokemonName || !window.pokemonNames.includes(pokemonName)) {
+        alert('正しいポケモン名を入力してください！');
         return;
     }
 
@@ -32,7 +32,8 @@ function registerPokemon() {
         sleepExpBonus: sleepExpBonus,
         nature: nature,
         currentLevel: isNaN(currentLevel) ? 1 : currentLevel,
-        expToNextLevel: isNaN(expToNextLevel) ? 0 : expToNextLevel
+        expToNextLevel: isNaN(expToNextLevel) ? 0 : expToNextLevel,
+        imagePath: `images/${pokemonName}.png`
     };
 
     console.log("登録されたポケモン: ", pokemonData);
@@ -44,6 +45,7 @@ function addPokemonToList(pokemon) {
     const pokemonElement = document.createElement('div');
     pokemonElement.className = 'pokemon-box';
     pokemonElement.innerHTML = `
+        <img src="${pokemon.imagePath}" alt="${pokemon.name}" class="pokemon-image">
         <p>名前: ${pokemon.name} (${pokemon.nickname})</p>
         <p>レベル: ${pokemon.currentLevel}</p>
         <p>次のレベルまで: ${pokemon.expToNextLevel} EXP</p>
