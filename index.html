@@ -22,10 +22,11 @@
     </div>
 
     <div class="form-container">
-        <!-- ポケモン名 & ニックネーム -->
+        <!-- ポケモン名 (入力欄 & 予測補完) -->
         <div class="form-group">
             <label for="pokemonName">ポケモン名</label>
-            <select id="pokemonName"></select>
+            <input type="text" id="pokemonName" list="pokemonList">
+            <datalist id="pokemonList"></datalist> <!-- 予測候補のリスト -->
         </div>
         <div class="form-group">
             <label for="nickname">ニックネーム</label>
