@@ -2,15 +2,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const pokemonSelect = document.getElementById('pokemonSelect');
     const registeredPokemonsContainer = document.getElementById('registeredPokemons');
 
-    // 📌 1. テキストファイルからポケモン名を読み込んでプルダウンに設定
+    // 📌 1. テキストファイルからポケモン名を読み込んでプルダウンにセット
     fetch('pokemon_names.txt')
         .then(response => {
             if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
+                throw new Error(`HTTPエラー: ステータスコード ${response.status}`);
             }
             return response.text();
         })
         .then(text => {
+            console.log("読み込んだテキスト:", text); // ← デバッグ用ログ
             const pokemonNames = text.split('\n').map(name => name.trim()).filter(name => name !== "");
             pokemonNames.forEach(name => {
                 const option = document.createElement('option');
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // 入力データの取得
         const pokemonName = pokemonSelect.value;
-        const nickname = document.getElementById('nickname').value.trim() || pokemonName; // 未入力ならポケモン名
+        const nickname = document.getElementById('nickname').value.trim() || pokemonName; // ニックネームがない場合はポケモン名
         const currentLevel = document.getElementById('currentLevel').value || "??"; // 未入力なら「??」
         const nextLevelExp = document.getElementById('nextLevelExp').value;
 
@@ -59,18 +60,4 @@ document.addEventListener('DOMContentLoaded', function() {
         // 📌 登録リストに追加
         registeredPokemonsContainer.appendChild(pokemonCard);
     });
-fetch('pokemon_names.txt')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.text();
-    })
-    .then(text => {
-        console.log("読み込んだテキスト:", text);  // ← テキストデータを出力
-    })
-    .catch(error => {
-        console.error('Error loading pokemon_names.txt:', error);
-    });
-
 });
