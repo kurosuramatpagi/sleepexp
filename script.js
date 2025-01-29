@@ -1,13 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // ポケモンデータの読み込み
     fetch('pokemon_names.txt')
         .then(response => response.text())
         .then(data => {
             window.pokemonNames = data.split('\n').map(name => name.trim()).filter(name => name !== '');
         })
         .catch(error => console.error('Error loading the pokemon names:', error));
-
-    // ボタンのイベントリスナー
     const registerButton = document.getElementById('registerButton');
     registerButton.addEventListener('click', registerPokemon);
 });
@@ -19,14 +16,10 @@ function registerPokemon() {
     const nature = document.getElementById('nature').value;
     const currentLevel = document.getElementById('currentLevel').value;
     const expToNextLevel = document.getElementById('expToNextLevel').value;
-
-    // 入力チェック
     if (!pokemonNameInput) {
         alert('ポケモン名を入力してください！');
         return;
     }
-
-    // ポケモンデータの作成
     const pokemonData = {
         name: pokemonNameInput,
         nickname: nickname || '無し',
@@ -35,11 +28,7 @@ function registerPokemon() {
         currentLevel: parseInt(currentLevel, 10),
         expToNextLevel: parseInt(expToNextLevel, 10)
     };
-
-    // ここにデータを保存する処理を追加（例：localStorage、サーバーへの送信など）
     console.log("登録されたポケモン: ", pokemonData);
-
-    // 登録後の処理（例：登録データの表示更新など）
     updatePokemonList(pokemonData);
 }
 
