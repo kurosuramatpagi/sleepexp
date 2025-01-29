@@ -1,4 +1,29 @@
-/* カードエリア（横5列配置、カードを少し狭める） */
+/* ===== 共通スタイル ===== */
+body {
+    font-family: 'M PLUS 1p', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* ===== バナーのスタイル ===== */
+.banner {
+    background-color: #09f;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    font-size: 18px;
+}
+
+/* ===== iOS向けのバナー調整（iOSの場合のみ適用） ===== */
+@supports (-webkit-touch-callout: none) {
+    .banner {
+        margin-top: 40px; /* iOSの場合のみバナーを下げる */
+    }
+}
+
+/* ===== カードエリア（横5列配置、カードを狭める） ===== */
 #pokemonDisplay {
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* 横5列 */
@@ -7,7 +32,7 @@
     padding: 8px;
 }
 
-/* カードのスタイル（さらに狭める） */
+/* ===== カードのスタイル（コンパクト化） ===== */
 .pokemon-box {
     border: 2px solid #ccc;
     background-color: white;
@@ -21,14 +46,14 @@
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* ポケモン画像（サイズは変更しない） */
+/* ===== ポケモン画像（サイズは変更しない） ===== */
 .pokemon-image {
     width: 80px;
     height: 80px;
     object-fit: contain;
 }
 
-/* 文字サイズは変えず、縦の行間を詰める */
+/* ===== 文字サイズは変えず、縦の行間を詰める ===== */
 .nickname {
     font-weight: bold;
     font-size: 12px;
@@ -41,7 +66,7 @@
     margin: 2px 0;
 }
 
-/* 「睡ボ」のスタイル（黄色の角丸長方形） */
+/* ===== 「睡ボ」のスタイル（黄色の角丸長方形） ===== */
 .sleep-bonus {
     display: inline-block;
     background-color: #ffcc00; /* 黄色 */
@@ -53,7 +78,7 @@
     margin-right: 4px;
 }
 
-/* 性格の記号の色を適用（背景付き） */
+/* ===== 性格の記号の色を適用（背景付き） ===== */
 .nature-symbol {
     font-size: 10px;
     font-weight: bold;
@@ -73,14 +98,14 @@
     background-color: rgba(51, 0, 255, 0.7); /* #3300ff with 70% opacity */
 }
 
-/* 次のレベルまでのEXP */
+/* ===== 次のレベルまでのEXP ===== */
 .exp-next {
     font-size: 10px;
     color: #888;
     margin: 2px 0;
 }
 
-/* スマホ向けの調整（さらに縮小） */
+/* ===== スマホ向けの調整（さらに縮小） ===== */
 @media (max-width: 768px) {
     .pokemon-box {
         max-width: 65px; /* スマホ版はさらに小さく */
