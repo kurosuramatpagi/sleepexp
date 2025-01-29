@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // ポケモンデータの読み込み
     fetch('pokemon_names.txt')
         .then(response => response.text())
         .then(data => {
@@ -6,47 +7,52 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => console.error('Error loading the pokemon names:', error));
 
+    // ボタンのイベントリスナー
     const registerButton = document.getElementById('registerButton');
     registerButton.addEventListener('click', registerPokemon);
 });
 
 function registerPokemon() {
-    const pokemonName = document.getElementById('pokemonName').value;
+    const pokemonNameInput = document.getElementById('pokemonName').value;
     const nickname = document.getElementById('nickname').value;
     const sleepExpBonus = document.getElementById('sleepExpBonus').checked;
     const nature = document.getElementById('nature').value;
-    const currentLevel = parseInt(document.getElementById('currentLevel').value, 10);
-    const expToNextLevel = parseInt(document.getElementById('expToNextLevel').value, 10);
+    const currentLevel = document.getElementById('currentLevel').value;
+    const expToNextLevel = document.getElementById('expToNextLevel').value;
 
-    if (!pokemonName) {
+    // 入力チェック
+    if (!pokemonNameInput) {
         alert('ポケモン名を入力してください！');
         return;
     }
 
+    // ポケモンデータの作成
     const pokemonData = {
-        name: pokemonName,
-        nickname: nickname || pokemonName,
+        name: pokemonNameInput,
+        nickname: nickname || '無し',
         sleepExpBonus: sleepExpBonus,
         nature: nature,
-        currentLevel: isNaN(currentLevel) ? 1 : currentLevel,
-        expToNextLevel: isNaN(expToNextLevel) ? 0 : expToNextLevel
+        currentLevel: parseInt(currentLevel, 10),
+        expToNextLevel: parseInt(expToNextLevel, 10)
     };
 
+    // ここにデータを保存する処理を追加（例：localStorage、サーバーへの送信など）
     console.log("登録されたポケモン: ", pokemonData);
 
-    addPokemonToList(pokemonData);
+    // 登録後の処理（例：登録データの表示更新など）
+    updatePokemonList(pokemonData);
 }
 
-function addPokemonToList(pokemon) {
+function updatePokemonList(pokemonData) {
     const displayArea = document.getElementById('pokemonDisplay');
     const pokemonElement = document.createElement('div');
     pokemonElement.className = 'pokemon-box';
     pokemonElement.innerHTML = `
-        <p>名前: ${pokemon.name} (${pokemon.nickname})</p>
-        <p>レベル: ${pokemon.currentLevel}</p>
-        <p>次のレベルまで: ${pokemon.expToNextLevel} EXP</p>
-        <p>性格: ${pokemon.nature}</p>
-        <p>睡眠EXPボーナス: ${pokemon.sleepExpBonus ? 'あり' : 'なし'}</p>
+        <p>名前: ${pokemonData.name} (${pokemonData.nickname})</p>
+        <p>レベル: ${pokemonData.currentLevel}</p>
+        <p>次のレベルまで: ${pokemonData.expToNextLevel} EXP</p>
+        <p>性格: ${pokemonData.nature}</p>
+        <p>睡眠EXPボーナス: ${pokemonData.sleepExpBonus ? 'あり' : 'なし'}</p>
     `;
     displayArea.appendChild(pokemonElement);
 }
