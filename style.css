@@ -122,27 +122,27 @@ button {
     border-radius: 5px;
 }
 
-/* カードエリア（横5列配置） */
+/* カードエリア（横5列配置、カードを少し狭める） */
 #pokemonDisplay {
     display: grid;
     grid-template-columns: repeat(5, 1fr); /* 横5列 */
-    gap: 5px; /* カード間の余白 */
+    gap: 4px; /* カード間の余白をさらに縮小 */
     justify-content: center;
-    padding: 10px;
+    padding: 8px;
 }
 
-/* カードのスタイル（全体を一回り小さく） */
+/* カードのスタイル（さらに狭める） */
 .pokemon-box {
     border: 2px solid #ccc;
     background-color: white;
-    padding: 8px; /* パディングを縮小 */
+    padding: 6px; /* パディングをさらに縮小 */
     border-radius: 8px;
     text-align: center;
     width: 100%;
-    max-width: 80px; /* 一回り小さく */
+    max-width: 70px; /* カード幅をさらに狭める */
     height: auto;
-    min-height: 130px; /* 縦長すぎるのを短く調整 */
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+    min-height: 110px; /* 縦長すぎるのを短く調整 */
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 /* ポケモン画像（サイズは変更しない） */
@@ -152,16 +152,17 @@ button {
     object-fit: contain;
 }
 
-/* 文字サイズを一回り小さく */
+/* 文字サイズは変えず、縦の行間を詰める */
 .nickname {
     font-weight: bold;
     font-size: 12px;
-    margin: 3px 0;
+    margin: 2px 0;
 }
 
 .level {
     font-size: 10px;
     color: #555;
+    margin: 2px 0;
 }
 
 /* 「睡ボ」のスタイル（黄色の角丸長方形） */
@@ -171,21 +172,39 @@ button {
     color: black;
     font-weight: bold;
     font-size: 10px;
-    padding: 2px 6px;
-    border-radius: 8px; /* 角丸 */
+    padding: 1px 4px;
+    border-radius: 6px; /* 角丸 */
+    margin-right: 4px;
+}
+
+/* 性格の記号に色を適用 */
+.nature-symbol {
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* EXP↑（赤色） */
+.nature-symbol.exp-up {
+    color: #ff0033;
+}
+
+/* EXP↓（青色） */
+.nature-symbol.exp-down {
+    color: #3300ff;
 }
 
 /* 次のレベルまでのEXP */
 .exp-next {
     font-size: 10px;
     color: #888;
+    margin: 2px 0;
 }
 
 /* スマホ向けの調整（さらに縮小） */
 @media (max-width: 768px) {
     .pokemon-box {
-        max-width: 70px; /* スマホ版はさらに小さく */
-        min-height: 110px; /* 縦の長さを短縮 */
+        max-width: 65px; /* スマホ版はさらに小さく */
+        min-height: 100px; /* 縦の長さを短縮 */
     }
 
     .pokemon-image {
@@ -193,13 +212,11 @@ button {
         height: 60px;
     }
 
-    .nickname {
-        font-size: 10px;
-    }
-
+    .nickname,
     .level,
     .exp-bonus,
     .exp-next {
         font-size: 9px;
+        margin: 1px 0;
     }
 }
