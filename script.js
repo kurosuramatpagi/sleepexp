@@ -11,6 +11,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const registerButton = document.getElementById('registerButton');
     registerButton.addEventListener('click', registerPokemon);
 
+    // 性格チェックボックスの相互排他設定
+    document.getElementById('expUp').addEventListener('change', function() {
+        if (this.checked) {
+            document.getElementById('expDown').checked = false;
+        }
+    });
+
+    document.getElementById('expDown').addEventListener('change', function() {
+        if (this.checked) {
+            document.getElementById('expUp').checked = false;
+        }
+    });
+
     // 検索サジェスチョンのイベントリスナー設定
     document.getElementById('pokemonName').addEventListener('input', showSuggestions);
 });
@@ -20,7 +33,8 @@ function registerPokemon() {
     const pokemonName = document.getElementById('pokemonName').value.trim();
     const nickname = document.getElementById('nickname').value.trim();
     const sleepExpBonus = document.getElementById('sleepExpBonus').checked;
-    const nature = document.getElementById('nature').value;
+    const expUp = document.getElementById('expUp').checked;
+    const expDown = document.getElementById('expDown').checked;
     const currentLevel = parseInt(document.getElementById('currentLevel').value, 10);
     const expToNextLevel = parseInt(document.getElementById('expToNextLevel').value, 10);
 
@@ -30,17 +44,16 @@ function registerPokemon() {
         return;
     }
 
-    // 性格の記号を色付きで設定
-       let natureSymbol = "";
-    if (nature === "expUp") {
+    // 性格の記号を色付きで設定（チェックボックスに変更）
+    let natureSymbol = "";
+    if (expUp) {
         natureSymbol = `<span class="nature-symbol exp-up">↑</span>`;
-    } else if (nature === "expDown") {
+    } else if (expDown) {
         natureSymbol = `<span class="nature-symbol exp-down">↓</span>`;
     } else {
         natureSymbol = `<span class="nature-symbol nature-none">-</span>`; // 未登録なら "-"
     }
 
-  
     // 「睡ボ」アイコンの処理（背景#ffcc00の角丸）
     const sleepBonusIcon = sleepExpBonus ? '<span class="sleep-bonus">睡ボ</span>' : '';
 
@@ -68,7 +81,7 @@ function addPokemonToList(pokemon) {
         <img src="${pokemon.imagePath}" alt="${pokemon.name}" class="pokemon-image">
         <p class="nickname">${pokemon.nickname}</p>
         <p class="level">Lv.${pokemon.currentLevel}</p>
-        <p class="exp-bonus">${pokemon.sleepBonusIcon} 性格${pokemon.natureSymbol}</p>
+        <p class="exp-bonus">${pokemon.sleepBonusIcon} ${pokemon.natureSymbol}</p> <!-- 「性格」の文字を削除 -->
         <p class="exp-next">次のレベルまで ${pokemon.expToNextLevel} EXP</p>
     `;
     displayArea.appendChild(pokemonElement);
