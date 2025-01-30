@@ -122,10 +122,10 @@ button {
     border: none;
     border-radius: 5px;
 }
-/* カードエリアの幅と左右の余白を変えられるように */
+/* カードエリアの幅と余白の調整可能設定 */
 #pokemonDisplay {
-    width: var(--card-area-width, 100%); /* 80% を自由に変更可能に */
-    max-width: 100%; /* 最大幅をページ幅に制限 */
+    width: var(--card-area-width, 90%); /* カードエリアの幅を自由に変更 */
+    max-width: 100%; /* 最大幅はページ幅に制限 */
     margin-left: var(--card-area-margin, auto);
     margin-right: var(--card-area-margin, auto);
     display: flex;
@@ -134,40 +134,33 @@ button {
     gap: 5px;
 }
 
-/* カードのサイズを変更可能にする */
+/* カードのデザイン */
 .pokemon-box {
-    width: 45px; /* 任意のサイズに変更 */
-    height: 150px; /* 任意のサイズに変更 */
-    flex-grow: 0; /* 自動拡大を無効化 */
-    flex-shrink: 0; /* 自動縮小を無効化 */
-    box-sizing: content-box; /* paddingやborderの影響を除外 */
+    width: 45px;
+    height: 160px;
     text-align: center;
     border: 2px solid #ccc;
     border-radius: 10px;
-    padding: 5px;
+    padding: 3px;
     background-color: white;
-    font-size: 0.7em;
+    font-size: 0.6em;
 }
 
-/* ポケモン画像のサイズ */
+/* ポケモン画像 */
 .pokemon-box img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
 }
 
-/* 文字サイズ */
-.pokemon-box .nickname {
-    font-weight: bold;
-    font-size: 0.8em;
-}
-
+/* テキストのフォントサイズと行間の調整可能設定 */
+.pokemon-box .nickname,
 .pokemon-box .level,
 .pokemon-box .exp-bonus,
 .pokemon-box .exp-next {
     font-size: 0.7em;
     margin-top: 1px;
-    line-height: 1;
+    line-height: var(--card-text-line-height, 0.8); /* 行間を自由に変更可能に */
 }
 /* 性格の矢印背景 */
 .nature-symbol {
