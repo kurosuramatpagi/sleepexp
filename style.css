@@ -268,8 +268,8 @@ button {
 }
 /* ✅ 睡眠EXPボタン（共通スタイル） */
 .sleep-exp-btn {
-    --button-width: auto;  /* 自動調整（文字の長さに応じる） */
-    --button-height: 30px; /* ボタンの高さ */
+    --button-width: auto;  /* ✅ 自動調整（文字の長さに応じる） */
+    --button-height: 30px; /* ✅ ボタンの高さ */
     
     display: inline-flex;
     align-items: center;
@@ -277,29 +277,29 @@ button {
     width: var(--button-width);
     height: var(--button-height);
     font-size: 1em;
-    padding: 5px 15px; /* ボタンの形を調整 */
+    padding: 5px 15px;
     border: none;
-    border-radius: 9999px; /* 両端を半円にする */
+    border-radius: 9999px; /* ✅ 両端を半円にする */
     cursor: pointer;
     text-align: center;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-    font-weight: bold;  /* 文字を太字にする */
+    font-weight: bold;  /* ✅ 文字を太字にする */
     white-space: nowrap;
 }
 
 /* ✅ 睡眠EXPボタン（ON時） */
 .sleep-exp-btn.active {
-    background-color: #ffcc00 !important; /* ON時の背景色 */
-    color: black; /* ON時の文字色 */
+    background-color: #ffcc00 !important; /* ✅ ON時の背景色 */
+    color: black !important; /* ✅ ON時の文字色 */
 }
 
 /* ✅ 睡眠EXPボタン（OFF時：白フィルター強化） */
 .sleep-exp-btn:not(.active) {
-    background-color: rgba(255, 204, 0, 0.3); /* OFF時の背景色 + 白フィルター */
-    color: rgba(0, 0, 0, 0.5); /* OFF時の文字色（フィルター強化） */
+    background-color: rgba(255, 204, 0, 0.3) !important; /* ✅ OFF時の背景色 + 白フィルター */
+    color: rgba(0, 0, 0, 0.5) !important; /* ✅ OFF時の文字色（フィルター強化） */
 }
 
-/* ✅ 性格EXP↑ボタン（共通スタイル） */
+/* ✅ EXP↑ボタン（共通スタイル） */
 .exp-up-btn {
     --button-width: auto;
     --button-height: 30px;
@@ -322,14 +322,14 @@ button {
 
 /* ✅ EXP↑ボタン（ON時：カードエリアの色） */
 .exp-up-btn.active {
-    background-color: rgba(255, 0, 51, 0.7); /* 赤色（カードエリアの色） */
-    color: black;
+    background-color: rgba(255, 0, 51, 0.7) !important; /* ✅ 赤色（カードエリアの色） */
+    color: white !important; /* ✅ ON時は白文字 */
 }
 
 /* ✅ EXP↑ボタン（OFF時：白フィルター強化） */
 .exp-up-btn:not(.active) {
-    background-color: rgba(255, 0, 51, 0.3); /* OFF時の背景色 + 白フィルター */
-    color: rgba(0, 0, 0, 0.5); /* OFF時の文字色（フィルター強化） */
+    background-color: rgba(255, 0, 51, 0.3) !important; /* ✅ OFF時の背景色 + 白フィルター */
+    color: gray !important; /* ✅ OFF時はグレー文字 */
 }
 
 /* ✅ EXP↓ボタン（共通スタイル） */
@@ -355,12 +355,12 @@ button {
 
 /* ✅ EXP↓ボタン（ON時：カードエリアの色） */
 .exp-down-btn.active {
-    background-color: rgba(51, 0, 255, 0.7); /* 青色（カードエリアの色） */
-    color: black;
+    background-color: rgba(51, 0, 255, 0.7) !important; /* ✅ 青色（カードエリアの色） */
+    color: white !important; /* ✅ ON時は白文字 */
 }
 
 /* ✅ EXP↓ボタン（OFF時：白フィルター強化） */
 .exp-down-btn:not(.active) {
-    background-color: rgba(51, 0, 255, 0.3); /* OFF時の背景色 + 白フィルター */
-    color: rgba(0, 0, 0, 0.5); /* OFF時の文字色（フィルター強化） */
+    background-color: rgba(51, 0, 255, 0.3) !important; /* ✅ OFF時の背景色 + 白フィルター */
+    color: gray !important; /* ✅ OFF時はグレー文字 */
 }
