@@ -326,11 +326,11 @@ button {
 /* 睡眠EXPボーナスボタン */
 .sleep-exp-btn {
     display: inline-block;
-    width: 100%;
+    width: 40%;
     padding: 10px;
     font-size: 1em;
     border: none;
-    border-radius: 8px; /* 角丸長方形 */
+    border-radius: 50%; /* 角丸長方形 */
     cursor: pointer;
     text-align: center;
     color: white; /* オフ時は白 */
@@ -350,7 +350,7 @@ button {
     padding: 10px;
     font-size: 1em;
     border: none;
-    border-radius: 8px; /* 角丸長方形 */
+    border-radius: 50%; /* 角丸長方形 */
     cursor: pointer;
     text-align: center;
     color: white;
