@@ -1,5 +1,3 @@
-重複削除だけして。重複するかもと少しでも懸念があるところは消さないで
-
 /* ローカルフォント適用 */
 @font-face {
     font-family: 'M+1p';
@@ -288,6 +286,7 @@ button {
     font-weight: bold;
     white-space: nowrap; /* 文字が折り返されないように */
     color: gray; /* OFF時の文字色をグレーに */
+    background-color: #aa8800; /* OFF時の背景色を暗めの黄色に固定 */
 }
 
 /* ON状態（クリックされた時） */
