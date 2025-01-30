@@ -321,3 +321,52 @@ button {
     gap: 15px;
     align-items: center;
 }
+/* 睡眠EXPボーナスボタン */
+.sleep-exp-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 8px; /* 角丸長方形 */
+    cursor: pointer;
+    text-align: center;
+    color: white; /* オフ時は白 */
+    background-color: #554400; /* オフ時の暗めの黄色 */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* ON状態（クリックされた時） */
+.sleep-exp-btn.active {
+    background-color: #ffcc00; /* 明るい黄色 */
+    color: black; /* オン時は黒 */
+}
+
+/* 性格ボタンのデザイン */
+.nature-btn {
+    display: inline-block;
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 8px; /* 角丸長方形 */
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+/* EXP↑ボタン（OFFをもっと暗く） */
+.exp-up-btn {
+    background-color: rgba(100, 0, 20, 0.9); /* OFF時のより暗い赤 */
+}
+.exp-up-btn.active {
+    background-color: rgba(255, 0, 51, 0.7); /* 明るい赤 */
+}
+
+/* EXP↓ボタン（OFFをもっと暗く） */
+.exp-down-btn {
+    background-color: rgba(0, 0, 50, 0.9); /* OFF時のより暗い青 */
+}
+.exp-down-btn.active {
+    background-color: rgba(51, 0, 255, 0.7); /* 明るい青 */
+}
