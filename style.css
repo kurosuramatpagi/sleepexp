@@ -137,7 +137,7 @@ button {
 /* カードのサイズを変更可能にする */
 .pokemon-box {
     width: 45px; /* 任意のサイズに変更 */
-    height: 100px; /* 任意のサイズに変更 */
+    height: 150px; /* 任意のサイズに変更 */
     flex-grow: 0; /* 自動拡大を無効化 */
     flex-shrink: 0; /* 自動縮小を無効化 */
     box-sizing: content-box; /* paddingやborderの影響を除外 */
