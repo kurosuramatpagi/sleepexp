@@ -131,12 +131,12 @@ button {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    gap: var(--card-gap, 7px); /* カード間の間隔を自由に変更可能に */
+    gap: var(--card-gap, 8px); /* カード間の間隔を自由に変更可能に */
 }
 
 /* カードのデザイン */
 .pokemon-box {
-    width: 60px;
+    width: 63px;
     height: 150px;
     text-align: center;
     border: 2px solid #ccc;
@@ -153,14 +153,15 @@ button {
     border-radius: 10px;
 }
 
-/* 文字サイズ */
+/* カード内のテキスト間隔を自由に変更可能 */
 .pokemon-box .nickname,
 .pokemon-box .level,
 .pokemon-box .exp-bonus,
 .pokemon-box .exp-next {
     font-size: 0.7em;
     line-height: 1;
-    margin-bottom: var(--card-item-spacing, 1.2px); /* 項目間の空白を自由に変更 */
+    margin: var(--card-item-spacing, 5px) 0; /* 上下の間隔を自由に調整 */
+    padding: var(--card-item-spacing, 2.5px) 0; /* 内部の余白も調整 */
 }
 /* 性格の矢印背景 */
 .nature-symbol {
