@@ -296,7 +296,7 @@ button {
 /* ✅ 睡眠EXPボタン（OFF時：ON時の色 + 50% 白フィルター + 文字色 #d3d3d3） */
 .sleep-exp-btn:not(.active) {
     background-color: rgba(255, 204, 0, 0.3) !important; /* ✅ ON時の色に50%白フィルター */
-    color: #d3d3d3 !important; /* ✅ OFF時の文字色を #d3d3d3 に統一 */
+    color: #cccccc !important; /* ✅ OFF時の文字色を #d3d3d3 に統一 */
 }
 
 /* ✅ EXP↑ボタン（共通スタイル） */
@@ -329,7 +329,7 @@ button {
 /* ✅ EXP↑ボタン（OFF時：白フィルター90% + 文字色 #d3d3d3） */
 .exp-up-btn:not(.active) {
     background-color: rgba(255, 0, 51, 0.1) !important; /* ✅ 白フィルター90% */
-    color: #d3d3d3 !important; /* ✅ OFF時の文字色を #d3d3d3 に統一 */
+    color: #cccccc !important; /* ✅ OFF時の文字色を #d3d3d3 に統一 */
 }
 
 /* ✅ EXP↓ボタン（共通スタイル） */
@@ -362,5 +362,5 @@ button {
 /* ✅ EXP↓ボタン（OFF時：白フィルター90% + 文字色 #d3d3d3） */
 .exp-down-btn:not(.active) {
     background-color: rgba(51, 0, 255, 0.1) !important; /* ✅ 白フィルター90% */
-    color: #d3d3d3 !important; /* ✅ OFF時の文字色を #d3d3d3 に統一 */
+    color: #cccccc !important; /* ✅ OFF時の文字色を #d3d3d3 に統一 */
 }
