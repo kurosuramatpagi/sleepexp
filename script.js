@@ -11,17 +11,24 @@ document.addEventListener('DOMContentLoaded', function () {
     const registerButton = document.getElementById('registerButton');
     registerButton.addEventListener('click', registerPokemon);
 
-    // 性格チェックボックスの相互排他設定
-    document.getElementById('expUp').addEventListener('change', function() {
-        if (this.checked) {
-            document.getElementById('expDown').checked = false;
-        }
+    // 睡眠EXPボーナスボタンの切り替え
+    const sleepExpBonusBtn = document.getElementById('sleepExpBonusBtn');
+    sleepExpBonusBtn.addEventListener('click', function () {
+        this.classList.toggle('active'); // クラスの切り替え（ON/OFF）
     });
 
-    document.getElementById('expDown').addEventListener('change', function() {
-        if (this.checked) {
-            document.getElementById('expUp').checked = false;
-        }
+    // 性格ボタンの切り替え（片方のみONにする）
+    const expUpBtn = document.getElementById('expUpBtn');
+    const expDownBtn = document.getElementById('expDownBtn');
+
+    expUpBtn.addEventListener('click', function () {
+        this.classList.add('active');
+        expDownBtn.classList.remove('active'); // もう片方をOFFにする
+    });
+
+    expDownBtn.addEventListener('click', function () {
+        this.classList.add('active');
+        expUpBtn.classList.remove('active'); // もう片方をOFFにする
     });
 
     // 検索サジェスチョンのイベントリスナー設定
@@ -32,9 +39,9 @@ document.addEventListener('DOMContentLoaded', function () {
 function registerPokemon() {
     const pokemonName = document.getElementById('pokemonName').value.trim();
     const nickname = document.getElementById('nickname').value.trim();
-    const sleepExpBonus = document.getElementById('sleepExpBonus').checked;
-    const expUp = document.getElementById('expUp').checked;
-    const expDown = document.getElementById('expDown').checked;
+    const sleepExpBonus = document.getElementById('sleepExpBonusBtn').classList.contains('active'); // ボタンがONかどうか
+    const expUp = document.getElementById('expUpBtn').classList.contains('active');
+    const expDown = document.getElementById('expDownBtn').classList.contains('active');
     const currentLevel = parseInt(document.getElementById('currentLevel').value, 10);
     const expToNextLevel = parseInt(document.getElementById('expToNextLevel').value, 10);
 
@@ -44,7 +51,7 @@ function registerPokemon() {
         return;
     }
 
-    // 性格の記号を色付きで設定（チェックボックスに変更）
+    // 性格の記号を色付きで設定（ボタンに対応）
     let natureSymbol = "";
     if (expUp) {
         natureSymbol = `<span class="nature-symbol exp-up">↑</span>`;
