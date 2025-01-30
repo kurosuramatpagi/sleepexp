@@ -124,7 +124,7 @@ button {
 }
 /* カードエリアの幅と左右の余白を変えられるように */
 #pokemonDisplay {
-    width: var(--card-area-width, 80%); /* 80% を自由に変更可能に */
+    width: var(--card-area-width, 100%); /* 80% を自由に変更可能に */
     max-width: 100%; /* 最大幅をページ幅に制限 */
     margin-left: var(--card-area-margin, auto);
     margin-right: var(--card-area-margin, auto);
