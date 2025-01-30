@@ -266,52 +266,53 @@ button {
     align-items: center;
     gap: 5px; /* 記号とチェックボックスの間隔 */
 }
-/* 睡眠EXPボーナスボタン */
-.sleep-exp-btn {
-    --sleep-button-width: auto;
-    --sleep-button-height: 30px;
+/* 共通ボタンスタイル（睡ボ & 性格ボタン） */
+.common-btn {
+    --button-width: auto;
+    --button-height: 30px;
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: var(--sleep-button-width);
-    height: var(--sleep-button-height);
+    width: var(--button-width);
+    height: var(--button-height);
     font-size: 1em;
     padding: 0 12px;
     border: none;
-    border-radius: calc(var(--sleep-button-height) / 2);
+    border-radius: calc(var(--button-height) / 2);
     cursor: pointer;
     text-align: center;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
     font-weight: bold;
     white-space: nowrap;
-    background-color: #ffcc00; /* ON時の黄色背景 */
-    color: black; /* ON時の文字色 */
 }
 
-/* 睡ボボタンOFF時（白フィルター適用） */
+/* ✅ 睡眠EXPボーナスボタン */
+.sleep-exp-btn {
+    background-color: #ffcc00; /* ON時（カードエリアの色） */
+    color: black;
+}
 .sleep-exp-btn:not(.active) {
-    background-color: rgba(255, 204, 0, 0.5); /* 黄色背景 + 白フィルター */
+    background-color: rgba(255, 204, 0, 0.3); /* 白フィルター強化 */
+    color: rgba(0, 0, 0, 0.5); /* 文字にも白フィルターを適用 */
 }
 
-/* EXP↑ボタン */
+/* ✅ EXP↑ボタン（ON時はカードエリアの赤） */
 .exp-up-btn {
-    background-color: rgba(255, 0, 51, 1); /* ON時の赤背景 */
+    background-color: rgba(255, 0, 51, 1); /* ON時（カードエリアの赤） */
     color: black;
 }
-
-/* EXP↑ボタンOFF時（白フィルター適用） */
 .exp-up-btn:not(.active) {
-    background-color: rgba(255, 0, 51, 0.5); /* 赤背景 + 白フィルター */
+    background-color: rgba(255, 0, 51, 0.3); /* 白フィルター強化 */
+    color: rgba(0, 0, 0, 0.5); /* 文字にも白フィルターを適用 */
 }
 
-/* EXP↓ボタン */
+/* ✅ EXP↓ボタン（ON時はカードエリアの青） */
 .exp-down-btn {
-    background-color: rgba(51, 0, 255, 1); /* ON時の青背景 */
+    background-color: rgba(51, 0, 255, 1); /* ON時（カードエリアの青） */
     color: black;
 }
-
-/* EXP↓ボタンOFF時（白フィルター適用） */
 .exp-down-btn:not(.active) {
-    background-color: rgba(51, 0, 255, 0.5); /* 青背景 + 白フィルター */
+    background-color: rgba(51, 0, 255, 0.3); /* 白フィルター強化 */
+    color: rgba(0, 0, 0, 0.5); /* 文字にも白フィルターを適用 */
 }
