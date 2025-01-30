@@ -136,7 +136,7 @@ button {
 
 /* カードのデザイン */
 .pokemon-box {
-    width: 80px;
+    width: 70px;
     height: 150px;
     text-align: center;
     border: 2px solid #ccc;
@@ -160,7 +160,7 @@ button {
 .pokemon-box .exp-next {
     font-size: 0.7em;
     line-height: 1;
-    margin-bottom: var(--card-item-spacing, 2.5px); /* 項目間の空白を自由に変更 */
+    margin-bottom: var(--card-item-spacing, 1.2px); /* 項目間の空白を自由に変更 */
 }
 /* 性格の矢印背景 */
 .nature-symbol {
