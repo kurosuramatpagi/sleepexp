@@ -266,10 +266,10 @@ button {
     align-items: center;
     gap: 5px; /* 記号とチェックボックスの間隔 */
 }
-/* 共通ボタンスタイル（睡ボ & 性格ボタン） */
+/* ✅ 共通ボタンスタイル（睡ボ & 性格ボタン） */
 .common-btn {
-    --button-width: auto;
-    --button-height: 30px;
+    --button-width: auto;  /* デフォルトの幅（自由に変更可） */
+    --button-height: 30px;  /* デフォルトの高さ（自由に変更可） */
 
     display: inline-flex;
     align-items: center;
@@ -279,11 +279,11 @@ button {
     font-size: 1em;
     padding: 0 12px;
     border: none;
-    border-radius: calc(var(--button-height) / 2);
+    border-radius: calc(var(--button-height) / 2); /* 両端を半円にする */
     cursor: pointer;
     text-align: center;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-    font-weight: bold;
+    font-weight: bold;  /* ✅ 文字を太字にする */
     white-space: nowrap;
 }
 
