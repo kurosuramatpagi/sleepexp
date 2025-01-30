@@ -136,7 +136,7 @@ button {
 
 /* カードのデザイン */
 .pokemon-box {
-    width: 70px;
+    width: 60px;
     height: 150px;
     text-align: center;
     border: 2px solid #ccc;
