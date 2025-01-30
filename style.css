@@ -165,7 +165,17 @@ button {
     padding-top: var(--card-item-spacing, 1px); /* 内部の余白も調整 */
     padding-bottom: var(--card-item-spacing, 1px); /* 内部の余白も調整 */
 }
-/* 性格の矢印背景 */
+/* 「睡ボ」のフォントを標準に変更 */
+.sleep-bonus {
+    display: inline-block;
+    background-color: #ffcc00;
+    color: black;
+    font-weight: normal; /* ← 太字を解除 */
+    padding: 3px 6px;
+    border-radius: 8px;
+}
+
+/* 性格記号のデザイン */
 .nature-symbol {
     display: inline-block;
     padding: 3px 6px;
@@ -174,6 +184,7 @@ button {
     color: white;
 }
 
+/* 性格補正あり（EXP↑ / EXP↓） */
 .exp-up {
     background-color: rgba(255, 0, 51, 0.7); /* 赤 (#ff0033) の70%不透明 */
 }
@@ -182,14 +193,11 @@ button {
     background-color: rgba(51, 0, 255, 0.7); /* 青 (#3300ff) の70%不透明 */
 }
 
-/* 「睡ボ」アイコン（黄色背景の角丸） */
-.sleep-bonus {
-    display: inline-block;
-    background-color: #ffcc00;
-    color: black;
-    font-weight: bold;
-    padding: 3px 6px;
-    border-radius: 8px;
+/* 性格補正なし（「-」を表示） */
+.nature-none {
+    background-color: rgba(200, 200, 200, 0.7); /* 薄いグレー */
+    color: black; /* 文字色を黒に */
+    font-weight: normal; /* 標準フォント */
 }
 
 /* 予測候補ボックス */
