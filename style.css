@@ -122,7 +122,7 @@ button {
     border: none;
     border-radius: 5px;
 }
-/* カードエリアの配置（左詰めに変更） */
+/* カードエリアの設定（左詰め + サイズ調整対応） */
 #pokemonDisplay {
     width: 80%; /* .form-container と統一 */
     margin: 20px auto;
@@ -132,38 +132,40 @@ button {
     gap: 5px; /* カード間の間隔 */
 }
 
-/* カードのサイズを固定 */
+/* カードのサイズを変更可能にする */
 .pokemon-box {
-    width: 45px; /* 横幅を固定 */
-    height: 100px; /* 縦幅を固定 */
-    max-width: none; /* 最大幅の制限を解除 */
+    width: 100px; /* 任意のサイズに変更 */
+    height: 80px; /* 任意のサイズに変更 */
+    flex-grow: 0; /* 自動拡大を無効化 */
+    flex-shrink: 0; /* 自動縮小を無効化 */
+    box-sizing: content-box; /* paddingやborderの影響を除外 */
     text-align: center;
     border: 2px solid #ccc;
     border-radius: 10px;
-    padding: 3px;
+    padding: 5px;
     background-color: white;
-    font-size: 0.6em;
+    font-size: 0.7em;
 }
 
-/* ポケモン画像のサイズを調整 */
+/* ポケモン画像のサイズ */
 .pokemon-box img {
-    width: 40px; /* 画像を小さく */
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
 
-/* 文字サイズを4px縮小 */
+/* 文字サイズ */
 .pokemon-box .nickname {
     font-weight: bold;
-    font-size: 0.6em;
+    font-size: 0.8em;
 }
 
 .pokemon-box .level,
 .pokemon-box .exp-bonus,
 .pokemon-box .exp-next {
-    font-size: 0.5em;
+    font-size: 0.7em;
     margin-top: 1px;
-    line-height: 1; /* 行間を狭める */
+    line-height: 1;
 }
 /* 性格の矢印背景 */
 .nature-symbol {
