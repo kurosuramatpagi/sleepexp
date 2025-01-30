@@ -286,7 +286,7 @@ button {
     font-weight: bold;
     white-space: nowrap; /* 文字が折り返されないように */
     color: gray; /* OFF時の文字色をグレーに */
-    background-color: #aa8800; /* OFF時の背景色を暗めの黄色に固定 */
+    background-color: #f8f8f8; /* OFF時の背景色を暗めの黄色に固定 */
 }
 
 /* ON状態（クリックされた時） */
@@ -311,7 +311,7 @@ button {
     border-radius: calc(var(--nature-button-height) / 2);
     cursor: pointer;
     text-align: center;
-    transition: background-color 0.3s, color 0.3s;
+    background-color: f8f8f8;
     font-weight: bold;
     white-space: nowrap;
     color: gray; /* OFF時の文字色をグレーに */
