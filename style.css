@@ -212,4 +212,35 @@ button {
 .suggestion-box div:hover {
     background-color: #f0f0f0;
 }
+/* 画面が狭いスマホ向け（iPhone SEなど） */
+@media screen and (max-width: 375px) { 
+    .pokemon-box {
+        width: 58px;
+        height: 130px;
+    }
+    #pokemonDisplay {
+        gap: 4px; /* 間隔を狭くする */
+    }
+}
 
+/* 画面が広いスマホ / タブレット向け */
+@media screen and (min-width: 800px) { 
+    .pokemon-box {
+        width: 75px;
+        height: 170px;
+    }
+    #pokemonDisplay {
+        gap: 10px; /* 間隔を広げる */
+    }
+}
+
+/* PC向け（超ワイド画面の場合） */
+@media screen and (min-width: 1200px) { 
+    .pokemon-box {
+        width: 80px;
+        height: 180px;
+    }
+    #pokemonDisplay {
+        gap: 12px;
+    }
+}
