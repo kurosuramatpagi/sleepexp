@@ -29,12 +29,16 @@
             <input type="checkbox" id="sleepExpBonus">
         </div>
         <div class="form-group">
-            <label for="nature">性格</label>
-            <select id="nature">
-                <option value="normal">通常</option>
-                <option value="expUp">EXP↑</option>
-                <option value="expDown">EXP↓</option>
-            </select>
+            <label>性格</label>
+            <div class="nature-selection">
+                <label>
+                    <input type="checkbox" id="expUp"> ↑
+                </label>
+                <span class="spacing"></span> <!-- 小さな空白 -->
+                <label>
+                    <input type="checkbox" id="expDown"> ↓
+                </label>
+            </div>
         </div>
         <div class="form-group">
             <label for="currentLevel">現在のレベル</label>
