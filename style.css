@@ -1,3 +1,5 @@
+重複削除だけして。重複するかもと少しでも懸念があるところは消さないで
+
 /* ローカルフォント適用 */
 @font-face {
     font-family: 'M+1p';
@@ -41,8 +43,8 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8;
-    min-height: 100vh;
+    background-color: #f8f8f8;  /* 背景色 */
+    min-height: 100vh;  /* 最小高さ */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -63,7 +65,7 @@ body {
 }
 
 /* iOSデバイスのみでバナーを40px下げる */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1024px) { /* 通常のiOSデバイスの幅に対応 */
     .banner {
         top: 40px;
     }
@@ -77,7 +79,7 @@ body {
     font-weight: bold;
 }
 
-/* 情報入力エリア */
+/* 情報入力エリア（form-container）を左詰めに修正 */
 .form-container {
     width: 80%;
     margin: 80px auto 0;
@@ -91,7 +93,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* 各入力フィールド */
+/* 各入力フィールドを左揃え */
 .form-group {
     display: flex;
     flex-direction: column;
@@ -101,7 +103,7 @@ body {
     margin-bottom: 15px;
 }
 
-/* 入力欄のデザイン */
+/* 入力欄のテキストも左詰めにする */
 input, select {
     width: 100%;
     padding: 5px;
@@ -122,8 +124,7 @@ button {
     border: none;
     border-radius: 5px;
 }
-
-/* カードエリア */
+/* カードエリアの設定（カード間の空白調整可能に） */
 #pokemonDisplay {
     width: var(--card-area-width, 88%);
     max-width: 100%;
@@ -132,10 +133,10 @@ button {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    gap: var(--card-gap, 8px);
+    gap: var(--card-gap, 8px); /* カード間の間隔を自由に変更可能に */
 }
 
-/* カードデザイン */
+/* カードのデザイン */
 .pokemon-box {
     width: 64.3px;
     height: 150px;
@@ -154,23 +155,24 @@ button {
     border-radius: 10px;
 }
 
-/* カード内のテキスト */
+/* カード内のテキスト間隔を自由に変更可能 */
 .pokemon-box .nickname,
 .pokemon-box .level,
 .pokemon-box .exp-bonus,
 .pokemon-box .exp-next {
     font-size: 0.7em;
-    line-height: var(--card-line-height, 0.7);
-    margin: var(--card-item-spacing, 2.5px) 0;
-    padding: var(--card-item-spacing, 1px) 0;
+    line-height: var(--card-line-height, 0.7); /* 行間を自由に変更可能に */
+    margin-top: var(--card-item-spacing, 2.5px); /* 上の余白 */
+    margin-bottom: var(--card-item-spacing, 0px); /* 下の余白 */
+    padding-top: var(--card-item-spacing, 1px); /* 内部の余白も調整 */
+    padding-bottom: var(--card-item-spacing, 1px); /* 内部の余白も調整 */
 }
-
-/* 「睡ボ」のデザイン */
+/* 「睡ボ」のフォントを標準に変更 */
 .sleep-bonus {
     display: inline-block;
     background-color: #ffcc00;
     color: black;
-    font-weight: normal;
+    font-weight: normal; /* ← 太字を解除 */
     padding: 3px 6px;
     border-radius: 8px;
 }
@@ -184,19 +186,20 @@ button {
     color: white;
 }
 
-/* 性格ボタン */
+/* 性格補正あり（EXP↑ / EXP↓） */
 .exp-up {
-    background-color: rgba(255, 0, 51, 0.7);
+    background-color: rgba(255, 0, 51, 0.7); /* 赤 (#ff0033) の70%不透明 */
 }
 
 .exp-down {
-    background-color: rgba(51, 0, 255, 0.7);
+    background-color: rgba(51, 0, 255, 0.7); /* 青 (#3300ff) の70%不透明 */
 }
 
+/* 性格補正なし（「-」を表示） */
 .nature-none {
-    background-color: rgba(200, 200, 200, 0.7);
-    color: black;
-    font-weight: normal;
+    background-color: rgba(200, 200, 200, 0.7); /* 薄いグレー */
+    color: black; /* 文字色を黒に */
+    font-weight: normal; /* 標準フォント */
 }
 
 /* 予測候補ボックス */
@@ -219,29 +222,30 @@ button {
 .suggestion-box div:hover {
     background-color: #f0f0f0;
 }
-
-/* 各端末向け調整 */
-@media screen and (max-width: 375px) {
+/* 画面が狭いスマホ向け（iPhone SEなど） */
+@media screen and (max-width: 375px) { 
     .pokemon-box {
         width: 58px;
         height: 130px;
     }
     #pokemonDisplay {
-        gap: 4px;
+        gap: 4px; /* 間隔を狭くする */
     }
 }
 
-@media screen and (min-width: 800px) {
+/* 画面が広いスマホ / タブレット向け */
+@media screen and (min-width: 800px) { 
     .pokemon-box {
         width: 75px;
         height: 170px;
     }
     #pokemonDisplay {
-        gap: 10px;
+        gap: 10px; /* 間隔を広げる */
     }
 }
 
-@media screen and (min-width: 1200px) {
+/* PC向け（超ワイド画面の場合） */
+@media screen and (min-width: 1200px) { 
     .pokemon-box {
         width: 80px;
         height: 180px;
@@ -251,15 +255,120 @@ button {
     }
 }
 
-/* 性格ボタン */
+/* 性格選択エリアを横並びにする */
+.nature-selection {
+    display: flex;
+    gap: 15px; /* ↑と↓の間隔を調整 */
+    align-items: center;
+}
+
+/* 各チェックボックスと記号の間隔を適切に */
+.nature-option {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* 記号とチェックボックスの間隔 */
+}
+/* 睡眠EXPボーナスボタンのデザイン */
+.sleep-exp-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 8px; /* 角丸長方形 */
+    cursor: pointer;
+    text-align: center;
+    color: black;
+    background-color: #aa8800; /* OFF時の暗めの黄色 */
+    transition: background-color 0.3s;
+}
+
+/* ON状態（クリックされた時） */
+.sleep-exp-btn.active {
+    background-color: #ffcc00; /* 明るい黄色 */
+}
+
+/* 性格ボタンのデザイン */
+.nature-btn {
+    display: inline-block;
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 8px; /* 角丸長方形 */
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+/* EXP↑ボタン（ON/OFF） */
+.exp-up-btn {
+    background-color: rgba(150, 0, 30, 0.7); /* OFF時の暗めの赤 */
+}
+.exp-up-btn.active {
+    background-color: rgba(255, 0, 51, 0.7); /* 明るい赤 */
+}
+
+/* EXP↓ボタン（ON/OFF） */
+.exp-down-btn {
+    background-color: rgba(0, 0, 100, 0.7); /* OFF時の暗めの青 */
+}
+.exp-down-btn.active {
+    background-color: rgba(51, 0, 255, 0.7); /* 明るい青 */
+}
+
+/* 性格ボタンの並び */
 .nature-selection {
     display: flex;
     gap: 15px;
     align-items: center;
 }
+/* 睡眠EXPボーナスボタン */
+.sleep-exp-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 8px; /* 角丸長方形 */
+    cursor: pointer;
+    text-align: center;
+    color: white; /* オフ時は白 */
+    background-color: #554400; /* オフ時の暗めの黄色 */
+    transition: background-color 0.3s, color 0.3s;
+}
 
-.nature-option {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+/* ON状態（クリックされた時） */
+.sleep-exp-btn.active {
+    background-color: #ffcc00; /* 明るい黄色 */
+    color: black; /* オン時は黒 */
+}
+
+/* 性格ボタンのデザイン */
+.nature-btn {
+    display: inline-block;
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 8px; /* 角丸長方形 */
+    cursor: pointer;
+    text-align: center;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+/* EXP↑ボタン（OFFをもっと暗く） */
+.exp-up-btn {
+    background-color: rgba(100, 0, 20, 0.9); /* OFF時のより暗い赤 */
+}
+.exp-up-btn.active {
+    background-color: rgba(255, 0, 51, 0.7); /* 明るい赤 */
+}
+
+/* EXP↓ボタン（OFFをもっと暗く） */
+.exp-down-btn {
+    background-color: rgba(0, 0, 50, 0.9); /* OFF時のより暗い青 */
+}
+.exp-down-btn.active {
+    background-color: rgba(51, 0, 255, 0.7); /* 明るい青 */
 }
