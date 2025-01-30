@@ -122,21 +122,21 @@ button {
     border: none;
     border-radius: 5px;
 }
-/* カードエリアの設定（5列のまま変更なし） */
+/* カードエリアの配置（左詰めに変更） */
 #pokemonDisplay {
-    width: 80%;
+    width: 80%; /* .form-container と統一 */
     margin: 20px auto;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 5px;
+    flex-wrap: wrap; /* 折り返しを許可 */
+    justify-content: flex-start; /* 左詰めで登録 */
+    gap: 5px; /* カード間の間隔 */
 }
 
-/* カードのサイズを調整（縦幅を適切に調整 & 横幅の崩れを防ぐ） */
+/* カードのサイズを固定 */
 .pokemon-box {
-    width: calc(100% / 5 - 8px); /* 5列表示を維持 */
-    max-width: 70px; /* 横幅を広げすぎない */
-    min-height: 60px; /* 短くしすぎず適切な高さを確保 */
+    width: 80px; /* 横幅を固定 */
+    height: 50px; /* 縦幅を固定 */
+    max-width: none; /* 最大幅の制限を解除 */
     text-align: center;
     border: 2px solid #ccc;
     border-radius: 10px;
@@ -163,7 +163,7 @@ button {
 .pokemon-box .exp-next {
     font-size: 0.5em;
     margin-top: 1px;
-    line-height: 1;
+    line-height: 1; /* 行間を狭める */
 }
 /* 性格の矢印背景 */
 .nature-symbol {
