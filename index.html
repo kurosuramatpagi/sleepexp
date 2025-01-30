@@ -24,21 +24,21 @@
             <label for="nickname">ニックネーム</label>
             <input type="text" id="nickname">
         </div>
+
+        <!-- 睡眠EXPボーナス（ボタン化） -->
         <div class="form-group">
-            <label for="sleepExpBonus">睡眠EXPボーナス</label>
-            <input type="checkbox" id="sleepExpBonus">
+            <button id="sleepExpBonusBtn" class="sleep-exp-btn">睡眠EXPボーナス</button>
         </div>
-       <div class="form-group">
-    <label>性格</label>
-    <div class="nature-selection">
-        <label class="nature-option">
-            ↑ <input type="checkbox" id="expUp">
-        </label>
-        <label class="nature-option">
-            ↓ <input type="checkbox" id="expDown">
-        </label>
-    </div>
-</div>
+
+        <!-- 性格（ボタン化） -->
+        <div class="form-group">
+            <label>性格</label>
+            <div class="nature-selection">
+                <button id="expUpBtn" class="nature-btn exp-up-btn">性格EXP↑</button>
+                <button id="expDownBtn" class="nature-btn exp-down-btn">性格EXP↓</button>
+            </div>
+        </div>
+
         <div class="form-group">
             <label for="currentLevel">現在のレベル</label>
             <input type="number" id="currentLevel">
