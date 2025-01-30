@@ -266,71 +266,52 @@ button {
     align-items: center;
     gap: 5px; /* 記号とチェックボックスの間隔 */
 }
-/* 睡眠EXPボーナスボタン（個別調整可能） */
+/* 睡眠EXPボーナスボタン */
 .sleep-exp-btn {
-    --sleep-button-width: auto; /* 自動調整（文字の長さに応じる） */
-    --sleep-button-height: 30px; /* 高さを30pxにしても中央配置 */
+    --sleep-button-width: auto;
+    --sleep-button-height: 30px;
 
-    display: inline-flex; /* Flexbox を使用 */
-    align-items: center; /* 縦中央揃え */
-    justify-content: center; /* 横中央揃え */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: var(--sleep-button-width);
     height: var(--sleep-button-height);
     font-size: 1em;
-    padding: 0 12px; /* 余白を横だけに */
+    padding: 0 12px;
     border: none;
-    border-radius: calc(var(--sleep-button-height) / 2); /* 左右の角を半円にする */
+    border-radius: calc(var(--sleep-button-height) / 2);
     cursor: pointer;
     text-align: center;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
     font-weight: bold;
-    white-space: nowrap; /* 文字が折り返されないように */
-    color: gray; /* OFF時の文字色をグレーに */
-    background-color: #f8f8f8; /* OFF時の背景色を暗めの黄色に固定 */
-}
-
-/* ON状態（クリックされた時） */
-.sleep-exp-btn.active {
-    background-color: #ffcc00; /* 明るい黄色 */
+    white-space: nowrap;
+    background-color: #ffcc00; /* ON時の黄色背景 */
     color: black; /* ON時の文字色 */
 }
 
-/* 性格ボタン（個別調整可能） */
-.nature-btn {
-    --nature-button-width: auto; /* 自動調整（文字の長さに応じる） */
-    --nature-button-height: 30px; /* 高さを30pxにしても中央配置 */
-
-    display: inline-flex; /* Flexbox を使用 */
-    align-items: center; /* 縦中央揃え */
-    justify-content: center; /* 横中央揃え */
-    width: var(--nature-button-width);
-    height: var(--nature-button-height);
-    font-size: 1em;
-    padding: 0 12px;
-    border: none;
-    border-radius: calc(var(--nature-button-height) / 2);
-    cursor: pointer;
-    text-align: center;
-    background-color: f8f8f8;
-    font-weight: bold;
-    white-space: nowrap;
-    color: gray; /* OFF時の文字色をグレーに */
+/* 睡ボボタンOFF時（白フィルター適用） */
+.sleep-exp-btn:not(.active) {
+    background-color: rgba(255, 204, 0, 0.5); /* 黄色背景 + 白フィルター */
 }
 
-/* EXP↑ボタン（ON/OFF） */
+/* EXP↑ボタン */
 .exp-up-btn {
-    background-color: rgba(100, 0, 20, 0.9);
-}
-.exp-up-btn.active {
-    background-color: rgba(255, 0, 51, 0.7);
-    color: white; /* ON時の文字色 */
+    background-color: rgba(255, 0, 51, 1); /* ON時の赤背景 */
+    color: black;
 }
 
-/* EXP↓ボタン（ON/OFF） */
-.exp-down-btn {
-    background-color: rgba(0, 0, 50, 0.9);
+/* EXP↑ボタンOFF時（白フィルター適用） */
+.exp-up-btn:not(.active) {
+    background-color: rgba(255, 0, 51, 0.5); /* 赤背景 + 白フィルター */
 }
-.exp-down-btn.active {
-    background-color: rgba(51, 0, 255, 0.7);
-    color: white; /* ON時の文字色 */
+
+/* EXP↓ボタン */
+.exp-down-btn {
+    background-color: rgba(51, 0, 255, 1); /* ON時の青背景 */
+    color: black;
+}
+
+/* EXP↓ボタンOFF時（白フィルター適用） */
+.exp-down-btn:not(.active) {
+    background-color: rgba(51, 0, 255, 0.5); /* 青背景 + 白フィルター */
 }
