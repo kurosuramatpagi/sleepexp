@@ -132,17 +132,17 @@ button {
     gap: 5px;
 }
 
-/* カードのサイズを調整（縦幅を半分に & 5列のまま） */
+/* カードのサイズを調整（縦幅を適切に調整 & 横幅の崩れを防ぐ） */
 .pokemon-box {
-    width: calc(100% / 5 - 6px); /* 5列表示を維持 */
-    max-width: 80px;
-    height: 50px; /* 縦幅を半分に */
+    width: calc(100% / 5 - 8px); /* 5列表示を維持 */
+    max-width: 70px; /* 横幅を広げすぎない */
+    min-height: 60px; /* 短くしすぎず適切な高さを確保 */
     text-align: center;
     border: 2px solid #ccc;
     border-radius: 10px;
     padding: 3px;
     background-color: white;
-    font-size: 0.6em; /* 元のフォントサイズより4px小さく */
+    font-size: 0.6em;
 }
 
 /* ポケモン画像のサイズを調整 */
@@ -155,15 +155,15 @@ button {
 /* 文字サイズを4px縮小 */
 .pokemon-box .nickname {
     font-weight: bold;
-    font-size: 0.6em; /* 4px小さく */
+    font-size: 0.6em;
 }
 
 .pokemon-box .level,
 .pokemon-box .exp-bonus,
 .pokemon-box .exp-next {
-    font-size: 0.5em; /* 4px小さく */
+    font-size: 0.5em;
     margin-top: 1px;
-    line-height: 1; /* 行間をさらに狭める */
+    line-height: 1;
 }
 /* 性格の矢印背景 */
 .nature-symbol {
