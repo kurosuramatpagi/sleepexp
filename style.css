@@ -376,7 +376,7 @@ button {
 /* 睡眠EXPボーナスボタン（個別調整可能） */
 .sleep-exp-btn {
     --sleep-button-width: auto; /* 自動調整（文字の長さに応じる） */
-    --sleep-button-height: 40px; /* 高さ（調整可能） */
+    --sleep-button-height: 30px; /* 高さ（調整可能） */
 
     display: inline-block;
     width: var(--sleep-button-width);
@@ -405,7 +405,7 @@ button {
 /* 性格ボタン（個別調整可能） */
 .nature-btn {
     --nature-button-width: auto; /* 自動調整（文字の長さに応じる） */
-    --nature-button-height: 40px; /* 高さ（調整可能） */
+    --nature-button-height: 30px; /* 高さ（調整可能） */
 
     display: inline-block;
     width: var(--nature-button-width);
