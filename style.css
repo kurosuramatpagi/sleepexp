@@ -136,7 +136,7 @@ button {
 
 /* カードのデザイン */
 .pokemon-box {
-    width: 63px;
+    width: 64px;
     height: 150px;
     text-align: center;
     border: 2px solid #ccc;
@@ -159,9 +159,11 @@ button {
 .pokemon-box .exp-bonus,
 .pokemon-box .exp-next {
     font-size: 0.7em;
-    line-height: 1;
-    margin: var(--card-item-spacing, 5px) 0; /* 上下の間隔を自由に調整 */
-    padding: var(--card-item-spacing, 2.5px) 0; /* 内部の余白も調整 */
+    line-height: var(--card-line-height, 0.7); /* 行間を自由に変更可能に */
+    margin-top: var(--card-item-spacing, 2.5px); /* 上の余白 */
+    margin-bottom: var(--card-item-spacing, 2.5px); /* 下の余白 */
+    padding-top: var(--card-item-spacing, 1px); /* 内部の余白も調整 */
+    padding-bottom: var(--card-item-spacing, 1px); /* 内部の余白も調整 */
 }
 /* 性格の矢印背景 */
 .nature-symbol {
