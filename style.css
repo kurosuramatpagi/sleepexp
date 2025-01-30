@@ -373,10 +373,27 @@ button {
     background-color: rgba(51, 0, 255, 0.7); /* 明るい青 */
 }
 
-/* 睡眠EXPボーナス & 性格ボタン専用（左右半円の長方形） */
-.sleep-exp-btn, .nature-btn {
-    --button-width: 120px; /* デフォルトの幅（自由に変更可） */
-    --button-height: 50px; /* デフォルトの高さ（自由に変更可） */
+/* 性格ボタン専用（左右半円の長方形） */
+.nature-btn {
+    --button-width: 100px; /* デフォルトの幅（自由に変更可） */
+    --button-height: 25px; /* デフォルトの高さ（自由に変更可） */
+
+    display: inline-block;
+    width: var(--button-width);
+    height: var(--button-height);
+    font-size: 1em;
+    border: none;
+    border-radius: calc(var(--button-height) / 2); /* 左右の角を半円にする */
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+    font-weight: bold;
+}
+
+/* 睡眠EXPボーナス 左右半円の長方形） */
+.sleep-exp-btn,{
+    --button-width: 150px; /* デフォルトの幅（自由に変更可） */
+    --button-height: 25px; /* デフォルトの高さ（自由に変更可） */
 
     display: inline-block;
     width: var(--button-width);
