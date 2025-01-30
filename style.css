@@ -252,3 +252,17 @@ button {
         gap: 12px;
     }
 }
+
+/* 性格選択エリアを横並びにする */
+.nature-selection {
+    display: flex;
+    gap: 15px; /* ↑と↓の間隔を調整 */
+    align-items: center;
+}
+
+/* 各チェックボックスと記号の間隔を適切に */
+.nature-option {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* 記号とチェックボックスの間隔 */
+}
