@@ -282,20 +282,20 @@ button {
     border-radius: 9999px;
     cursor: pointer;
     text-align: center;
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
     font-weight: bold;
     white-space: nowrap;
-    color: black !important;  /* ✅ ON/OFFどちらも黒に統一 */
 }
 
 /* ✅ 睡眠EXPボタン（ON時） */
 .sleep-exp-btn.active {
     background-color: #ffcc00 !important; /* ✅ ON時の背景色 */
+    color: black !important; /* ✅ ON時の文字色 */
 }
 
-/* ✅ 睡眠EXPボタン（OFF時：白フィルター90%） */
+/* ✅ 睡眠EXPボタン（OFF時：文字色のみグレーに） */
 .sleep-exp-btn:not(.active) {
-    background-color: rgba(255, 204, 0, 0.1) !important; /* ✅ 白フィルター90% */
+    color: gray !important; /* ✅ OFF時の文字色のみ変更（背景はそのまま） */
 }
 
 /* ✅ EXP↑ボタン（共通スタイル） */
@@ -314,20 +314,21 @@ button {
     border-radius: 9999px;
     cursor: pointer;
     text-align: center;
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
     font-weight: bold;
     white-space: nowrap;
-    color: black !important;  /* ✅ ON/OFFどちらも黒に統一 */
 }
 
 /* ✅ EXP↑ボタン（ON時：カードエリアの色 + 白50%フィルター） */
 .exp-up-btn.active {
     background-color: rgba(255, 0, 51, 0.5) !important; /* ✅ 赤色 + 白50%フィルター */
+    color: black !important; /* ✅ ON時の文字色 */
 }
 
-/* ✅ EXP↑ボタン（OFF時：白フィルター90%） */
+/* ✅ EXP↑ボタン（OFF時：白フィルター90% + 文字色グレー） */
 .exp-up-btn:not(.active) {
     background-color: rgba(255, 0, 51, 0.1) !important; /* ✅ 白フィルター90% */
+    color: gray !important; /* ✅ OFF時の文字色をグレーに */
 }
 
 /* ✅ EXP↓ボタン（共通スタイル） */
@@ -346,18 +347,19 @@ button {
     border-radius: 9999px;
     cursor: pointer;
     text-align: center;
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
     font-weight: bold;
     white-space: nowrap;
-    color: black !important;  /* ✅ ON/OFFどちらも黒に統一 */
 }
 
 /* ✅ EXP↓ボタン（ON時：カードエリアの色 + 白50%フィルター） */
 .exp-down-btn.active {
     background-color: rgba(51, 0, 255, 0.5) !important; /* ✅ 青色 + 白50%フィルター */
+    color: black !important; /* ✅ ON時の文字色 */
 }
 
-/* ✅ EXP↓ボタン（OFF時：白フィルター90%） */
+/* ✅ EXP↓ボタン（OFF時：白フィルター90% + 文字色グレー） */
 .exp-down-btn:not(.active) {
     background-color: rgba(51, 0, 255, 0.1) !important; /* ✅ 白フィルター90% */
+    color: gray !important; /* ✅ OFF時の文字色をグレーに */
 }
