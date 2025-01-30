@@ -267,24 +267,25 @@ button {
     gap: 5px; /* 記号とチェックボックスの間隔 */
 }
 /* ✅ 共通ボタンスタイル（睡ボ & 性格ボタン） */
+/* ✅ ボタンの形を確実に「長方形 + 両端半円」にする */
 .common-btn {
-    --button-width: auto;  /* ✅ 自動調整（文字の長さに応じる） */
-    --button-height: 30px; /* ✅ デフォルトの高さ（自由に変更可） */
+    --button-width: auto;
+    --button-height: 30px;
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: var(--button-width);
-    height: var(--button-height);
+    width: fit-content !important;
+    height: var(--button-height) !important;
     font-size: 1em;
-    padding: 5px 15px; /* ✅ ボタンの形を調整 */
+    padding: 5px 15px;
     border: none;
-    border-radius: 50px; /* ✅ 両端を半円にする */
+    border-radius: 9999px !important; /* ✅ これで確実に半円 */
     cursor: pointer;
     text-align: center;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-    font-weight: bold !important;  /* ✅ 文字を太字にする */
-    white-space: nowrap; /* ✅ 文字を折り返さない */
+    font-weight: bold !important;
+    white-space: nowrap;
 }
 
 /* ✅ 睡眠EXPボタン（ON時） */
