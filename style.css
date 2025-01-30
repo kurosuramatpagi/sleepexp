@@ -136,7 +136,7 @@ button {
 
 /* カードのデザイン */
 .pokemon-box {
-    width: 64px;
+    width: 64.2px;
     height: 150px;
     text-align: center;
     border: 2px solid #ccc;
@@ -161,7 +161,7 @@ button {
     font-size: 0.7em;
     line-height: var(--card-line-height, 0.7); /* 行間を自由に変更可能に */
     margin-top: var(--card-item-spacing, 2.5px); /* 上の余白 */
-    margin-bottom: var(--card-item-spacing, 2.5px); /* 下の余白 */
+    margin-bottom: var(--card-item-spacing, 0px); /* 下の余白 */
     padding-top: var(--card-item-spacing, 1px); /* 内部の余白も調整 */
     padding-bottom: var(--card-item-spacing, 1px); /* 内部の余白も調整 */
 }
