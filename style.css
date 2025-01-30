@@ -279,40 +279,46 @@ button {
     font-size: 1em;
     padding: 5px 15px; /* ✅ ボタンの形を調整 */
     border: none;
-    border-radius: calc(var(--button-height) / 2); /* ✅ 両端を半円にする */
+    border-radius: 50px; /* ✅ 両端を半円にする */
     cursor: pointer;
     text-align: center;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-    font-weight: bold;  /* ✅ 文字を太字にする */
+    font-weight: bold !important;  /* ✅ 文字を太字にする */
     white-space: nowrap; /* ✅ 文字を折り返さない */
 }
 
-/* ✅ 睡眠EXPボーナスボタン */
+/* ✅ 睡眠EXPボタン（ON時） */
 .sleep-exp-btn {
-    background-color: #ffcc00; /* ✅ ON時（カードエリアの色） */
-    color: black;
+    background-color: #ffcc00 !important; /* ✅ ON時（カードエリアの色） */
+    color: black !important;
 }
+
+/* ✅ 睡眠EXPボタン（OFF時：白フィルター適用） */
 .sleep-exp-btn:not(.active) {
-    background-color: rgba(255, 204, 0, 0.3); /* ✅ 白フィルター強化 */
-    color: rgba(0, 0, 0, 0.5); /* ✅ 文字にも白フィルターを適用 */
+    background-color: rgba(255, 204, 0, 0.2) !important; /* ✅ 白フィルター強化 */
+    color: rgba(0, 0, 0, 0.4) !important; /* ✅ 文字にも白フィルターを適用 */
 }
 
-/* ✅ EXP↑ボタン（ON時はカードエリアの↑の背景色に統一） */
+/* ✅ EXP↑ボタン（ON時：カードエリアの↑背景色） */
 .exp-up-btn {
-    background-color: rgba(255, 0, 51, 0.7); /* ✅ ON時（カードエリアの↑背景色） */
-    color: black;
-}
-.exp-up-btn:not(.active) {
-    background-color: rgba(255, 0, 51, 0.3); /* ✅ 白フィルター強化 */
-    color: rgba(0, 0, 0, 0.5); /* ✅ 文字にも白フィルターを適用 */
+    background-color: rgba(255, 0, 51, 0.7) !important; /* ✅ ON時（カードエリアの↑背景色） */
+    color: black !important;
 }
 
-/* ✅ EXP↓ボタン（ON時はカードエリアの↓の背景色に統一） */
-.exp-down-btn {
-    background-color: rgba(51, 0, 255, 0.7); /* ✅ ON時（カードエリアの↓背景色） */
-    color: black;
+/* ✅ EXP↑ボタン（OFF時：白フィルター適用） */
+.exp-up-btn:not(.active) {
+    background-color: rgba(255, 0, 51, 0.2) !important; /* ✅ 白フィルター強化 */
+    color: rgba(0, 0, 0, 0.4) !important; /* ✅ 文字にも白フィルターを適用 */
 }
+
+/* ✅ EXP↓ボタン（ON時：カードエリアの↓背景色） */
+.exp-down-btn {
+    background-color: rgba(51, 0, 255, 0.7) !important; /* ✅ ON時（カードエリアの↓背景色） */
+    color: black !important;
+}
+
+/* ✅ EXP↓ボタン（OFF時：白フィルター適用） */
 .exp-down-btn:not(.active) {
-    background-color: rgba(51, 0, 255, 0.3); /* ✅ 白フィルター強化 */
-    color: rgba(0, 0, 0, 0.5); /* ✅ 文字にも白フィルターを適用 */
+    background-color: rgba(51, 0, 255, 0.2) !important; /* ✅ 白フィルター強化 */
+    color: rgba(0, 0, 0, 0.4) !important; /* ✅ 文字にも白フィルターを適用 */
 }
