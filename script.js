@@ -31,10 +31,16 @@ function registerPokemon() {
     }
 
     // 性格の記号を色付きで設定
-    let natureSymbol = `<span class="nature-symbol">-</span>`;
-    if (nature === "expUp") natureSymbol = `<span class="nature-symbol exp-up">↑</span>`;
-    if (nature === "expDown") natureSymbol = `<span class="nature-symbol exp-down">↓</span>`;
+       let natureSymbol = "";
+    if (nature === "expUp") {
+        natureSymbol = `<span class="nature-symbol exp-up">↑</span>`;
+    } else if (nature === "expDown") {
+        natureSymbol = `<span class="nature-symbol exp-down">↓</span>`;
+    } else {
+        natureSymbol = `<span class="nature-symbol nature-none">-</span>`; // 未登録なら "-"
+    }
 
+  
     // 「睡ボ」アイコンの処理（背景#ffcc00の角丸）
     const sleepBonusIcon = sleepExpBonus ? '<span class="sleep-bonus">睡ボ</span>' : '';
 
