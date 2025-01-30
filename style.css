@@ -295,7 +295,7 @@ button {
 
 /* ✅ 睡眠EXPボタン（OFF時：ON時の色 + 50% 白フィルター + 文字色 #d3d3d3） */
 .sleep-exp-btn:not(.active) {
-    background-color: rgba(255, 204, 0, 0.5) !important; /* ✅ ON時の色に50%白フィルター */
+    background-color: rgba(255, 204, 0, 0.3) !important; /* ✅ ON時の色に50%白フィルター */
     color: #d3d3d3 !important; /* ✅ OFF時の文字色を #d3d3d3 に統一 */
 }
 
