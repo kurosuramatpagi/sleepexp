@@ -394,12 +394,11 @@ button {
     justify-content: center;
     text-align: center;
 }
-/* ✅ 目標レベルのボタンコンテナ（テキストボックスの横に配置） */
+/* ✅ 目標レベルのコンテナ */
 .target-level-container {
     display: flex;
     align-items: center;
-    position: relative; /* `absolute` でなく `relative` で制御 */
-    gap: 5px; /* テキストボックスとボタンの間隔 */
+    position: relative; /* ここを `relative` にする */
 }
 
 /* ✅ ボタン全体を囲む枠 */
@@ -408,30 +407,30 @@ button {
     border: 2px solid black; /* 外枠 */
     border-radius: 0; /* 直角にする */
     overflow: hidden; /* 枠内に収める */
+    position: absolute; /* 🔥 ここを `absolute` にして `target-level-container` 内に収める */
+    left: 50px; /* テキストボックスの右側に配置（適宜調整） */
+    top: 50%; /* 縦位置をテキストボックスと揃える */
+    transform: translateY(-50%); /* 中央揃え */
 }
-
 
 /* ✅ 目標レベルのボタン */
 .target-btn {
-    width: 15px;
-    height: 15px;
-    border:none;
-    background: none;
+    width: 30px;
+    height: 30px;
+    background: white;
     color: black;
-    bordercolor: gray;
-    font-size: 1em;
-    font-weight: midium;
+    font-size: 14px;
+    font-weight: bold;
     cursor: pointer;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    position: relative;
-    border-radius: 0; 
+    border: none; /* ボタンの個別の枠線を削除 */
 }
 
-/* ✅ 各ボタンの間に境界線（1pxの黒線） */
+/* ✅ 各ボタンの間に仕切り線（最後のボタン以外） */
 .target-btn:not(:last-child) {
-    border-right: 2px solid black; /* 右側の境界線のみ表示 */
+    border-right: 2px solid black; /* 右側に区切り線 */
 }
