@@ -394,19 +394,25 @@ button {
     justify-content: center;
     text-align: center;
 }
-/* ✅ 目標レベルのテキストボックスとボタンを横並びに */
+/* ✅ 目標レベルのボタンコンテナ（テキストボックスの横に配置） */
 .target-level-container {
     display: flex;
-    align-items: center; /* テキストボックスとボタンを中央揃え */
+    align-items: center;
+    position: relative; /* `absolute` でなく `relative` で制御 */
     gap: 5px; /* テキストボックスとボタンの間隔 */
-    border: 2px solid black; /* ボタン全体の外枠 */
-    border-radius: 0px; /* 角を直角に */
-    overflow: hidden; /* はみ出した境界線を非表示に */
 }
+
+/* ✅ ボタン全体を囲む枠 */
+.target-level-buttons {
+    display: flex;
+    border: 2px solid black; /* 外枠 */
+    border-radius: 0; /* 直角にする */
+    overflow: hidden; /* 枠内に収める */
+}
+
 
 /* ✅ 目標レベルのボタン */
 .target-btn {
-    max-width: 15px;
     width: 15px;
     height: 15px;
     border:none;
