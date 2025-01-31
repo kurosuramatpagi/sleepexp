@@ -407,7 +407,7 @@ button {
     height: 15px;
     border: 2px solid black;
     background: none;
-    color: black;
+    color: gray;
     font-size: 1em;
     font-weight: midium;
     cursor: pointer;
@@ -424,5 +424,5 @@ button {
 .target-level-buttons {
     display: flex;
     position: relative; /* ボタンの基準位置 */
-    gap: 0px; /* ボタン間隔 */
+    gap: -1px; /* ボタン間隔 */
 }
