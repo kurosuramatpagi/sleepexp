@@ -392,9 +392,9 @@ button {
 
 /* ✅ 目標レベルのボタン（背景なし、黒文字、中央配置） */
 .target-btn {
-    width: var(--target-button-width, 40px); /* ボタン幅 */
-    height: var(--target-button-height, 40px); /* ボタン高さ */
-    border: black;
+    width: var(--target-button-width, 30px); /* ボタン幅 */
+    height: var(--target-button-height, 30px); /* ボタン高さ */
+    border: 2px solid black;
     background: none; /* 背景なし */
     color: black; /* 文字色 */
     font-size: 1em;
