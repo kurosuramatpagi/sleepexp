@@ -39,9 +39,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // 目標レベルボタンのON/OFF切り替え（1つだけ選択可能）
-    document.querySelectorAll('.goal-btn').forEach(button => {
+    const goalButtons = document.querySelectorAll('.goal-btn');
+    goalButtons.forEach(button => {
         button.addEventListener('click', function () {
-            document.querySelectorAll('.goal-btn').forEach(btn => btn.classList.remove('selected')); // 他のボタンをOFF
+            goalButtons.forEach(btn => btn.classList.remove('selected')); // 他のボタンをOFF
             this.classList.add('selected'); // クリックしたボタンをON（グレー背景に）
         });
     });
