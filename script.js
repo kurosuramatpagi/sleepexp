@@ -33,10 +33,6 @@ document.addEventListener('DOMContentLoaded', function () {
             button.style.top = `${inputY + adjustOffsetY}px`; // ボタンのY座標を調整
             button.style.left = `${inputX + adjustOffsetX + (index * 35)}px`; // 横に並べる
         });
-
-        // ボタンコンテナのY座標をテキストボックスに合わせる
-        buttonContainer.style.position = "absolute";
-        buttonContainer.style.top = `${inputY + adjustOffset}px`;  
     }
 }
 
