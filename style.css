@@ -365,21 +365,33 @@ button {
     color: #cccccc !important; /* ✅ OFF時の文字色を #d3d3d3 に統一 */
 }
 /* 目標レベルボタンのスタイル */
-.goal-btn {
-    --goal-button-size: 40px; /* ボタンのサイズを統一 */
-    --goal-button-bg: #f8f8f8; /* デフォルトの背景色 */
-
-    width: var(--goal-button-size);
-    height: var(--goal-button-size);
-    background-color: var(--goal-button-bg);
-    border: none;
+.target-btn {
+    width: 40px;
+    height: 40px;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
 }
 
-/* 目標レベルボタンが選択された時のスタイル */
-.goal-btn.selected {
-    background-color: gray !important;
+/* ボタンが選択された時 */
+.target-btn.selected {
+    background-color: gray;
     color: white;
+}
+
+/* 調整可能な入力フィールド */
+.adjustable-input {
+    width: 100%;
+    max-width: 300px;
+}
+
+/* メモ欄の調整 */
+.adjustable-textarea {
+    width: 100%;
+    max-width: 300px;
+    min-height: 50px;
+    max-height: 200px;
+    resize: vertical;
 }
