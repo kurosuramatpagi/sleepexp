@@ -380,11 +380,11 @@ button {
 .exp-input {
     width: var(--input-width, 60px) !important;
     height: var(--input-height, 15px) !important;
-    text-align: center;
 }
 .target-input {
     width: var(--input-width, 40px) !important;
     height: var(--input-height, 15px) !important;
+    text-align: center;
 }
 .memo-input {
     width: var(--input-width, 150px) !important;
