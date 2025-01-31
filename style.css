@@ -422,5 +422,5 @@ button {
 .target-level-buttons {
     display: flex;
     position: relative; /* ボタンの基準位置 */
-    gap: 5px; /* ボタン間隔 */
+    gap: 0px; /* ボタン間隔 */
 }
