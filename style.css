@@ -364,3 +364,22 @@ button {
     background-color: rgba(51, 0, 255, 0.1) !important; /* ✅ 白フィルター90% */
     color: #cccccc !important; /* ✅ OFF時の文字色を #d3d3d3 に統一 */
 }
+/* 目標レベルボタンのスタイル */
+.goal-btn {
+    --goal-button-size: 40px; /* ボタンのサイズを統一 */
+    --goal-button-bg: #f8f8f8; /* デフォルトの背景色 */
+
+    width: var(--goal-button-size);
+    height: var(--goal-button-size);
+    background-color: var(--goal-button-bg);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+/* 目標レベルボタンが選択された時のスタイル */
+.goal-btn.selected {
+    background-color: gray !important;
+    color: white;
+}
