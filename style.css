@@ -381,28 +381,30 @@ button {
     width: var(--input-width, 60px) !important;
     height: var(--input-height, 15px) !important;
 }
-.target-input {
-    width: var(--input-width, 40px) !important;
-    height: var(--input-height, 15px) !important;
-    text-align: center;
-    vertical-align: middle; /* ✅ Y座標をボタンと揃える */
-}
 .memo-input {
     width: var(--input-width, 150px) !important;
     height: var(--input-height, 15px) !important;
+}
+/* ✅ 目標レベルのテキストボックス（中央揃え） */
+.target-input {
+    width: var(--input-width, 40px) !important;
+    height: var(--input-height, 25px) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 /* ✅ 目標レベルのテキストボックスとボタンを横並びに */
 .target-level-container {
     display: flex;
     align-items: center;
-    position: relative; /* ✅ 相対位置を基準にする */
     gap: 10px; /* テキストボックスとボタンの間隔 */
 }
 
 /* ✅ 目標レベルのボタン（背景なし、黒文字、中央配置） */
 .target-btn {
-    width: var(--target-button-width, 15px); /* ボタン幅 */
-    height: var(--target-button-height, 15px); /* ボタン高さ */
+    width: var(--target-button-width, 30px); /* ボタン幅 */
+    height: var(--target-button-height, 25px); /* ボタン高さ */
     border: 2px solid gray;
     background: none; /* 背景なし */
     color: black; /* 文字色 */
@@ -410,14 +412,13 @@ button {
     font-weight: bold;
     cursor: pointer;
     text-align: center;
-    display: inline-flex; /* ✅ インラインフレックスで高さ調整 */
+    display: flex; /* ✅ フレックスでY座標揃え */
     align-items: center;
     justify-content: center;
-    position: relative; /* ✅ ここで絶対配置を解除 */
+    position: relative; /* ✅ 絶対配置を解除 */
 }
-
 /* ✅ 目標レベルボタンの間隔を調整 */
 .target-level-buttons {
     display: flex;
-    gap: var(--target-button-spacing, 5px); /* ボタン間隔 */
+    gap: 5px; /* ボタン間隔 */
 }
