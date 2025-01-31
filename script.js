@@ -10,7 +10,14 @@ document.addEventListener('DOMContentLoaded', function () {
     // 登録ボタンのイベントリスナー設定
     document.getElementById('registerButton').addEventListener('click', registerPokemon);
 
-    // 睡眠EXPボーナスボタンのON/OFF切り替え
+    // 目標レベルボタンを押すと、テキストボックスに反映
+    document.querySelectorAll('.target-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            document.getElementById('targetLevelInput').value = this.getAttribute('data-level');
+        });
+    });
+
+  // 睡眠EXPボーナスボタンのON/OFF切り替え
     const sleepExpBonusBtn = document.getElementById('sleepExpBonusBtn');
     sleepExpBonusBtn.addEventListener('click', function () {
         this.classList.toggle('active'); // クリックでON/OFF切り替え
