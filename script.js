@@ -17,23 +17,28 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-      // **目標レベルボタンのY座標をテキストボックスと揃える**
-    function adjustButtonAlignment() {
-        const targetInput = document.getElementById('targetLevelInput');
-        const buttons = document.querySelectorAll('.target-btn');
+      function adjustButtonAlignment() {
+    const targetInput = document.getElementById('targetLevelInput');
+    const buttons = document.querySelectorAll('.target-btn');
 
-        if (targetInput) {
-            const inputHeight = targetInput.getBoundingClientRect().height; // テキストボックスの高さ取得
-            buttons.forEach(button => {
-                button.style.height = `${inputHeight}px`;  // ボタンの高さを一致
-                button.style.lineHeight = `${inputHeight}px`; // テキスト中央寄せ
-            });
-        }
+    if (targetInput) {
+        const inputRect = targetInput.getBoundingClientRect(); // テキストボックスの座標を取得
+        const inputY = inputRect.top + window.scrollY; // ページ全体のY座標を取得
+        const adjustOffset = -10; // 🔺ここを好きな値に変更（下方向に動かすpx数）
+
+        buttons.forEach(button => {
+            button.style.position = "absolute";
+            button.style.top = `${inputY + adjustOffset}px`;  // テキストボックスのY座標に+○○px
+            button.style.height = `${inputRect.height}px`;  // 高さをテキストボックスと一致
+            button.style.lineHeight = `${inputRect.height}px`; // テキスト中央寄せ
+        });
     }
+}
 
-    // **ページロード時とウィンドウリサイズ時に適用**
-    window.addEventListener('load', adjustButtonAlignment);
-    window.addEventListener('resize', adjustButtonAlignment);
+// **ページロード時とウィンドウリサイズ時に適用**
+window.addEventListener('load', adjustButtonAlignment);
+window.addEventListener('resize', adjustButtonAlignment);
+
 
     // 睡眠EXPボーナスボタンのON/OFF切り替え
     const sleepExpBonusBtn = document.getElementById('sleepExpBonusBtn');
