@@ -19,24 +19,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function adjustButtonAlignment() {
     const targetInput = document.getElementById('targetLevelInput');
-    const buttons = document.querySelectorAll('.target-btn');
+    const buttonContainer = document.querySelector('.target-level-buttons');
 
-    if (targetInput && buttons.length > 0) {
+    if (targetInput && buttonContainer) {
         const inputRect = targetInput.getBoundingClientRect();
-        const inputY = inputRect.top + window.scrollY; // テキストボックスのY座標
+        const inputY = inputRect.top + window.scrollY;
         const inputX = inputRect.right + window.scrollX; // テキストボックスの右端のX座標
-        const adjustOffset = -13; // 🔺ボタンを5px上に移動
+        const adjustOffset = -13; // 🔺ここを調整（下方向に動かすpx数）
+        const adjustOffsetX = 10; // 🔜 ボタンを10px右に移動（調整可）
 
-        buttons.forEach(button => {
-            button.style.position = "absolute"; // ボタンを個別に調整
-            button.style.top = `${inputY + adjustOffset}px`;  // ボタンのY座標を調整
-        });
+        // ボタンコンテナのY座標をテキストボックスに合わせる
+        buttonContainer.style.position = "absolute";
+        buttonContainer.style.top = `${inputY + adjustOffset}px`;  
     }
 }
 
 // **ページロード時とウィンドウリサイズ時に適用**
 window.addEventListener('load', adjustButtonAlignment);
 window.addEventListener('resize', adjustButtonAlignment);
+
 
     // 睡眠EXPボーナスボタンのON/OFF切り替え
     const sleepExpBonusBtn = document.getElementById('sleepExpBonusBtn');
