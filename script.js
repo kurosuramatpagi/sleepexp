@@ -23,10 +23,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const buttons = document.querySelectorAll('.target-btn');
 
         if (targetInput) {
-            const inputRect = targetInput.getBoundingClientRect();
+            const inputHeight = targetInput.getBoundingClientRect().height; // テキストボックスの高さ取得
             buttons.forEach(button => {
-                button.style.height = `${inputRect.height}px`;  // 高さをテキストボックスと合わせる
-                button.style.lineHeight = `${inputRect.height}px`; // テキストの位置も中央に
+                button.style.height = `${inputHeight}px`;  // ボタンの高さを一致
+                button.style.lineHeight = `${inputHeight}px`; // テキスト中央寄せ
             });
         }
     }
