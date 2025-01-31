@@ -39,9 +39,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // 目標レベルボタンのON/OFF切り替え（1つだけ選択可能）
-    document.querySelectorAll('.target-btn').forEach(button => {
+    document.querySelectorAll('.goal-btn').forEach(button => {
         button.addEventListener('click', function () {
-            document.querySelectorAll('.target-btn').forEach(btn => btn.classList.remove('selected')); // 他のボタンをOFF
+            document.querySelectorAll('.goal-btn').forEach(btn => btn.classList.remove('selected')); // 他のボタンをOFF
             this.classList.add('selected'); // クリックしたボタンをON（グレー背景に）
         });
     });
@@ -63,7 +63,7 @@ function registerPokemon() {
 
     // 目標レベルの取得
     let targetLevel = "なし";
-    document.querySelectorAll('.target-btn').forEach(button => {
+    document.querySelectorAll('.goal-btn').forEach(button => {
         if (button.classList.contains('selected')) {
             targetLevel = button.getAttribute('data-level');
         }
