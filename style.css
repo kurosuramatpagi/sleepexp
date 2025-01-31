@@ -380,7 +380,7 @@ button {
 .level-input { --input-width: 40px; }         /* 現在レベル（小さめ） */
 .exp-input { --input-width: 60px; }          /* 次のレベルまでのEXP（中くらい） */
 .target-input { --input-width: 40px; }        /* 目標レベル（小さめ） */
-.memo-input { --input-width: 100%; }          /* メモ（全幅） */
+.memo-input { --input-width: 100px; }          /* メモ（全幅） */
 
 /* ✅ 目標レベルのテキストボックスとボタンを横並びに */
 .target-level-container {
