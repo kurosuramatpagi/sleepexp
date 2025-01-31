@@ -17,21 +17,19 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-   function adjustButtonAlignment() {
+  function adjustButtonAlignment() {
     const targetInput = document.getElementById('targetLevelInput');
-    const buttonContainer = document.querySelector('.target-level-buttons');
+    const buttons = document.querySelectorAll('.target-btn');
 
-    if (targetInput && buttonContainer) {
+    if (targetInput && buttons.length > 0) {
         const inputRect = targetInput.getBoundingClientRect();
-        const inputY = inputRect.top + window.scrollY;
+        const inputY = inputRect.top + window.scrollY; // テキストボックスのY座標
         const inputX = inputRect.right + window.scrollX; // テキストボックスの右端のX座標
-        const adjustOffset = -19; // 🔺ここを調整（下方向に動かすpx数）
-        const adjustOffsetX = 10; // 🔜 ボタンを10px右に移動（調整可）
-        
-         buttons.forEach((button, index) => {
+        const adjustOffset = -13; // 🔺ボタンを5px上に移動
+
+        buttons.forEach(button => {
             button.style.position = "absolute"; // ボタンを個別に調整
-            button.style.top = `${inputY + adjustOffsetY}px`; // ボタンのY座標を調整
-            button.style.left = `${inputX + adjustOffsetX + (index * 35)}px`; // 横に並べる
+            button.style.top = `${inputY + adjustOffset}px`;  // ボタンのY座標を調整
         });
     }
 }
