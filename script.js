@@ -17,7 +17,25 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-  // 睡眠EXPボーナスボタンのON/OFF切り替え
+    // **目標レベルボタンのY座標をテキストボックスと揃える**
+    function adjustButtonAlignment() {
+        const targetInput = document.getElementById('targetLevelInput');
+        const buttons = document.querySelectorAll('.target-btn');
+
+        if (targetInput) {
+            const inputRect = targetInput.getBoundingClientRect();
+            buttons.forEach(button => {
+                button.style.height = `${inputRect.height}px`;  // 高さをテキストボックスと合わせる
+                button.style.lineHeight = `${inputRect.height}px`; // テキストの位置も中央に
+            });
+        }
+    }
+
+    // **ページロード時とウィンドウリサイズ時に適用**
+    window.addEventListener('load', adjustButtonAlignment);
+    window.addEventListener('resize', adjustButtonAlignment);
+
+    // 睡眠EXPボーナスボタンのON/OFF切り替え
     const sleepExpBonusBtn = document.getElementById('sleepExpBonusBtn');
     sleepExpBonusBtn.addEventListener('click', function () {
         this.classList.toggle('active'); // クリックでON/OFF切り替え
