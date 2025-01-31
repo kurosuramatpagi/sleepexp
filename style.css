@@ -411,13 +411,11 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute; /* ✅ 高さ座標を固定 */
-    top: 50%; /* ✅ 親要素の50%の位置に配置 */
-    transform: translateY(-50%); /* ✅ 正確に中央に配置 */
+    position: relative; /* ✅ ここで絶対配置を解除 */
 }
 
 /* ✅ 目標レベルボタンの間隔を調整 */
 .target-level-buttons {
     display: flex;
-    gap: var(--target-button-spacing, 300px); /* ボタン間隔 */
+    gap: var(--target-button-spacing, 5px); /* ボタン間隔 */
 }
