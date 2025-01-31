@@ -16,25 +16,33 @@ document.addEventListener('DOMContentLoaded', function () {
         this.classList.toggle('active'); // クリックでON/OFF切り替え
     });
 
-    // 性格ボタンのON/OFF切り替え（どちらか一方のみONにする）
+    // 性格ボタンのON/OFF切り替え（どちらか一方のみONにするが、もう一度押すと無補正に戻る）
     const expUpBtn = document.getElementById('expUpBtn');
     const expDownBtn = document.getElementById('expDownBtn');
 
     expUpBtn.addEventListener('click', function () {
-        this.classList.add('active');
-        expDownBtn.classList.remove('active'); // もう片方をOFFにする
+        if (this.classList.contains('active')) {
+            this.classList.remove('active'); // ONの状態ならOFF（無補正）
+        } else {
+            this.classList.add('active'); // ONにする
+            expDownBtn.classList.remove('active'); // もう片方をOFF
+        }
     });
 
     expDownBtn.addEventListener('click', function () {
-        this.classList.add('active');
-        expUpBtn.classList.remove('active'); // もう片方をOFFにする
+        if (this.classList.contains('active')) {
+            this.classList.remove('active'); // ONの状態ならOFF（無補正）
+        } else {
+            this.classList.add('active'); // ONにする
+            expUpBtn.classList.remove('active'); // もう片方をOFF
+        }
     });
 
     // 目標レベルボタンのON/OFF切り替え（1つだけ選択可能）
     document.querySelectorAll('.target-btn').forEach(button => {
         button.addEventListener('click', function () {
-            document.querySelectorAll('.target-btn').forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
+            document.querySelectorAll('.target-btn').forEach(btn => btn.classList.remove('selected')); // 他をOFF
+            this.classList.add('selected'); // クリックしたボタンをON（グレー背景に）
         });
     });
 
@@ -56,7 +64,7 @@ function registerPokemon() {
     // 目標レベルの取得
     let targetLevel = "なし";
     document.querySelectorAll('.target-btn').forEach(button => {
-        if (button.classList.contains('active')) {
+        if (button.classList.contains('selected')) {
             targetLevel = button.getAttribute('data-level');
         }
     });
@@ -68,16 +76,11 @@ function registerPokemon() {
     }
 
     // 性格の記号を色付きで設定（ボタンに対応）
-    let natureSymbol = "";
-    if (expUp) {
-        natureSymbol = `<span class="nature-symbol exp-up">↑</span>`;
-    } else if (expDown) {
-        natureSymbol = `<span class="nature-symbol exp-down">↓</span>`;
-    } else {
-        natureSymbol = `<span class="nature-symbol nature-none">-</span>`; // 未登録なら "-"
-    }
+    let natureSymbol = `<span class="nature-symbol nature-none">-</span>`; // デフォルトは無補正
+    if (expUp) natureSymbol = `<span class="nature-symbol exp-up">↑</span>`;
+    if (expDown) natureSymbol = `<span class="nature-symbol exp-down">↓</span>`;
 
-    // 「睡ボ」アイコンの処理（背景#ffcc00の角丸）
+    // 「睡ボ」アイコンの処理
     const sleepBonusIcon = sleepExpBonus ? '<span class="sleep-bonus">睡ボ</span>' : '';
 
     // ポケモンデータのオブジェクトを作成
