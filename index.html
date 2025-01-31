@@ -47,15 +47,17 @@
             <input type="number" id="expToNextLevel">
         </div>
 
-        <!-- 目標レベルボタン -->
+        <!-- 目標レベル（入力 + ボタン） -->
         <div class="form-group">
-            <label>目標レベル</label>
-            <div class="target-level">
-                <button class="target-btn" data-level="none">なし</button>
-                <button class="target-btn" data-level="25">25</button>
-                <button class="target-btn" data-level="30">30</button>
-                <button class="target-btn" data-level="50">50</button>
-                <button class="target-btn" data-level="60">60</button>
+            <label for="targetLevelInput">目標レベル</label>
+            <div class="target-level-container">
+                <input type="number" id="targetLevelInput" class="target-input">
+                <div class="target-level-buttons">
+                    <button class="target-btn" data-level="25">25</button>
+                    <button class="target-btn" data-level="30">30</button>
+                    <button class="target-btn" data-level="50">50</button>
+                    <button class="target-btn" data-level="60">60</button>
+                </div>
             </div>
         </div>
 
