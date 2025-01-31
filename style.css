@@ -366,7 +366,7 @@ button {
 }
 /* ✅ テキストボックスのサイズを個別設定できるように */
 .input-field {
-    width: var(--input-width, 100%); /* 各要素ごとに変更可能 */
+    width: var(--input-width, auto); /* 各要素ごとに変更可能 */
     padding: 5px;
     font-size: 1em;
     border: 1px solid #ccc;
