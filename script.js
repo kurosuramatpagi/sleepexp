@@ -8,16 +8,15 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => console.error('Error loading the pokemon names:', error));
 
     // 登録ボタンのイベントリスナー設定
-    const registerButton = document.getElementById('registerButton');
-    registerButton.addEventListener('click', registerPokemon);
+    document.getElementById('registerButton').addEventListener('click', registerPokemon);
 
-    // 睡眠EXPボーナスボタンの切り替え
+    // 睡眠EXPボーナスボタンのON/OFF切り替え
     const sleepExpBonusBtn = document.getElementById('sleepExpBonusBtn');
     sleepExpBonusBtn.addEventListener('click', function () {
-        this.classList.toggle('active'); // クラスの切り替え（ON/OFF）
+        this.classList.toggle('active'); // クリックでON/OFF切り替え
     });
 
-    // 性格ボタンの切り替え（片方のみONにする）
+    // 性格ボタンのON/OFF切り替え（どちらか一方のみONにする）
     const expUpBtn = document.getElementById('expUpBtn');
     const expDownBtn = document.getElementById('expDownBtn');
 
@@ -31,6 +30,14 @@ document.addEventListener('DOMContentLoaded', function () {
         expUpBtn.classList.remove('active'); // もう片方をOFFにする
     });
 
+    // 目標レベルボタンのON/OFF切り替え（1つだけ選択可能）
+    document.querySelectorAll('.target-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            document.querySelectorAll('.target-btn').forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+
     // 検索サジェスチョンのイベントリスナー設定
     document.getElementById('pokemonName').addEventListener('input', showSuggestions);
 });
@@ -39,11 +46,20 @@ document.addEventListener('DOMContentLoaded', function () {
 function registerPokemon() {
     const pokemonName = document.getElementById('pokemonName').value.trim();
     const nickname = document.getElementById('nickname').value.trim();
-    const sleepExpBonus = document.getElementById('sleepExpBonusBtn').classList.contains('active'); // ボタンがONかどうか
+    const sleepExpBonus = document.getElementById('sleepExpBonusBtn').classList.contains('active'); // ON/OFF判定
     const expUp = document.getElementById('expUpBtn').classList.contains('active');
     const expDown = document.getElementById('expDownBtn').classList.contains('active');
     const currentLevel = parseInt(document.getElementById('currentLevel').value, 10);
     const expToNextLevel = parseInt(document.getElementById('expToNextLevel').value, 10);
+    const memo = document.getElementById('memo').value.trim();
+
+    // 目標レベルの取得
+    let targetLevel = "なし";
+    document.querySelectorAll('.target-btn').forEach(button => {
+        if (button.classList.contains('active')) {
+            targetLevel = button.getAttribute('data-level');
+        }
+    });
 
     // 入力チェック
     if (!pokemonName || !window.pokemonNames.includes(pokemonName)) {
@@ -72,6 +88,8 @@ function registerPokemon() {
         natureSymbol: natureSymbol,
         currentLevel: isNaN(currentLevel) ? 1 : currentLevel,
         expToNextLevel: isNaN(expToNextLevel) ? 0 : expToNextLevel,
+        targetLevel: targetLevel,
+        memo: memo,
         imagePath: `images/${pokemonName}.png`
     };
 
@@ -88,8 +106,10 @@ function addPokemonToList(pokemon) {
         <img src="${pokemon.imagePath}" alt="${pokemon.name}" class="pokemon-image">
         <p class="nickname">${pokemon.nickname}</p>
         <p class="level">Lv.${pokemon.currentLevel}</p>
-        <p class="exp-bonus">${pokemon.sleepBonusIcon} ${pokemon.natureSymbol}</p> <!-- 「性格」の文字を削除 -->
+        <p class="exp-bonus">${pokemon.sleepBonusIcon} ${pokemon.natureSymbol}</p>
         <p class="exp-next">次のレベルまで ${pokemon.expToNextLevel} EXP</p>
+        <p class="target-level">目標: ${pokemon.targetLevel}</p>
+        <p class="memo">${pokemon.memo ? "メモ: " + pokemon.memo : ""}</p>
     `;
     displayArea.appendChild(pokemonElement);
 }
