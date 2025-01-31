@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const inputY = inputRect.top + pageYOffset;
         const inputX = inputRect.right + pageYOffset; // 📌 テキストボックスの右端の座標
 
-        const adjustOffsetY = -13; // 🔺 必要に応じて微調整
+        const adjustOffsetY = -10; // 🔺 必要に応じて微調整
         const adjustOffsetX = 10; // 🔜 X座標を右にずらすための値
 
         // 📌 ボタンコンテナの位置を確実に変更
