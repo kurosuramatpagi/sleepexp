@@ -399,13 +399,17 @@ button {
     display: flex;
     align-items: center; /* テキストボックスとボタンを中央揃え */
     gap: 5px; /* テキストボックスとボタンの間隔 */
+    border: 2px solid black; /* ボタン全体の外枠 */
+    border-radius: 0px; /* 角を直角に */
+    overflow: hidden; /* はみ出した境界線を非表示に */
 }
 
 /* ✅ 目標レベルのボタン */
 .target-btn {
+    max-width: 15px;
     width: 15px;
     height: 15px;
-    border: 2px solid black;
+    border:none;
     background: none;
     color: black;
     bordercolor: gray;
@@ -421,9 +425,7 @@ button {
     border-radius: 0; 
 }
 
-/* ✅ 目標レベルボタンの間隔を調整 */
-.target-level-buttons {
-    display: flex;
-    position: relative; /* ボタンの基準位置 */
-    gap: -3px; /* ボタン間隔 */
+/* ✅ 各ボタンの間に境界線（1pxの黒線） */
+.target-btn:not(:last-child) {
+    border-right: 2px solid black; /* 右側の境界線のみ表示 */
 }
