@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (targetInput && buttonContainer) {
         const inputRect = targetInput.getBoundingClientRect();
         const inputY = inputRect.top + window.scrollY;
-        const adjustOffset = -10; // 🔺ここを調整（下方向に動かすpx数）
+        const adjustOffset = -12; // 🔺ここを調整（下方向に動かすpx数）
 
         // ボタンコンテナのY座標をテキストボックスに合わせる
         buttonContainer.style.position = "absolute";
