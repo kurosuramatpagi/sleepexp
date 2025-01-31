@@ -22,16 +22,19 @@ function adjustButtonAlignment() {
     const buttonContainer = document.querySelector('.target-level-buttons');
 
     if (targetInput && buttonContainer) {
-        const inputRect = targetInput.getBoundingClientRect();
-
-        buttonContainer.style.left = `${inputRect.right + 10}px`; // 🔥 `left` の基準を修正
-        buttonContainer.style.top = `${inputRect.top + window.scrollY}px`; // 🔥 `top` をテキストボックスに揃える
+        setTimeout(() => { // 🔥 レンダリング完了後に実行
+            const inputRect = targetInput.getBoundingClientRect();
+            buttonContainer.style.position = "absolute"; // `absolute` で親要素に固定
+            buttonContainer.style.left = `${inputRect.right + 5}px`; // テキストボックスの右端 + 5px
+            buttonContainer.style.top = `${inputRect.top + window.scrollY}px`; // テキストボックスのY座標
+            buttonContainer.style.display = "flex"; // 横並びを維持
+        }, 100); // 100ms待って確実に適用
     }
 }
 
-// **ページロード時とウィンドウリサイズ時に適用**
+// **ページロード時に一度だけ実行**
 window.addEventListener('load', adjustButtonAlignment);
-window.addEventListener('resize', adjustButtonAlignment);
+
 
 
 
