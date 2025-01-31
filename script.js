@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const inputRect = targetInput.getBoundingClientRect();
         const inputY = inputRect.top + window.scrollY;
         const inputX = inputRect.right + window.scrollX; // テキストボックスの右端のX座標
-        const adjustOffset = -12; // 🔺ここを調整（下方向に動かすpx数）
+        const adjustOffset = -13; // 🔺ここを調整（下方向に動かすpx数）
         const adjustOffsetX = 10; // 🔜 ボタンを10px右に移動（調整可）
         
          buttons.forEach((button, index) => {
