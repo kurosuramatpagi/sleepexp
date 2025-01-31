@@ -24,7 +24,15 @@ document.addEventListener('DOMContentLoaded', function () {
     if (targetInput && buttonContainer) {
         const inputRect = targetInput.getBoundingClientRect();
         const inputY = inputRect.top + window.scrollY;
+        const inputX = inputRect.right + window.scrollX; // テキストボックスの右端のX座標
         const adjustOffset = -12; // 🔺ここを調整（下方向に動かすpx数）
+        const adjustOffsetX = 10; // 🔜 ボタンを10px右に移動（調整可）
+        
+         buttons.forEach((button, index) => {
+            button.style.position = "absolute"; // ボタンを個別に調整
+            button.style.top = `${inputY + adjustOffsetY}px`; // ボタンのY座標を調整
+            button.style.left = `${inputX + adjustOffsetX + (index * 35)}px`; // 横に並べる
+        });
 
         // ボタンコンテナのY座標をテキストボックスに合わせる
         buttonContainer.style.position = "absolute";
