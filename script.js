@@ -17,23 +17,20 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // **目標レベルボタンのY座標をテキストボックスと揃える**
-   function adjustButtonAlignment() {
-    const targetInput = document.getElementById('targetLevelInput');
-    const buttons = document.querySelectorAll('.target-btn');
+      // **目標レベルボタンのY座標をテキストボックスと揃える**
+    function adjustButtonAlignment() {
+        const targetInput = document.getElementById('targetLevelInput');
+        const buttons = document.querySelectorAll('.target-btn');
 
-    if (targetInput) {
-        const inputRect = targetInput.getBoundingClientRect(); // テキストボックスの座標を取得
-        const inputY = inputRect.top + window.scrollY; // ページ全体のY座標を取得
-
-        buttons.forEach(button => {
-            button.style.position = "absolute";
-            button.style.top = `${inputY}px`;  // テキストボックスのY座標にピッタリ合わせる
-            button.style.height = `${inputRect.height}px`;  // 高さを一致
-            button.style.lineHeight = `${inputRect.height}px`; // テキスト中央寄せ
-        });
+        if (targetInput) {
+            const inputHeight = targetInput.getBoundingClientRect().height; // テキストボックスの高さ取得
+            buttons.forEach(button => {
+                button.style.height = `${inputHeight}px`;  // ボタンの高さを一致
+                button.style.lineHeight = `${inputHeight}px`; // テキスト中央寄せ
+            });
+        }
     }
-}
+
     // **ページロード時とウィンドウリサイズ時に適用**
     window.addEventListener('load', adjustButtonAlignment);
     window.addEventListener('resize', adjustButtonAlignment);
