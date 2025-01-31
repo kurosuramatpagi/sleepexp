@@ -367,33 +367,40 @@ button {
 /* ✅ 各入力ボックスのサイズを個別に設定 */
 .pokemon-name-input {
     width: var(--input-width, 120px) !important;
+    height: var(--input-height, 25px) !important;
 }
 .nickname-input {
     width: var(--input-width, 120px) !important;
+    height: var(--input-height, 25px) !important;
 }
 .level-input {
     width: var(--input-width, 40px) !important;
+    height: var(--input-height, 25px) !important;
 }
 .exp-input {
     width: var(--input-width, 60px) !important;
+    height: var(--input-height, 25px) !important;
 }
 .target-input {
     width: var(--input-width, 40px) !important;
+    height: var(--input-height, 25px) !important;
 }
 .memo-input {
     width: var(--input-width, 150px) !important;
+    height: var(--input-height, 25px) !important;
 }
 /* ✅ 目標レベルのテキストボックスとボタンを横並びに */
 .target-level-container {
     display: flex;
     align-items: center;
+    position: relative; /* ✅ 相対位置を基準にする */
     gap: 10px; /* テキストボックスとボタンの間隔 */
 }
 
 /* ✅ 目標レベルのボタン（背景なし、黒文字、中央配置） */
 .target-btn {
-    width: var(--target-button-width, 30px); /* ボタン幅 */
-    height: var(--target-button-height, 30px); /* ボタン高さ */
+    width: var(--target-button-width, 25px); /* ボタン幅 */
+    height: var(--target-button-height, 25px); /* ボタン高さ */
     border: 2px solid black;
     background: none; /* 背景なし */
     color: black; /* 文字色 */
@@ -404,6 +411,9 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute; /* ✅ 高さ座標を固定 */
+    top: 50%; /* ✅ 親要素の50%の位置に配置 */
+    transform: translateY(-50%); /* ✅ 正確に中央に配置 */
 }
 
 /* ✅ 目標レベルボタンの間隔を調整 */
