@@ -364,32 +364,40 @@ button {
     background-color: rgba(51, 0, 255, 0.1) !important; /* ✅ 白フィルター90% */
     color: #cccccc !important; /* ✅ OFF時の文字色を #d3d3d3 に統一 */
 }
-/* 目標レベルボタンのスタイル */
+/* 目標レベルボタンのスタイル（背景なし、黒文字、間隔調整可能） */
 .target-btn {
     width: 40px;
     height: 40px;
-    background-color: #f8f8f8;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: transparent; /* 背景なし */
+    border: black; /* 枠線なし */
+    font-size: 1em;
+    color: black; /* 文字色を黒 */
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out;
+    margin: 0 var(--target-button-spacing, 5px); /* ボタン間隔を変えられるように */
 }
 
-/* ボタンが選択された時 */
+/* ボタンが選択された時（下線のみ表示） */
 .target-btn.selected {
-    background-color: gray;
-    color: white;
+    text-decoration: underline; /* 選択されたときに下線を追加 */
+}
+
+/* 目標レベルボタンのコンテナ */
+.target-level-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--target-button-spacing, 3px); /* ボタン同士の間隔を調整できるように */
 }
 
 /* 調整可能な入力フィールド */
 .adjustable-input {
-    width: 80px;
+    width: 120px;
     max-width: 300px;
 }
 
 /* メモ欄の調整 */
 .adjustable-textarea {
-    width: 100px;
+    width: 120px;
     max-width: 300px;
     min-height: 50px;
     max-height: 200px;
