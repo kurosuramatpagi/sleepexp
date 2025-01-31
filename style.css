@@ -385,6 +385,7 @@ button {
     width: var(--input-width, 40px) !important;
     height: var(--input-height, 15px) !important;
     text-align: center;
+    vertical-align: middle; /* ✅ Y座標をボタンと揃える */
 }
 .memo-input {
     width: var(--input-width, 150px) !important;
@@ -409,7 +410,7 @@ button {
     font-weight: bold;
     cursor: pointer;
     text-align: center;
-    display: flex;
+    display: inline-flex; /* ✅ インラインフレックスで高さ調整 */
     align-items: center;
     justify-content: center;
     position: relative; /* ✅ ここで絶対配置を解除 */
