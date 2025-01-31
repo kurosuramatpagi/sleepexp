@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
- function adjustButtonAlignment() {
+function adjustButtonAlignment() {
     const targetInput = document.getElementById('targetLevelInput');
     const buttonContainer = document.querySelector('.target-level-buttons');
 
