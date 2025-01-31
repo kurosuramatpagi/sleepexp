@@ -27,9 +27,22 @@ document.addEventListener('DOMContentLoaded', function () {
         const inputY = inputRect.top + pageYOffset;
         const inputX = inputRect.right + pageYOffset; // 📌 テキストボックスの右端の座標
 
-        const adjustOffsetY = -10; // 🔺 必要に応じて微調整
-        const adjustOffsetX = 10; // 🔜 X座標を右にずらすための値
+         let adjustOffsetY = -8; // 🔺 デフォルトのY座標調整
+        let adjustOffsetX = 10;  // 🔜 デフォルトのX座標調整
 
+        if (window.innerWidth <= 375) {  
+            // 🔹 iPhone SEなどの小さい画面
+            adjustOffsetY = -8;
+            adjustOffsetX = 5;
+        } else if (window.innerWidth <= 768) {  
+            // 🔹 タブレット（iPadなど）
+            adjustOffsetY = -12;
+            adjustOffsetX = 15;
+        } else {  
+            // 🔹 PCなどの大きな画面
+            adjustOffsetY = -13;
+            adjustOffsetX = 10;
+        }
         // 📌 ボタンコンテナの位置を確実に変更
         buttonContainer.style.position = "absolute";
         buttonContainer.style.top = `${inputY + adjustOffsetY}px`;
