@@ -364,42 +364,49 @@ button {
     background-color: rgba(51, 0, 255, 0.1) !important; /* ✅ 白フィルター90% */
     color: #cccccc !important; /* ✅ OFF時の文字色を #d3d3d3 に統一 */
 }
-/* 目標レベルボタンのスタイル（背景なし、黒文字、間隔調整可能） */
-.target-btn {
-    width: 40px;
-    height: 40px;
-    background-color: transparent; /* 背景なし */
-    border: black; /* 枠線なし */
+/* ✅ テキストボックスのサイズを個別設定できるように */
+.input-field {
+    width: var(--input-width, 100%); /* 各要素ごとに変更可能 */
+    padding: 5px;
     font-size: 1em;
-    color: black; /* 文字色を黒 */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: left;
+}
+
+/* ✅ 個別の入力欄サイズ */
+.pokemon-name-input { --input-width: 120px; }  /* ポケモン名（短め） */
+.nickname-input { --input-width: 120px; }     /* ニックネーム（長め） */
+.level-input { --input-width: 40px; }         /* 現在レベル（小さめ） */
+.exp-input { --input-width: 60px; }          /* 次のレベルまでのEXP（中くらい） */
+.target-input { --input-width: 40px; }        /* 目標レベル（小さめ） */
+.memo-input { --input-width: 100%; }          /* メモ（全幅） */
+
+/* ✅ 目標レベルのテキストボックスとボタンを横並びに */
+.target-level-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* テキストボックスとボタンの間隔 */
+}
+
+/* ✅ 目標レベルのボタン（背景なし、黒文字、中央配置） */
+.target-btn {
+    width: var(--target-button-width, 40px); /* ボタン幅 */
+    height: var(--target-button-height, 40px); /* ボタン高さ */
+    border: black;
+    background: none; /* 背景なし */
+    color: black; /* 文字色 */
+    font-size: 1em;
+    font-weight: bold;
     cursor: pointer;
-    transition: color 0.2s ease-in-out;
-    margin: 0 var(--target-button-spacing, 5px); /* ボタン間隔を変えられるように */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* ボタンが選択された時（下線のみ表示） */
-.target-btn.selected {
-    text-decoration: underline; /* 選択されたときに下線を追加 */
-}
-
-/* 目標レベルボタンのコンテナ */
+/* ✅ 目標レベルボタンの間隔を調整 */
 .target-level-buttons {
     display: flex;
-    justify-content: center;
-    gap: var(--target-button-spacing, 3px); /* ボタン同士の間隔を調整できるように */
-}
-
-/* 調整可能な入力フィールド */
-.adjustable-input {
-    width: 120px;
-    max-width: 300px;
-}
-
-/* メモ欄の調整 */
-.adjustable-textarea {
-    width: 120px;
-    max-width: 300px;
-    min-height: 50px;
-    max-height: 200px;
-    resize: vertical;
+    gap: var(--target-button-spacing, 2px); /* ボタン間隔 */
 }
