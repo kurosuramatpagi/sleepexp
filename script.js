@@ -23,15 +23,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (targetInput && buttonContainer) {
         const inputRect = targetInput.getBoundingClientRect();
-        const inputY = inputRect.top + window.scrollY;
-        const inputX = inputRect.right + window.scrollX; // 📌 テキストボックスの右端を基準
-        const adjustOffsetY = -13; // 🔺Y座標の微調整
-        const adjustOffsetX = 10; // 🔜 ボタンのX座標を調整できるようにする
-       
-        // ボタンコンテナのY座標をテキストボックスに合わせる
+        const pageYOffset = window.scrollY; // 📌 スクロールの影響を補正
+        const inputY = inputRect.top + pageYOffset;
+        const inputX = inputRect.right + pageYOffset; // 📌 テキストボックスの右端の座標
+
+        const adjustOffsetY = -5; // 🔺 必要に応じて微調整
+        const adjustOffsetX = 10; // 🔜 X座標を右にずらすための値
+
+        // 📌 ボタンコンテナの位置を確実に変更
         buttonContainer.style.position = "absolute";
-        buttonContainer.style.top = `${inputY + adjustOffset}px`;  
-        buttonContainer.style.left = `${inputX + adjustOffsetX}px`; 
+        buttonContainer.style.top = `${inputY + adjustOffsetY}px`;
+        buttonContainer.style.left = `${inputX + adjustOffsetX}px`;
+        buttonContainer.style.display = "flex"; // 横並びを維持
     }
 }
 
