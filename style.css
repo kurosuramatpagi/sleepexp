@@ -388,7 +388,7 @@ button {
 /* ✅ 目標レベルのテキストボックス（中央揃え） */
 .target-input {
     width: var(--input-width, 40px) !important;
-    height: var(--input-height, 25px) !important;
+    height: var(--input-height, 30px) !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -398,13 +398,14 @@ button {
 .target-level-container {
     display: flex;
     align-items: center;
-    gap: 10px; /* テキストボックスとボタンの間隔 */
+    align-items: center; /* ✅ テキストボックスとボタンのY座標を揃える */
+    gap: 5px; /* テキストボックスとボタンの間隔 */
 }
 
 /* ✅ 目標レベルのボタン（背景なし、黒文字、中央配置） */
 .target-btn {
     width: var(--target-button-width, 30px); /* ボタン幅 */
-    height: var(--target-button-height, 25px); /* ボタン高さ */
+    height: var(--target-button-height, 30px); /* ボタン高さ */
     border: 2px solid gray;
     background: none; /* 背景なし */
     color: black; /* 文字色 */
