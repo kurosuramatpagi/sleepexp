@@ -421,5 +421,6 @@ button {
 /* ✅ 目標レベルボタンの間隔を調整 */
 .target-level-buttons {
     display: flex;
+    position: relative; /* ボタンの基準位置 */
     gap: 5px; /* ボタン間隔 */
 }
