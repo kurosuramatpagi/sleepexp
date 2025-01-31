@@ -380,6 +380,7 @@ button {
 .exp-input {
     width: var(--input-width, 60px) !important;
     height: var(--input-height, 15px) !important;
+    text-align: center;
 }
 .target-input {
     width: var(--input-width, 40px) !important;
@@ -401,7 +402,7 @@ button {
 .target-btn {
     width: var(--target-button-width, 15px); /* ボタン幅 */
     height: var(--target-button-height, 15px); /* ボタン高さ */
-    border: 2px solid black;
+    border: 2px solid gray;
     background: none; /* 背景なし */
     color: black; /* 文字色 */
     font-size: 1em;
