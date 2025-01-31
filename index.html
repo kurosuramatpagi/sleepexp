@@ -17,12 +17,12 @@
     <div class="form-container">
         <div class="form-group">
             <label for="pokemonName">ポケモン</label>
-            <input type="text" id="pokemonName" autocomplete="off">
+            <input type="text" id="pokemonName" class="adjustable-input" autocomplete="off">
             <div id="suggestionBox" class="suggestion-box"></div>
         </div>
         <div class="form-group">
             <label for="nickname">ニックネーム</label>
-            <input type="text" id="nickname">
+            <input type="text" id="nickname" class="adjustable-input">
         </div>
 
         <!-- 睡眠EXPボーナス（ボタン化・ON/OFF可能） -->
@@ -40,18 +40,18 @@
 
         <div class="form-group">
             <label for="currentLevel">現在のレベル</label>
-            <input type="number" id="currentLevel">
+            <input type="number" id="currentLevel" class="adjustable-input">
         </div>
         <div class="form-group">
             <label for="expToNextLevel">次のレベルまでのEXP</label>
-            <input type="number" id="expToNextLevel">
+            <input type="number" id="expToNextLevel" class="adjustable-input">
         </div>
 
         <!-- 目標レベル（入力 + ボタン） -->
         <div class="form-group">
             <label for="targetLevelInput">目標レベル</label>
             <div class="target-level-container">
-                <input type="number" id="targetLevelInput" class="target-input">
+                <input type="number" id="targetLevelInput" class="target-input adjustable-input">
                 <div class="target-level-buttons">
                     <button class="target-btn" data-level="25">25</button>
                     <button class="target-btn" data-level="30">30</button>
@@ -64,7 +64,7 @@
         <!-- メモ欄 -->
         <div class="form-group">
             <label for="memo">メモ</label>
-            <textarea id="memo" rows="3"></textarea>
+            <textarea id="memo" rows="3" class="adjustable-textarea"></textarea>
         </div>
 
         <button id="registerButton">登録</button>
