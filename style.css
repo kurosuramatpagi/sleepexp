@@ -397,15 +397,13 @@ button {
 /* ✅ 目標レベルのテキストボックスとボタンを横並びに */
 .target-level-container {
     display: flex;
-    align-items: center;
-    position: relative; /* JavaScriptの座標調整を有効にする */
+    align-items: center; /* テキストボックスとボタンを中央揃え */
     gap: 5px; /* テキストボックスとボタンの間隔 */
 }
 
 /* ✅ 目標レベルのボタン */
 .target-btn {
     width: 30px;
-    height: 30px;
     border: 2px solid black;
     background: none;
     color: black;
@@ -416,8 +414,9 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute; /* JavaScriptで座標調整 */
+    position: relative; /* `absolute` ではなく `relative` に変更 */
 }
+
 /* ✅ 目標レベルボタンの間隔を調整 */
 .target-level-buttons {
     display: flex;
