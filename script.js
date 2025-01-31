@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 目標レベルボタンのON/OFF切り替え（1つだけ選択可能）
     document.querySelectorAll('.target-btn').forEach(button => {
         button.addEventListener('click', function () {
-            document.querySelectorAll('.target-btn').forEach(btn => btn.classList.remove('selected')); // 他をOFF
+            document.querySelectorAll('.target-btn').forEach(btn => btn.classList.remove('selected')); // 他のボタンをOFF
             this.classList.add('selected'); // クリックしたボタンをON（グレー背景に）
         });
     });
