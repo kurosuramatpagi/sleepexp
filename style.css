@@ -409,13 +409,15 @@ button {
     background: none;
     color: black;
     font-size: 1em;
-    font-weight: bold;
+    font-weight: midium;
     cursor: pointer;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative; /* `absolute` ではなく `relative` に変更 */
+    box-sizing: border-box;
+    position: relative;
+    border-radius: 0; 
 }
 
 /* ✅ 目標レベルボタンの間隔を調整 */
