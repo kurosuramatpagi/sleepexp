@@ -398,25 +398,25 @@ button {
 .target-level-container {
     display: flex;
     align-items: center;
-    align-items: center; /* ✅ テキストボックスとボタンのY座標を揃える */
+    position: relative; /* JavaScriptの座標調整を有効にする */
     gap: 5px; /* テキストボックスとボタンの間隔 */
 }
 
-/* ✅ 目標レベルのボタン（背景なし、黒文字、中央配置） */
+/* ✅ 目標レベルのボタン */
 .target-btn {
-    width: var(--target-button-width, 30px); /* ボタン幅 */
-    height: var(--target-button-height, 30px); /* ボタン高さ */
-    border: 2px solid gray;
-    background: none; /* 背景なし */
-    color: black; /* 文字色 */
+    width: 30px;
+    height: 30px;
+    border: 2px solid black;
+    background: none;
+    color: black;
     font-size: 1em;
     font-weight: bold;
     cursor: pointer;
     text-align: center;
-    display: flex; /* ✅ フレックスでY座標揃え */
+    display: flex;
     align-items: center;
     justify-content: center;
-    position: relative; /* ✅ 絶対配置を解除 */
+    position: absolute; /* JavaScriptで座標調整 */
 }
 /* ✅ 目標レベルボタンの間隔を調整 */
 .target-level-buttons {
