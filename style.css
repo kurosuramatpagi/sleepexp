@@ -383,13 +383,13 @@ button {
 
 /* 調整可能な入力フィールド */
 .adjustable-input {
-    width: 100%;
+    width: 80px;
     max-width: 300px;
 }
 
 /* メモ欄の調整 */
 .adjustable-textarea {
-    width: 100%;
+    width: 100px;
     max-width: 300px;
     min-height: 50px;
     max-height: 200px;
