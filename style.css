@@ -388,7 +388,7 @@ button {
 /* ✅ 目標レベルのテキストボックス（中央揃え） */
 .target-input {
     width: var(--input-width, 40px) !important;
-    height: var(--input-height, 30px) !important;
+    height: var(--input-height, 15px) !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -403,7 +403,8 @@ button {
 
 /* ✅ 目標レベルのボタン */
 .target-btn {
-    width: 30px;
+    width: 15px;
+    height: 15px;
     border: 2px solid black;
     background: none;
     color: black;
