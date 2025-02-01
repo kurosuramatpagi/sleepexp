@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', function () {
    let specialPatterns = {};
+document.addEventListener('DOMContentLoaded', function () {
 
     // special_patterns.json を読み込む
     fetch('special_patterns.json')
@@ -107,6 +107,14 @@ window.addEventListener('resize', adjustButtonAlignment);
             this.classList.add('selected'); // クリックしたボタンをON（グレー背景に）
         });
     });
+// 経験値テーブルに倍率を適用する関数
+function generateSpecialPatterns(baseTable, multiplier) {
+    const newTable = {};
+    for (let level in baseTable) {
+        newTable[level] = Math.ceil(baseTable[level] * multiplier);
+    }
+    return newTable;
+}
 
  // 経験値テーブルと特殊パターンの生成
 const baseExpTable = {
