@@ -56,7 +56,7 @@ body {
     display: flex;
     align-items: center;
     padding-left: 15px;
-    position: fixed;
+    position: relative
     top: 0;
     left: 0;
     z-index: 1000;
@@ -65,7 +65,7 @@ body {
 /* iOSデバイスのみでバナーを40px下げる */
 @media screen and (max-width: 1024px) { /* 通常のiOSデバイスの幅に対応 */
     .banner {
-        top: 40px;
+        top: 50px;
     }
 }
 
@@ -159,7 +159,7 @@ button {
 .pokemon-box .exp-bonus,
 .pokemon-box .exp-next {
     font-size: 0.7em;
-    line-height: var(--card-line-height, 0.7); /* 行間を自由に変更可能に */
+    line-height: var(--card-line-height, 0.9); /* 行間を自由に変更可能に */
     margin-top: var(--card-item-spacing, 2.5px); /* 上の余白 */
     margin-bottom: var(--card-item-spacing, 0px); /* 下の余白 */
     padding-top: var(--card-item-spacing, 1px); /* 内部の余白も調整 */
