@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', function () {
+   let specialPatterns = {};
+
+    // special_patterns.json を読み込む
+    fetch('special_patterns.json')
+        .then(response => response.json())
+        .then(data => {
+            specialPatterns = data;
+            console.log("特殊パターンが読み込まれました:", specialPatterns);  // 確認用
+        })
+        .catch(error => console.error('Error loading special patterns:', error));
+    
     // ポケモン名リストの読み込み
     fetch('pokemon_names.txt')
         .then(response => response.text())
