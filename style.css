@@ -57,9 +57,7 @@ body {
     align-items: center;
     padding-left: 15px;
     position: static;
-    margin-top: 20px;
-    top: 50;
-    left: 0;
+    margin-top: 100px;
     z-index: 1000;
 }
 
