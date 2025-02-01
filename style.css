@@ -56,17 +56,11 @@ body {
     display: flex;
     align-items: center;
     padding-left: 15px;
-    position: relative
+    position: static;
+    margin-top: 20px;
     top: 50;
     left: 0;
     z-index: 1000;
-}
-
-/* iOSデバイスのみでバナーを40px下げる */
-@media screen and (max-width: 1024px) { /* 通常のiOSデバイスの幅に対応 */
-    .banner {
-        top: 50px;
-    }
 }
 
 /* タイトルのデザイン */
