@@ -167,13 +167,7 @@ console.log(`${pokemonName} に必要な総経験値: ${totalExpNeeded}`);
 
     console.log(`${pokemonName} に必要な総経験値: ${totalExpNeeded}`);
 
-    // 目標レベルの取得
-    let targetLevel = "なし";
-    document.querySelectorAll('.goal-btn').forEach(button => {
-        if (button.classList.contains('selected')) {
-            targetLevel = button.getAttribute('data-level');
-        }
-    });
+
 
     // 入力チェック
     if (!pokemonName || !window.pokemonNames.includes(pokemonName)) {
