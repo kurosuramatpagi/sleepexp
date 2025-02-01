@@ -148,9 +148,18 @@ function registerPokemon() {
     const expUp = document.getElementById('expUpBtn').classList.contains('active');
     const expDown = document.getElementById('expDownBtn').classList.contains('active');
     const currentLevel = parseInt(document.getElementById('currentLevel').value, 10);
-    const targetLevel = parseInt(document.querySelector('.goal-btn.selected')?.dataset.level || 0, 10);
     const expToNextLevel = parseInt(document.getElementById('expToNextLevel').value, 10);
     const memo = document.getElementById('memo').value.trim();
+   
+    // ここが変更ポイント！目標レベルの取得を確認
+    let targetLevelElement = document.querySelector('.goal-btn.selected');
+
+    if (targetLevelElement) {
+        var targetLevel = parseInt(targetLevelElement.getAttribute('data-level'), 10);
+    } else {
+        alert('目標レベルが選択されていません！');  // ボタンが選ばれてないときの警告
+        return;  // ここで処理を止める
+    }
    
    // 特殊パターンの確認
     let patternType = specialPatterns[pokemonName] || "default";  // 特殊パターンがなければdefault
@@ -168,7 +177,13 @@ function registerPokemon() {
     
 
 // 総経験値 = 手動入力分 + （目標レベルに到達するまでの差分）
-const totalExpNeeded = expToNextLevel + (expTable[targetLevel] - expTable[currentLevel + 1]);
+// 経験値を計算する
+if (expTable[targetLevel] !== undefined && expTable[currentLevel + 1] !== undefined) {
+    const totalExpNeeded = expToNextLevel + (expTable[targetLevel] - expTable[currentLevel + 1]);
+    pokemonData.totalExpNeeded = totalExpNeeded;  // これをカードに表示
+} else {
+    pokemonData.totalExpNeeded = 'データ不足';
+}
 
 console.log(`${pokemonName} に必要な総経験値: ${totalExpNeeded}`);
 
