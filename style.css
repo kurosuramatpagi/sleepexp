@@ -57,7 +57,7 @@ body {
     align-items: center;
     padding-left: 15px;
     position: relative
-    top: 0;
+    top: 50;
     left: 0;
     z-index: 1000;
 }
