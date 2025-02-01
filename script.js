@@ -157,8 +157,7 @@ function registerPokemon() {
         expTable = baseExpTable;
     }
 
-    // 経験値計算（目標レベルに到達するまでの総EXP）
-    const expToNextLevel = parseInt(document.getElementById('expToNextLevel').value, 10) || 0;
+    
 
 // 総経験値 = 手動入力分 + （目標レベルに到達するまでの差分）
 const totalExpNeeded = expToNextLevel + (expTable[targetLevel] - expTable[currentLevel + 1]);
