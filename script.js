@@ -151,8 +151,8 @@ function registerPokemon() {
     const expToNextLevel = parseInt(document.getElementById('expToNextLevel').value, 10);
     const memo = document.getElementById('memo').value.trim();
    
-    // ここが変更ポイント！目標レベルの取得を確認
-    let targetLevelElement = document.querySelector('.goal-btn.selected');
+    // 目標レベルの取得を確認
+    let targetLevelElement = document.querySelector('.target-btn.selected');
 
     if (targetLevelElement) {
         var targetLevel = parseInt(targetLevelElement.getAttribute('data-level'), 10);
@@ -161,36 +161,21 @@ function registerPokemon() {
         return;  // ここで処理を止める
     }
    
-   // 特殊パターンの確認
-    let patternType = specialPatterns[pokemonName] || "default";  // 特殊パターンがなければdefault
+    // 特殊パターンの確認
+    let patternType = specialPatterns[pokemonName] || "default";
+    let expTable = (patternType === "specialPatternA") ? specialPatternA 
+                 : (patternType === "specialPatternB") ? specialPatternB 
+                 : baseExpTable;
 
-    // 適用する経験値テーブルを選択
-    let expTable;
-    if (patternType === "specialPatternA") {
-        expTable = specialPatternA;
-    } else if (patternType === "specialPatternB") {
-        expTable = specialPatternB;
+    // 総経験値 = 手動入力分 + （目標レベルに到達するまでの差分）
+    let totalExpNeeded;
+    if (expTable[targetLevel] !== undefined && expTable[currentLevel + 1] !== undefined) {
+        totalExpNeeded = expToNextLevel + (expTable[targetLevel] - expTable[currentLevel + 1]);
     } else {
-        expTable = baseExpTable;
+        totalExpNeeded = 'データ不足';
     }
 
-    
-
-// 総経験値 = 手動入力分 + （目標レベルに到達するまでの差分）
-// 経験値を計算する
-if (expTable[targetLevel] !== undefined && expTable[currentLevel + 1] !== undefined) {
-    const totalExpNeeded = expToNextLevel + (expTable[targetLevel] - expTable[currentLevel + 1]);
-    pokemonData.totalExpNeeded = totalExpNeeded;  // これをカードに表示
-} else {
-    pokemonData.totalExpNeeded = 'データ不足';
-}
-
-console.log(`${pokemonName} に必要な総経験値: ${totalExpNeeded}`);
-
-
     console.log(`${pokemonName} に必要な総経験値: ${totalExpNeeded}`);
-
-
 
     // 入力チェック
     if (!pokemonName || !window.pokemonNames.includes(pokemonName)) {
@@ -214,7 +199,7 @@ console.log(`${pokemonName} に必要な総経験値: ${totalExpNeeded}`);
         natureSymbol: natureSymbol,
         currentLevel: isNaN(currentLevel) ? 1 : currentLevel,
         expToNextLevel: isNaN(expToNextLevel) ? 0 : expToNextLevel,
-       totalExpNeeded: totalExpNeeded,  // ★ ここを追加！（目標までの経験値）
+        totalExpNeeded: totalExpNeeded,  // 目標までの経験値
         targetLevel: targetLevel,
         memo: memo,
         imagePath: `images/${pokemonName}.png`
