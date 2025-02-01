@@ -41,7 +41,7 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
-    background-color: #fff6e4;  /* 背景色 */
+    background-color: #f8f8f8;  /* 背景色 */
     min-height: 100vh;  /* 最小高さ */
     display: flex;
     flex-direction: column;
@@ -52,7 +52,7 @@ body {
 .banner {
     width: 100%;
     height: 40px;
-    background-color: #84ccce;
+    background-color: #09f;
     display: flex;
     align-items: center;
     padding-left: 15px;
@@ -394,43 +394,44 @@ button {
     justify-content: center;
     text-align: center;
 }
-/* ✅ 目標レベルのコンテナ */
+/* ✅ 目標レベルのボタンコンテナ（テキストボックスの横に配置） */
 .target-level-container {
     display: flex;
     align-items: center;
-    position: relative; /* 🔥 ここを `relative` にしてJSで制御 */
+    position: relative; /* `absolute` でなく `relative` で制御 */
+    gap: 5px; /* テキストボックスとボタンの間隔 */
 }
 
-/* ✅ ボタンを囲む枠 */
+/* ✅ ボタン全体を囲む枠 */
 .target-level-buttons {
     display: flex;
-    border: 2px solid black;
-    border-radius: 0;
-    overflow: hidden;
-    position: absolute; /* 🔥 ここを `absolute` に */
-    left: 0; /* JSで変更されるので初期値 */
-    top: 0; /* JSで変更されるので初期値 */
-    white-space: nowrap;
+    border: 2px solid black; /* 外枠 */
+    border-radius: 0; /* 直角にする */
+    overflow: hidden; /* 枠内に収める */
 }
+
 
 /* ✅ 目標レベルのボタン */
 .target-btn {
-    width: 30px;
-    height: 30px;
-    background: white;
+    width: 15px;
+    height: 15px;
+    border:none;
+    background: none;
     color: black;
-    font-size: 14px;
-    font-weight: bold;
+    bordercolor: gray;
+    font-size: 1em;
+    font-weight: midium;
     cursor: pointer;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    border: none;
+    position: relative;
+    border-radius: 0; 
 }
 
-/* ✅ 各ボタンの間に仕切り線 */
+/* ✅ 各ボタンの間に境界線（1pxの黒線） */
 .target-btn:not(:last-child) {
-    border-right: 2px solid black;
+    border-right: 2px solid black; /* 右側の境界線のみ表示 */
 }
