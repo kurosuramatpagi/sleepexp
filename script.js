@@ -10,12 +10,16 @@ document.addEventListener('DOMContentLoaded', function () {
     // 登録ボタンのイベントリスナー設定
     document.getElementById('registerButton').addEventListener('click', registerPokemon);
 
-    // 目標レベルボタンを押すと、テキストボックスに反映
-    document.querySelectorAll('.target-btn').forEach(button => {
-        button.addEventListener('click', function () {
-            document.getElementById('targetLevelInput').value = this.getAttribute('data-level');
-        });
+    // 目標レベルボタンのON/OFF切り替え（1つだけ選択可能）
+document.querySelectorAll('.target-btn').forEach(button => {
+    button.addEventListener('click', function () {
+        // 他のボタンから 'selected' クラスを外す
+        document.querySelectorAll('.target-btn').forEach(btn => btn.classList.remove('selected'));
+        
+        // クリックしたボタンに 'selected' クラスを追加
+        this.classList.add('selected');
     });
+});
 
  function adjustButtonAlignment() {
     const targetInput = document.getElementById('targetLevelInput');
