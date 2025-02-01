@@ -17,17 +17,17 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-  function adjustButtonAlignment() {
+ function adjustButtonAlignment() {
     const targetInput = document.getElementById('targetLevelInput');
     const buttonContainer = document.querySelector('.target-level-buttons');
 
     if (targetInput && buttonContainer) {
         const inputRect = targetInput.getBoundingClientRect();
-        const pageYOffset = window.scrollY; // 📌 スクロールの影響を補正
-        const inputY = inputRect.top + pageYOffset;
-        const inputX = inputRect.right + pageYOffset; // 📌 テキストボックスの右端の座標
+        const inputY = inputRect.top + window.scrollY;
+        const inputX = inputRect.left + window.scrollX;
 
-         let adjustOffsetY = -8; // 🔺 デフォルトのY座標調整
+        // ✅ 画面サイズによってオフセットを変更
+        let adjustOffsetY = -10; // 🔺 デフォルトのY座標調整
         let adjustOffsetX = 10;  // 🔜 デフォルトのX座標調整
 
         if (window.innerWidth <= 375) {  
@@ -40,20 +40,21 @@ document.addEventListener('DOMContentLoaded', function () {
             adjustOffsetX = 15;
         } else {  
             // 🔹 PCなどの大きな画面
-            adjustOffsetY = -13;
+            adjustOffsetY = -10;
             adjustOffsetX = 10;
         }
-        // 📌 ボタンコンテナの位置を確実に変更
+
+        // ボタンコンテナのY座標 & X座標を設定
         buttonContainer.style.position = "absolute";
-        buttonContainer.style.top = `${inputY + adjustOffsetY}px`;
+        buttonContainer.style.top = `${inputY + adjustOffsetY}px`;  
         buttonContainer.style.left = `${inputX + adjustOffsetX}px`;
-        buttonContainer.style.display = "flex"; // 横並びを維持
     }
 }
 
-// **ページロード時とウィンドウリサイズ時に適用**
+// ✅ ページロード時とウィンドウリサイズ時に適用
 window.addEventListener('load', adjustButtonAlignment);
 window.addEventListener('resize', adjustButtonAlignment);
+
 
 
     // 睡眠EXPボーナスボタンのON/OFF切り替え
