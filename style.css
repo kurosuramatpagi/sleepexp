@@ -423,3 +423,8 @@ button {
     align-items: center;
     justify-content: center;
 }
+/* ✅ 目標レベルのボタン選択時（グレー背景） */
+.target-btn.selected {
+    background-color: #cccccc;  /* グレー */
+    color: black;  /* 文字色は黒のまま */
+}
