@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
    let specialPatterns = {};
+   console.log("あああああ");
 
     // special_patterns.json を読み込む
     fetch('special_patterns.json')
