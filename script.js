@@ -199,6 +199,7 @@ console.log(`${pokemonName} に必要な総経験値: ${totalExpNeeded}`);
         natureSymbol: natureSymbol,
         currentLevel: isNaN(currentLevel) ? 1 : currentLevel,
         expToNextLevel: isNaN(expToNextLevel) ? 0 : expToNextLevel,
+       totalExpNeeded: totalExpNeeded,  // ★ ここを追加！（目標までの経験値）
         targetLevel: targetLevel,
         memo: memo,
         imagePath: `images/${pokemonName}.png`
@@ -216,11 +217,10 @@ function addPokemonToList(pokemon) {
     pokemonElement.innerHTML = `
         <img src="${pokemon.imagePath}" alt="${pokemon.name}" class="pokemon-image">
         <p class="nickname">${pokemon.nickname}</p>
-        <p class="level">Lv.${pokemon.currentLevel}</p>
+        <p class="level">Lv.${pokemon.currentLevel} ⇒ ${pokemon.targetLevel}</p>
+        <p class="exp-next">あと ${pokemon.totalExpNeeded} exp</p>
         <p class="exp-bonus">${pokemon.sleepBonusIcon} ${pokemon.natureSymbol}</p>
-        <p class="exp-next">次のレベルまで ${pokemon.expToNextLevel} EXP</p>
-        <p class="target-level">目標: ${pokemon.targetLevel}</p>
-        <p class="memo">${pokemon.memo ? "メモ: " + pokemon.memo : ""}</p>
+        <p class="memo">${pokemon.memo ? pokemon.memo : ""}</p>
     `;
     displayArea.appendChild(pokemonElement);
 }
