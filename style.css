@@ -426,3 +426,27 @@ button {
     background-color: #cccccc;  /* グレー */
     color: black;  /* 文字色は黒のまま */
 }
+
+.button-container {
+    display: flex;
+    justify-content: space-between; /* ボタン間に均等なスペースを確保 */
+    padding: 20px; /* ボタン周りの余白 */
+    background-color: #f8f8f8; /* 背景色 */
+}
+
+.main-button {
+    flex: 1; /* フレックスボックス内で均等に広がる */
+    margin: 0 10px; /* ボタン間の間隔 */
+    padding: 10px 0; /* ボタン内のパディング */
+    background-color: #09f; /* ボタンの背景色 */
+    color: white; /* テキスト色 */
+    border: none; /* 枠線なし */
+    border-radius: 5px; /* 角丸 */
+    font-size: 16px; /* フォントサイズ */
+    cursor: pointer; /* カーソルをポインターに */
+}
+
+.main-button:hover {
+    background-color: #08c; /* ホバー時の背景色変更 */
+}
+
