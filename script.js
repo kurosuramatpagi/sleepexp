@@ -11,19 +11,36 @@ const baseExpTable = {
   "55": 38805, "56": 41084, "57": 43488, "58": 46021, "59": 48687, "60": 51493
 };
 document.addEventListener('DOMContentLoaded', function () {
-  // ここにボタンの動作を追加
+    // ボタンの動作
     const boxButton = document.getElementById('boxButton');
     const sleepCalcButton = document.getElementById('sleepCalcButton');
 
+    const formContainer = document.getElementById('formContainer');
+    const pokemonDisplay = document.getElementById('pokemonDisplay');
+
     boxButton.addEventListener('click', function() {
-        document.getElementById('formContainer').style.display = 'block';
-        document.getElementById('pokemonDisplay').style.display = 'block';
+        formContainer.style.display = 'block';
+        pokemonDisplay.style.display = 'block';
     });
 
     sleepCalcButton.addEventListener('click', function() {
-        document.getElementById('formContainer').style.display = 'none';
-        document.getElementById('pokemonDisplay').style.display = 'none';
+        formContainer.style.display = 'none';
+        pokemonDisplay.style.display = 'none';
     });
+
+    // 登録ボタンのイベントリスナー設定
+    document.getElementById('registerButton').addEventListener('click', registerPokemon);
+
+    // 目標レベルボタンのON/OFF切り替え（1つだけ選択可能）
+    document.querySelectorAll('.target-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            document.querySelectorAll('.target-btn').forEach(btn => btn.classList.remove('selected'));
+            this.classList.add('selected');
+        });
+    });
+
+    // ポケモン名のサジェスト機能
+    document.getElementById('pokemonName').addEventListener('input', showSuggestions);
 });
     // special_patterns.json を読み込む
     fetch('special_patterns.json')
@@ -306,12 +323,5 @@ function showSuggestions() {
     suggestionBox.style.display = 'block';
 }
 
-// JavaScriptファイルの最後に追加
-document.getElementById('boxButton').addEventListener('click', function() {
-    // ボックス表示関数を呼び出す
-});
 
-document.getElementById('sleepCalcButton').addEventListener('click', function() {
-    window.location.href = 'sleepCalcPage.html'; // 睡眠計算ページへの遷移
-});
 
