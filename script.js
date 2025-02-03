@@ -16,19 +16,40 @@ document.addEventListener('DOMContentLoaded', function () {
     // ボタンの動作
     const boxButton = document.getElementById('boxButton');
     const sleepCalcButton = document.getElementById('sleepCalcButton');
-
     const formContainer = document.getElementById('formContainer');
     const pokemonDisplay = document.getElementById('pokemonDisplay');
+    const addButton = document.getElementById('addButton'); // 追加: "+"ボタン
+    const popupOverlay = document.getElementById('popupOverlay'); // 追加: オーバーレイ
+    const closeFormBtn = document.getElementById('closeFormBtn'); // 追加: 閉じるボタン
 
+    // 「ボックス」ボタンクリック時
     boxButton.addEventListener('click', function() {
-        formContainer.style.display = 'block';
+        formContainer.style.display = 'none';  // 情報入力エリアは非表示
         pokemonDisplay.style.display = 'block';
+        addButton.style.display = 'block';     // 「+」ボタン表示
     });
 
+    // 「睡眠計算」ボタンクリック時
     sleepCalcButton.addEventListener('click', function() {
         formContainer.style.display = 'none';
         pokemonDisplay.style.display = 'none';
+        addButton.style.display = 'none';      // 「+」ボタン非表示
     });
+
+    // 「+」ボタンクリック時 → 情報入力エリアをポップアップ表示
+    addButton.addEventListener('click', function() {
+        formContainer.style.display = 'block';
+        popupOverlay.style.display = 'block';  // 背景を暗く
+    });
+
+    // 「×」ボタンまたはオーバーレイクリック時 → ポップアップ閉じる
+    closeFormBtn.addEventListener('click', closeForm);
+    popupOverlay.addEventListener('click', closeForm);
+
+    function closeForm() {
+        formContainer.style.display = 'none';
+        popupOverlay.style.display = 'none';
+    }
 
     // special_patterns.json を読み込む
     fetch('special_patterns.json')
