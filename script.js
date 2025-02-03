@@ -140,7 +140,7 @@ function generateSpecialPatterns(baseTable, multiplier) {
     return newTable;
 }
 
-<script>
+
     // ボタンを取得
     const boxButton = document.getElementById('boxButton');
     const sleepCalcButton = document.getElementById('sleepCalcButton');
@@ -160,7 +160,7 @@ function generateSpecialPatterns(baseTable, multiplier) {
         formContainer.style.display = 'none';
         pokemonDisplay.style.display = 'none';
     });
-</script>
+
 // 特殊パターンの生成
 const specialPatternA = generateSpecialPatterns(baseExpTable, 1.5);
 const specialPatternB = generateSpecialPatterns(baseExpTable, 1.8);
