@@ -463,3 +463,59 @@ button {
 .empty-space {
     width: 50%;
 }
+
+/* 追加: ポップアップ用のオーバーレイ背景 */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 背景を少し暗く */
+    z-index: 998; /* 情報入力エリアの下に表示 */
+}
+
+/* 情報入力エリアのポップアップ設定 */
+#formContainer {
+    display: none; /* 初期状態では非表示 */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999; /* オーバーレイより上に表示 */
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 閉じるボタンのスタイル */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* 右下の「+」ボタン */
+.add-btn {
+    position: fixed;
+    bottom: var(--add-btn-bottom, 20px); /* 位置を調整可能 */
+    right: var(--add-btn-right, 20px);   /* 位置を調整可能 */
+    width: var(--add-btn-size, 50px);    /* サイズを調整可能 */
+    height: var(--add-btn-size, 50px);   /* サイズを調整可能 */
+    font-size: var(--add-btn-font-size, 30px); /* フォントサイズを調整可能 */
+    background-color: var(--add-btn-color, #09f); /* 色を調整可能 */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000; /* 常に前面に表示 */
+}
