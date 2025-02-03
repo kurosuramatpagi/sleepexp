@@ -127,7 +127,27 @@ function generateSpecialPatterns(baseTable, multiplier) {
     return newTable;
 }
 
+<script>
+    // ボタンを取得
+    const boxButton = document.getElementById('boxButton');
+    const sleepCalcButton = document.getElementById('sleepCalcButton');
 
+    // 情報入力エリアとカードエリアを取得
+    const formContainer = document.getElementById('formContainer');
+    const pokemonDisplay = document.getElementById('pokemonDisplay');
+
+    // 「ボックス」ボタンクリック時 → エリアを表示
+    boxButton.addEventListener('click', () => {
+        formContainer.style.display = 'block';
+        pokemonDisplay.style.display = 'block';
+    });
+
+    // 「睡眠計算」ボタンクリック時 → エリアを非表示
+    sleepCalcButton.addEventListener('click', () => {
+        formContainer.style.display = 'none';
+        pokemonDisplay.style.display = 'none';
+    });
+</script>
 // 特殊パターンの生成
 const specialPatternA = generateSpecialPatterns(baseExpTable, 1.5);
 const specialPatternB = generateSpecialPatterns(baseExpTable, 1.8);
