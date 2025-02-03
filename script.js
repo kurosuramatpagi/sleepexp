@@ -272,3 +272,13 @@ function showSuggestions() {
 
     suggestionBox.style.display = 'block';
 }
+
+// JavaScriptファイルの最後に追加
+document.getElementById('boxButton').addEventListener('click', function() {
+    // ボックス表示関数を呼び出す
+});
+
+document.getElementById('sleepCalcButton').addEventListener('click', function() {
+    window.location.href = 'sleepCalcPage.html'; // 睡眠計算ページへの遷移
+});
+
