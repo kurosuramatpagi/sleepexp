@@ -69,6 +69,12 @@ body {
     font-weight: bold;
 }
 
+html, body {
+    width: 100%;           /* 画面の幅をビューポートの100%に固定 */
+    max-width: 100%;       /* 最大幅もビューポートの100%に制限 */
+    overflow-x: hidden;    /* 水平方向のスクロールを無効にする */
+}
+
 /* 情報入力エリア（form-container）を左詰めに修正 */
 .form-container {
     width: 80%;
