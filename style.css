@@ -504,11 +504,12 @@ button {
 /* 右下の「+」ボタン */
 .add-btn {
     position: fixed;
-    bottom: var(--add-btn-bottom, 20px); /* 位置を調整可能 */
-    right: var(--add-btn-right, 20px);   /* 位置を調整可能 */
-    width: var(--add-btn-size, 50px);    /* サイズを調整可能 */
-    height: var(--add-btn-size, 50px);   /* サイズを調整可能 */
+    bottom: var(--add-btn-bottom, 50px); /* 位置を調整可能 */
+    right: var(--add-btn-right, 30px);   /* 位置を調整可能 */
+    width: var(--add-btn-size, 80px);    /* サイズを調整可能 */
+    height: var(--add-btn-size, 80px);   /* サイズを調整可能 */
     font-size: var(--add-btn-font-size, 30px); /* フォントサイズを調整可能 */
+    font-weight:bold;
     background-color: var(--add-btn-color, #09f); /* 色を調整可能 */
     color: white;
     border: none;
