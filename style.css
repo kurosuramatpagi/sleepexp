@@ -72,7 +72,8 @@ body {
 .banner h1 {
     font-size: 16px;
     color: white;
-    margin: 0;
+    margin: 0;         /* これで上下の余白を完全に削除 */
+    padding: 0;        /* ついでに内側の余白も確認 */
     font-weight: bold;
 }
 
