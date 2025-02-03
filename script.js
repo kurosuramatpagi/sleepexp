@@ -11,7 +11,20 @@ const baseExpTable = {
   "55": 38805, "56": 41084, "57": 43488, "58": 46021, "59": 48687, "60": 51493
 };
 document.addEventListener('DOMContentLoaded', function () {
+  // ここにボタンの動作を追加
+    const boxButton = document.getElementById('boxButton');
+    const sleepCalcButton = document.getElementById('sleepCalcButton');
 
+    boxButton.addEventListener('click', function() {
+        document.getElementById('formContainer').style.display = 'block';
+        document.getElementById('pokemonDisplay').style.display = 'block';
+    });
+
+    sleepCalcButton.addEventListener('click', function() {
+        document.getElementById('formContainer').style.display = 'none';
+        document.getElementById('pokemonDisplay').style.display = 'none';
+    });
+});
     // special_patterns.json を読み込む
     fetch('special_patterns.json')
         .then(response => response.json())
