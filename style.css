@@ -35,6 +35,12 @@
     font-weight: 100;
 }
 
+{
+    margin: 0;         /* 外側の余白をすべて0に */
+    padding: 0;        /* 内側の余白もすべて0に */
+    box-sizing: border-box;  /* パディングとボーダーを含めたサイズ計算 */
+}
+
 /* 全体のフォント適用 */
 body {
     font-family: 'M+1p', sans-serif;
