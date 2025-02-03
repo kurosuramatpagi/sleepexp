@@ -1,5 +1,6 @@
-   let specialPatterns = {};
- // 経験値テーブルと特殊パターンの生成
+let specialPatterns = {};
+
+// 経験値テーブルと特殊パターンの生成
 const baseExpTable = {
   "1": 0, "2": 54, "3": 125, "4": 233, "5": 361, "6": 525, "7": 727, "8": 971, "9": 1245, "10": 1560,
   "11": 1905, "12": 2281, "13": 2688, "14": 3107, "15": 3536, "16": 3976, "17": 4430, "18": 4899,
@@ -10,6 +11,7 @@ const baseExpTable = {
   "48": 27878, "49": 28927, "50": 29993, "51": 31355, "52": 32917, "53": 34664, "54": 36610,
   "55": 38805, "56": 41084, "57": 43488, "58": 46021, "59": 48687, "60": 51493
 };
+
 document.addEventListener('DOMContentLoaded', function () {
     // ボタンの動作
     const boxButton = document.getElementById('boxButton');
@@ -28,26 +30,12 @@ document.addEventListener('DOMContentLoaded', function () {
         pokemonDisplay.style.display = 'none';
     });
 
-    // 登録ボタンのイベントリスナー設定
-    document.getElementById('registerButton').addEventListener('click', registerPokemon);
-
-    // 目標レベルボタンのON/OFF切り替え（1つだけ選択可能）
-    document.querySelectorAll('.target-btn').forEach(button => {
-        button.addEventListener('click', function () {
-            document.querySelectorAll('.target-btn').forEach(btn => btn.classList.remove('selected'));
-            this.classList.add('selected');
-        });
-    });
-
-    // ポケモン名のサジェスト機能
-    document.getElementById('pokemonName').addEventListener('input', showSuggestions);
-});
     // special_patterns.json を読み込む
     fetch('special_patterns.json')
         .then(response => response.json())
         .then(data => {
             specialPatterns = data;
-            console.log("特殊パターンが読み込まれました:", specialPatterns);  // 確認用
+            console.log("特殊パターンが読み込まれました:", specialPatterns);
         })
         .catch(error => console.error('Error loading special patterns:', error));
     
@@ -63,60 +51,20 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('registerButton').addEventListener('click', registerPokemon);
 
     // 目標レベルボタンのON/OFF切り替え（1つだけ選択可能）
-document.querySelectorAll('.target-btn').forEach(button => {
-    button.addEventListener('click', function () {
-        // 他のボタンから 'selected' クラスを外す
-        document.querySelectorAll('.target-btn').forEach(btn => btn.classList.remove('selected'));
-        
-        // クリックしたボタンに 'selected' クラスを追加
-        this.classList.add('selected');
+    document.querySelectorAll('.target-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            document.querySelectorAll('.target-btn').forEach(btn => btn.classList.remove('selected'));
+            this.classList.add('selected');
+        });
     });
-});
 
- function adjustButtonAlignment() {
-    const targetInput = document.getElementById('targetLevelInput');
-    const buttonContainer = document.querySelector('.target-level-buttons');
-
-    if (targetInput && buttonContainer) {
-        const inputRect = targetInput.getBoundingClientRect();
-        const inputY = inputRect.top + window.scrollY;
-        const inputX = inputRect.left + window.scrollX;
-
-        // ✅ 画面サイズによってオフセットを変更
-        let adjustOffsetY = -10; // 🔺 デフォルトのY座標調整
-        let adjustOffsetX = 10;  // 🔜 デフォルトのX座標調整
-
-        if (window.innerWidth <= 375) {  
-            // 🔹 iPhone SEなどの小さい画面
-            adjustOffsetY = -8;
-            adjustOffsetX = 5;
-        } else if (window.innerWidth <= 768) {  
-            // 🔹 タブレット（iPadなど）
-            adjustOffsetY = -12;
-            adjustOffsetX = 15;
-        } else {  
-            // 🔹 PCなどの大きな画面
-            adjustOffsetY = -10;
-            adjustOffsetX = 10;
-        }
-
-        // ボタンコンテナのY座標 & X座標を設定
-        buttonContainer.style.position = "absolute";
-        buttonContainer.style.top = `${inputY + adjustOffsetY}px`;  
-        buttonContainer.style.left = `${inputX + adjustOffsetX}px`;
-    }
-}
-
-// ✅ ページロード時とウィンドウリサイズ時に適用
-window.addEventListener('load', adjustButtonAlignment);
-window.addEventListener('resize', adjustButtonAlignment);
-
-
+    // ポケモン名のサジェスト機能
+    document.getElementById('pokemonName').addEventListener('input', showSuggestions);
 
     // 睡眠EXPボーナスボタンのON/OFF切り替え
     const sleepExpBonusBtn = document.getElementById('sleepExpBonusBtn');
     sleepExpBonusBtn.addEventListener('click', function () {
-        this.classList.toggle('active'); // クリックでON/OFF切り替え
+        this.classList.toggle('active');
     });
 
     // 性格ボタンのON/OFF切り替え（どちらか一方のみONにするが、もう一度押すと無補正に戻る）
@@ -125,29 +73,23 @@ window.addEventListener('resize', adjustButtonAlignment);
 
     expUpBtn.addEventListener('click', function () {
         if (this.classList.contains('active')) {
-            this.classList.remove('active'); // ONの状態ならOFF（無補正）
+            this.classList.remove('active');
         } else {
-            this.classList.add('active'); // ONにする
-            expDownBtn.classList.remove('active'); // もう片方をOFF
+            this.classList.add('active');
+            expDownBtn.classList.remove('active');
         }
     });
 
     expDownBtn.addEventListener('click', function () {
         if (this.classList.contains('active')) {
-            this.classList.remove('active'); // ONの状態ならOFF（無補正）
+            this.classList.remove('active');
         } else {
-            this.classList.add('active'); // ONにする
-            expUpBtn.classList.remove('active'); // もう片方をOFF
+            this.classList.add('active');
+            expUpBtn.classList.remove('active');
         }
     });
+});
 
-    // 目標レベルボタンのON/OFF切り替え（1つだけ選択可能）
-    document.querySelectorAll('.goal-btn').forEach(button => {
-        button.addEventListener('click', function () {
-            document.querySelectorAll('.goal-btn').forEach(btn => btn.classList.remove('selected')); // 他のボタンをOFF
-            this.classList.add('selected'); // クリックしたボタンをON（グレー背景に）
-        });
-    });
 // 経験値テーブルに倍率を適用する関数
 function generateSpecialPatterns(baseTable, multiplier) {
     const newTable = {};
@@ -157,27 +99,6 @@ function generateSpecialPatterns(baseTable, multiplier) {
     return newTable;
 }
 
-
-    // ボタンを取得
-    const boxButton = document.getElementById('boxButton');
-    const sleepCalcButton = document.getElementById('sleepCalcButton');
-
-    // 情報入力エリアとカードエリアを取得
-    const formContainer = document.getElementById('formContainer');
-    const pokemonDisplay = document.getElementById('pokemonDisplay');
-
-    // 「ボックス」ボタンクリック時 → エリアを表示
-    boxButton.addEventListener('click', () => {
-        formContainer.style.display = 'block';
-        pokemonDisplay.style.display = 'block';
-    });
-
-    // 「睡眠計算」ボタンクリック時 → エリアを非表示
-    sleepCalcButton.addEventListener('click', () => {
-        formContainer.style.display = 'none';
-        pokemonDisplay.style.display = 'none';
-    });
-
 // 特殊パターンの生成
 const specialPatternA = generateSpecialPatterns(baseExpTable, 1.5);
 const specialPatternB = generateSpecialPatterns(baseExpTable, 1.8);
@@ -185,104 +106,7 @@ const specialPatternB = generateSpecialPatterns(baseExpTable, 1.8);
 console.log("Special Pattern A:", specialPatternA);
 console.log("Special Pattern B:", specialPatternB);
 
-// 検索サジェスチョンのイベントリスナー設定
-document.getElementById('pokemonName').addEventListener('input', showSuggestions);
-});
-
-
-// ポケモンを登録する関数
-function registerPokemon() {
-    const pokemonName = document.getElementById('pokemonName').value.trim();
-    const nickname = document.getElementById('nickname').value.trim();
-    const sleepExpBonus = document.getElementById('sleepExpBonusBtn').classList.contains('active'); // ON/OFF判定
-    const expUp = document.getElementById('expUpBtn').classList.contains('active');
-    const expDown = document.getElementById('expDownBtn').classList.contains('active');
-    const currentLevel = parseInt(document.getElementById('currentLevel').value, 10);
-    const expToNextLevel = parseInt(document.getElementById('expToNextLevel').value, 10);
-    const memo = document.getElementById('memo').value.trim();
-   
-    // 目標レベルの取得を確認
-    let targetLevelElement = document.querySelector('.target-btn.selected');
-
-    if (targetLevelElement) {
-        var targetLevel = parseInt(targetLevelElement.getAttribute('data-level'), 10);
-    } else {
-        alert('目標レベルが選択されていません！');  // ボタンが選ばれてないときの警告
-        return;  // ここで処理を止める
-    }
-   
-    // 特殊パターンの確認
-    let patternType = specialPatterns[pokemonName] || "default";
-    let expTable = (patternType === "specialPatternA") ? specialPatternA 
-                 : (patternType === "specialPatternB") ? specialPatternB 
-                 : baseExpTable;
-
-    // 総経験値 = 手動入力分 + （目標レベルに到達するまでの差分）
-    let totalExpNeeded;
-    if (expTable[targetLevel] !== undefined && expTable[currentLevel + 1] !== undefined) {
-        totalExpNeeded = expToNextLevel + (expTable[targetLevel] - expTable[currentLevel + 1]);
-    } else {
-        totalExpNeeded = 'データ不足';
-    }
-
-    console.log(`${pokemonName} に必要な総経験値: ${totalExpNeeded}`);
-
-    // 入力チェック
-    if (!pokemonName || !window.pokemonNames.includes(pokemonName)) {
-        alert('正しいポケモン名を入力してください！');
-        return;
-    }
-
-    // 性格の記号を色付きで設定（ボタンに対応）
-    let natureSymbol = `<span class="nature-symbol nature-none">-</span>`; // デフォルトは無補正
-    if (expUp) natureSymbol = `<span class="nature-symbol exp-up">↑</span>`;
-    if (expDown) natureSymbol = `<span class="nature-symbol exp-down">↓</span>`;
-
-    // 「睡ボ」アイコンの処理
-    const sleepBonusIcon = sleepExpBonus ? '<span class="sleep-bonus">睡ボ</span>' : '';
-
-    // ポケモンデータのオブジェクトを作成
-    const pokemonData = {
-        name: pokemonName,
-        nickname: nickname || pokemonName,
-        sleepBonusIcon: sleepBonusIcon,
-        natureSymbol: natureSymbol,
-        currentLevel: isNaN(currentLevel) ? 1 : currentLevel,
-        expToNextLevel: isNaN(expToNextLevel) ? 0 : expToNextLevel,
-        totalExpNeeded: totalExpNeeded,  // 目標までの経験値
-        targetLevel: targetLevel,
-        memo: memo,
-        imagePath: `images/${pokemonName}.png`
-    };
-
-    console.log("登録されたポケモン: ", pokemonData);
-    addPokemonToList(pokemonData);
-}
-
-// ポケモンをリストに追加する関数
-function addPokemonToList(pokemon) {
-    const displayArea = document.getElementById('pokemonDisplay');
-    const pokemonElement = document.createElement('div');
-    pokemonElement.className = 'pokemon-box';
-    pokemonElement.innerHTML = `
-        <img src="${pokemon.imagePath}" alt="${pokemon.name}" class="pokemon-image">
-        <p class="nickname">${pokemon.nickname}</p>
-        <p class="level">Lv.${pokemon.currentLevel} ⇒ ${pokemon.targetLevel}</p>
-        <p class="exp-next">あと ${pokemon.totalExpNeeded} exp</p>
-        <p class="exp-bonus">${pokemon.sleepBonusIcon} ${pokemon.natureSymbol}</p>
-        <p class="memo">${pokemon.memo ? pokemon.memo : ""}</p>
-    `;
-    displayArea.appendChild(pokemonElement);
-}
-
-// ひらがなをカタカナに変換する関数
-function toKatakana(str) {
-    return str.replace(/[\u3041-\u3096]/g, function(ch) {
-        return String.fromCharCode(ch.charCodeAt(0) + 0x60);
-    });
-}
-
-// 検索サジェスチョン機能（ひらがな対応）
+// サジェスト機能
 function showSuggestions() {
     const input = document.getElementById('pokemonName');
     const suggestionBox = document.getElementById('suggestionBox');
@@ -294,13 +118,7 @@ function showSuggestions() {
         return;
     }
 
-    // ひらがなをカタカナに変換
-    const katakanaQuery = toKatakana(query);
-
-    // ひらがなとカタカナの両方で検索
-    const matches = window.pokemonNames.filter(name => 
-        name.startsWith(katakanaQuery) || name.startsWith(query)
-    );
+    const matches = window.pokemonNames.filter(name => name.startsWith(query));
 
     if (matches.length === 0) {
         suggestionBox.innerHTML = '';
@@ -323,5 +141,75 @@ function showSuggestions() {
     suggestionBox.style.display = 'block';
 }
 
+// ポケモンを登録する関数
+function registerPokemon() {
+    const pokemonName = document.getElementById('pokemonName').value.trim();
+    const nickname = document.getElementById('nickname').value.trim();
+    const sleepExpBonus = document.getElementById('sleepExpBonusBtn').classList.contains('active');
+    const expUp = document.getElementById('expUpBtn').classList.contains('active');
+    const expDown = document.getElementById('expDownBtn').classList.contains('active');
+    const currentLevel = parseInt(document.getElementById('currentLevel').value, 10);
+    const expToNextLevel = parseInt(document.getElementById('expToNextLevel').value, 10);
+    const memo = document.getElementById('memo').value.trim();
 
+    let targetLevelElement = document.querySelector('.target-btn.selected');
+    if (!targetLevelElement) {
+        alert('目標レベルが選択されていません！');
+        return;
+    }
+    const targetLevel = parseInt(targetLevelElement.getAttribute('data-level'), 10);
 
+    let patternType = specialPatterns[pokemonName] || "default";
+    let expTable = (patternType === "specialPatternA") ? specialPatternA 
+                 : (patternType === "specialPatternB") ? specialPatternB 
+                 : baseExpTable;
+
+    let totalExpNeeded;
+    if (expTable[targetLevel] !== undefined && expTable[currentLevel + 1] !== undefined) {
+        totalExpNeeded = expToNextLevel + (expTable[targetLevel] - expTable[currentLevel + 1]);
+    } else {
+        totalExpNeeded = 'データ不足';
+    }
+
+    if (!pokemonName || !window.pokemonNames.includes(pokemonName)) {
+        alert('正しいポケモン名を入力してください！');
+        return;
+    }
+
+    let natureSymbol = `<span class="nature-symbol nature-none">-</span>`;
+    if (expUp) natureSymbol = `<span class="nature-symbol exp-up">↑</span>`;
+    if (expDown) natureSymbol = `<span class="nature-symbol exp-down">↓</span>`;
+
+    const sleepBonusIcon = sleepExpBonus ? '<span class="sleep-bonus">睡ボ</span>' : '';
+
+    const pokemonData = {
+        name: pokemonName,
+        nickname: nickname || pokemonName,
+        sleepBonusIcon: sleepBonusIcon,
+        natureSymbol: natureSymbol,
+        currentLevel: isNaN(currentLevel) ? 1 : currentLevel,
+        expToNextLevel: isNaN(expToNextLevel) ? 0 : expToNextLevel,
+        totalExpNeeded: totalExpNeeded,
+        targetLevel: targetLevel,
+        memo: memo,
+        imagePath: `images/${pokemonName}.png`
+    };
+
+    addPokemonToList(pokemonData);
+}
+
+// ポケモンをリストに追加する関数
+function addPokemonToList(pokemon) {
+    const displayArea = document.getElementById('pokemonDisplay');
+    const pokemonElement = document.createElement('div');
+    pokemonElement.className = 'pokemon-box';
+    pokemonElement.innerHTML = `
+        <img src="${pokemon.imagePath}" alt="${pokemon.name}" class="pokemon-image">
+        <p class="nickname">${pokemon.nickname}</p>
+        <p class="level">Lv.${pokemon.currentLevel} ⇒ ${pokemon.targetLevel}</p>
+        <p class="exp-next">あと ${pokemon.totalExpNeeded} exp</p>
+        <p class="exp-bonus">${pokemon.sleepBonusIcon} ${pokemon.natureSymbol}</p>
+        <p class="memo">${pokemon.memo ? pokemon.memo : ""}</p>
+    `;
+    displayArea.appendChild(pokemonElement);
+}
