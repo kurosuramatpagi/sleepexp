@@ -439,7 +439,7 @@ button {
 
 /* 2つのボタンの共通スタイル */
 .nav-button {
-    background-color: #f6f6f6; /* ボタンの背景色（バナーと同じ色） */
+    background-color: #f9d2d9; /* ボタンの背景色 */
     color: black; /* テキストの色 */
     border: none;
     width: 25%; /* 左半分を2分割するので25%ずつ */
