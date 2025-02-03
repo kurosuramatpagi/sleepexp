@@ -136,7 +136,7 @@ button {
     margin-right: var(--card-area-margin, auto);
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-between; /* ← カード間のスペースを均等に配置 */
     gap: var(--card-gap, 8px); /* カード間の間隔を自由に変更可能に */
 }
 
