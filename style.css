@@ -86,7 +86,7 @@ html, body {
 /* 情報入力エリア（form-container）を左詰めに修正 */
 .form-container {
     width: 80%;
-    margin: 80px auto 0;
+    margin: 40px auto 0;
     text-align: left;
     display: flex;
     flex-direction: column;
