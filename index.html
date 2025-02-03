@@ -15,12 +15,13 @@
     </div>
 
     <div class="button-container">
-    <button class="nav-button" id="boxButton">ボックス</button>
-    <button class="nav-button" id="sleepCalcButton">睡眠計算</button>
-    <div class="empty-space"></div> <!-- 右半分の空白を確保 -->
-</div>
+        <button class="nav-button" id="boxButton">ボックス</button>
+        <button class="nav-button" id="sleepCalcButton">睡眠計算</button>
+        <div class="empty-space"></div> <!-- 右半分の空白を確保 -->
+    </div>
 
-    <div class="form-container"id="formContainer">
+    <!-- 情報入力エリア -->
+    <div class="form-container" id="formContainer">
         <div class="form-group">
             <label for="pokemonName">ポケモン</label>
             <input type="text" id="pokemonName" class="pokemon-name-input">
@@ -35,8 +36,6 @@
         <div class="form-group">
             <button id="sleepExpBonusBtn" class="sleep-exp-btn">睡眠EXPボーナス</button>
         </div>
-
-
 
         <!-- 性格（ボタン化・ラベル削除） -->
         <div class="form-group">
@@ -75,6 +74,7 @@
         <button id="registerButton">登録</button>
     </div>
 
+    <!-- カードエリア -->
     <div id="pokemonDisplay"></div>
 
     <script src="script.js"></script>
