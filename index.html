@@ -20,8 +20,12 @@
         <div class="empty-space"></div> <!-- 右半分の空白を確保 -->
     </div>
 
-    <!-- 情報入力エリア -->
+    <!-- ポップアップ用の背景 -->
+    <div id="popupOverlay" class="popup-overlay"></div>
+
+    <!-- 情報入力エリア（ポップアップ表示用） -->
     <div class="form-container" id="formContainer">
+        <button id="closeFormBtn" class="close-btn">×</button>
         <div class="form-group">
             <label for="pokemonName">ポケモン</label>
             <input type="text" id="pokemonName" class="pokemon-name-input">
@@ -76,6 +80,9 @@
 
     <!-- カードエリア -->
     <div id="pokemonDisplay"></div>
+
+    <!-- 右下の「+」ボタン -->
+    <button id="addButton" class="add-btn">+</button>
 
     <script src="script.js"></script>
 </body>
