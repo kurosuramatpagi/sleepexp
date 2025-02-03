@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // 「ボックス」ボタンクリック時
     boxButton.addEventListener('click', function() {
         formContainer.style.display = 'none';  // 情報入力エリアは非表示
-        pokemonDisplay.style.display = 'block';
+        pokemonDisplay.style.display = 'flex'; // 修正: カードが横並びになるようにflex表示
         addButton.style.display = 'block';     // 「+」ボタン表示
     });
 
@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
     addButton.addEventListener('click', function() {
         formContainer.style.display = 'block';
         popupOverlay.style.display = 'block';  // 背景を暗く
+        pokemonDisplay.style.display = 'flex'; // 修正: ポップアップ中もカードが横並びを維持
     });
 
     // 「×」ボタンまたはオーバーレイクリック時 → ポップアップ閉じる
