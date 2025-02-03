@@ -427,40 +427,28 @@ button {
     color: black;  /* 文字色は黒のまま */
 }
 
-/* ボタンエリアのスタイル */
-.button-area {
+/* バナーの下に配置するボタンエリア */
+.button-container {
     display: flex;
     width: 100%;
-    margin: 0; /* バナーとの間隔をなくす */
-    padding: 0; /* 内側の余白をなくす */
+    justify-content: flex-start; /* 左寄せに設定 */
 }
 
-/* ボタンのスタイル設定 */
-.button-area button {
-    flex: 1; /* ボタンが均等にスペースを占めるように */
-    padding: 12px 0; /* ボタンの高さを調整 */
+/* 2つのボタンの共通スタイル */
+.nav-button {
+    background-color: #007BFF; /* ボタンの背景色（バナーと同じ色） */
+    color: white; /* テキストの色 */
+    border: none; /* 枠線なし */
+    width: 25%; /* 左半分を2分割するので25%ずつ */
+    height: 50px; /* ボタンの高さ */
     font-size: 16px; /* フォントサイズ */
-    color: white; /* テキストカラー */
-    background-color: #09f; /* ボタンの背景色 */
-    border: none; /* ボーダーなし */
-    outline: none; /* アウトラインなし */
-    cursor: pointer; /* カーソルをポインターに */
+    text-align: center; /* テキスト中央寄せ */
+    line-height: 50px; /* 縦方向も中央揃え */
+    border-radius: 0; /* 角丸なし */
+    padding: 0; /* 余白なし */
 }
 
-/* 最初のボタンのみ全幅を使用 */
-.button-area button:first-child {
-    flex: 0 0 100%;
-}
-
-/* タッチフィードバックの改善 */
-.button-area button:active {
-    background-color: #0077cc; /* クリック時の背景色 */
-}
-
-/* スマホ対応 */
-@media (max-width: 768px) {
-    .button-area button {
-        padding: 15px 0; /* スマホでは少し大きめに */
-        font-size: 18px; /* スマホではフォントサイズを大きく */
-    }
+/* 右半分の空白部分を維持 */
+.empty-space {
+    width: 50%;
 }
