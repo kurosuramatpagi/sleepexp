@@ -440,7 +440,7 @@ button {
 .nav-button {
     background-color: #f6f6f6; /* ボタンの背景色（バナーと同じ色） */
     color: black; /* テキストの色 */
-    border: 1px solid black;
+    border: none;
     width: 25%; /* 左半分を2分割するので25%ずつ */
     height: 50px; /* ボタンの高さ */
     font-size: 16px; /* フォントサイズ */
