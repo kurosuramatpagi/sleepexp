@@ -432,6 +432,8 @@ button {
     display: flex;
     width: 100%;
     justify-content: flex-start; /* 左寄せに設定 */
+    margin: 0;  /* 余白削除 */
+    padding: 0; /* 余白削除 */
 }
 
 /* 2つのボタンの共通スタイル */
