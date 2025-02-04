@@ -210,16 +210,16 @@ button {
 /* サジェストボックスをポケモン名入力欄の右側に配置 */
 .suggestion-box {
     position: absolute;
-    top: 0;               /* テキストボックスと縦位置を揃える */
-    left: calc(100% + 10px); /* テキストボックスの右に10pxの余白を追加 */
+    top: var(--suggestion-box-top, 0); /* デフォルトでテキストボックスの上端に揃える */
+    left: var(--suggestion-box-left, calc(100% + 10px)); /* デフォルトで右に10pxの余白 */
     background-color: white;
     border: 1px solid #ccc;
-    width: 150px;         /* 必要に応じて調整 */
+    width: 150px; 
     max-height: 150px;
     overflow-y: auto;
     z-index: 1000;
     display: none;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  /* 影を追加して見やすく */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
 }
 
 .suggestion-box div {
