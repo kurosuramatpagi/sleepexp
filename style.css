@@ -211,7 +211,7 @@ button {
 .suggestion-box {
     position: absolute;
     top: var(--suggestion-box-top, 0); /* デフォルトでテキストボックスの上端に揃える */
-    left: var(--suggestion-box-left, calc(100% -50px)); /* デフォルトで右に10pxの余白 */
+    left: var(--suggestion-box-left, calc(100% -40px)); /* デフォルトで右に10pxの余白 */
     background-color: white;
     border: 1px solid #ccc;
     width: 150px; 
