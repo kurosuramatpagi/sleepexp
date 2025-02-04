@@ -216,8 +216,13 @@ button {
     overflow-y: auto;
     z-index: 1000;
     display: none;
+
+    /* 任意の位置に調整できるカスタムプロパティ */
+    top: var(--suggestion-box-top, 100%);  /* デフォルトは入力欄の真下 */
+    left: var(--suggestion-box-left, 0);   /* 左端に揃える */
 }
 
+/* サジェスト候補のデザイン */
 .suggestion-box div {
     padding: 8px;
     cursor: pointer;
