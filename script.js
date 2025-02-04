@@ -13,37 +13,32 @@ const baseExpTable = {
 };
 
 document.addEventListener('DOMContentLoaded', function () {
-    // ボタンの動作
     const boxButton = document.getElementById('boxButton');
     const sleepCalcButton = document.getElementById('sleepCalcButton');
     const formContainer = document.getElementById('formContainer');
     const pokemonDisplay = document.getElementById('pokemonDisplay');
-    const addButton = document.getElementById('addButton'); // 追加: "+"ボタン
-    const popupOverlay = document.getElementById('popupOverlay'); // 追加: オーバーレイ
-    const closeFormBtn = document.getElementById('closeFormBtn'); // 追加: 閉じるボタン
+    const addButton = document.getElementById('addButton');
+    const popupOverlay = document.getElementById('popupOverlay');
+    const closeFormBtn = document.getElementById('closeFormBtn');
 
-    // 「ボックス」ボタンクリック時
     boxButton.addEventListener('click', function() {
-        formContainer.style.display = 'none';  // 情報入力エリアは非表示
-        pokemonDisplay.style.display = 'flex'; // 修正: カードが横並びになるようにflex表示
-        addButton.style.display = 'block';     // 「+」ボタン表示
+        formContainer.style.display = 'none';
+        pokemonDisplay.style.display = 'flex';
+        addButton.style.display = 'block';
     });
 
-    // 「睡眠計算」ボタンクリック時
     sleepCalcButton.addEventListener('click', function() {
         formContainer.style.display = 'none';
         pokemonDisplay.style.display = 'none';
-        addButton.style.display = 'none';      // 「+」ボタン非表示
+        addButton.style.display = 'none';
     });
 
-    // 「+」ボタンクリック時 → 情報入力エリアをポップアップ表示
     addButton.addEventListener('click', function() {
         formContainer.style.display = 'block';
-        popupOverlay.style.display = 'block';  // 背景を暗く
-        pokemonDisplay.style.display = 'flex'; // 修正: ポップアップ中もカードが横並びを維持
+        popupOverlay.style.display = 'block';
+        pokemonDisplay.style.display = 'flex';
     });
 
-    // 「×」ボタンまたはオーバーレイクリック時 → ポップアップ閉じる
     closeFormBtn.addEventListener('click', closeForm);
     popupOverlay.addEventListener('click', closeForm);
 
@@ -52,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function () {
         popupOverlay.style.display = 'none';
     }
 
-    // special_patterns.json を読み込む
     fetch('special_patterns.json')
         .then(response => response.json())
         .then(data => {
@@ -61,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => console.error('Error loading special patterns:', error));
     
-    // ポケモン名リストの読み込み
     fetch('pokemon_names.txt')
         .then(response => response.text())
         .then(data => {
@@ -69,10 +62,8 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .catch(error => console.error('Error loading the pokemon names:', error));
 
-    // 登録ボタンのイベントリスナー設定
     document.getElementById('registerButton').addEventListener('click', registerPokemon);
 
-    // 目標レベルボタンのON/OFF切り替え（1つだけ選択可能）
     document.querySelectorAll('.target-btn').forEach(button => {
         button.addEventListener('click', function () {
             document.querySelectorAll('.target-btn').forEach(btn => btn.classList.remove('selected'));
@@ -80,16 +71,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // ポケモン名のサジェスト機能
     document.getElementById('pokemonName').addEventListener('input', showSuggestions);
 
-    // 睡眠EXPボーナスボタンのON/OFF切り替え
     const sleepExpBonusBtn = document.getElementById('sleepExpBonusBtn');
     sleepExpBonusBtn.addEventListener('click', function () {
         this.classList.toggle('active');
     });
 
-    // 性格ボタンのON/OFF切り替え（どちらか一方のみONにするが、もう一度押すと無補正に戻る）
     const expUpBtn = document.getElementById('expUpBtn');
     const expDownBtn = document.getElementById('expDownBtn');
 
@@ -112,7 +100,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// 経験値テーブルに倍率を適用する関数
 function generateSpecialPatterns(baseTable, multiplier) {
     const newTable = {};
     for (let level in baseTable) {
@@ -121,18 +108,24 @@ function generateSpecialPatterns(baseTable, multiplier) {
     return newTable;
 }
 
-// 特殊パターンの生成
 const specialPatternA = generateSpecialPatterns(baseExpTable, 1.5);
 const specialPatternB = generateSpecialPatterns(baseExpTable, 1.8);
 
 console.log("Special Pattern A:", specialPatternA);
 console.log("Special Pattern B:", specialPatternB);
 
-// サジェスト機能
+// ひらがなをカタカナに変換する関数を追加
+function toKatakana(str) {
+    return str.replace(/[\u3041-\u3096]/g, ch => 
+        String.fromCharCode(ch.charCodeAt(0) + 0x60)
+    );
+}
+
 function showSuggestions() {
     const input = document.getElementById('pokemonName');
     const suggestionBox = document.getElementById('suggestionBox');
     let query = input.value.trim();
+    let katakanaQuery = toKatakana(query);
 
     if (!query) {
         suggestionBox.innerHTML = '';
@@ -140,7 +133,9 @@ function showSuggestions() {
         return;
     }
 
-    const matches = window.pokemonNames.filter(name => name.startsWith(query));
+    const matches = window.pokemonNames.filter(name => 
+        name.startsWith(query) || name.startsWith(katakanaQuery)
+    );
 
     if (matches.length === 0) {
         suggestionBox.innerHTML = '';
@@ -163,7 +158,6 @@ function showSuggestions() {
     suggestionBox.style.display = 'block';
 }
 
-// ポケモンを登録する関数
 function registerPokemon() {
     const pokemonName = document.getElementById('pokemonName').value.trim();
     const nickname = document.getElementById('nickname').value.trim();
@@ -220,7 +214,6 @@ function registerPokemon() {
     addPokemonToList(pokemonData);
 }
 
-// ポケモンをリストに追加する関数
 function addPokemonToList(pokemon) {
     const displayArea = document.getElementById('pokemonDisplay');
     const pokemonElement = document.createElement('div');
