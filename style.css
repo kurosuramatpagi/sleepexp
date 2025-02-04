@@ -206,23 +206,20 @@ button {
     font-weight: normal; /* 標準フォント */
 }
 
-/* 予測候補ボックス */
+/* サジェストボックスの位置をポケモン名入力欄の右側に配置 */
 .suggestion-box {
     position: absolute;
+    left: 105%;  /* ポケモン名入力欄の右に少し余裕を持たせて配置 */
+    top: 0;      /* 上端をポケモン名入力欄と揃える */
     background-color: white;
     border: 1px solid #ccc;
-    width: 100%;
+    width: 150px;  /* 必要に応じて調整 */
     max-height: 150px;
     overflow-y: auto;
     z-index: 1000;
     display: none;
-
-    /* 任意の位置に調整できるカスタムプロパティ */
-    top: var(--suggestion-box-top, 100%);  /* デフォルトは入力欄の真下 */
-    left: var(--suggestion-box-left, 0);   /* 左端に揃える */
 }
 
-/* サジェスト候補のデザイン */
 .suggestion-box div {
     padding: 8px;
     cursor: pointer;
