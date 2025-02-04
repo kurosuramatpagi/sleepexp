@@ -103,8 +103,8 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: auto;
-    /*max-width: 400px;*/
+    width: 100%;
+    max-width: 400px;
     margin-bottom: 15px;
 }
 
@@ -209,12 +209,12 @@ button {
 
 
 
-/* サジェストボックスの位置を調整 */
+/* サジェストボックスをテキストボックスの右に配置 */
 .suggestion-box {
     position: absolute;
     top: 0;
-    left: 100%;  /* テキストボックスのすぐ右に配置 */
-    margin-left: 5px;  /* テキストボックスとの間に5pxの余白 */
+    left: 0;
+    transform: translateX(105%);  /* テキストボックスの右側に配置 */
     background-color: white;
     border: 1px solid #ccc;
     width: 150px;
