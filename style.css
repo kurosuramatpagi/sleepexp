@@ -99,6 +99,7 @@ html, body {
 
 /* 各入力フィールドを左揃え */
 .form-group {
+    position: relative;  /* 追加: サジェストボックスの基準にする */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -206,14 +207,13 @@ button {
     font-weight: normal; /* 標準フォント */
 }
 
-/* サジェストボックスの位置をポケモン名入力欄の右側に配置 */
 .suggestion-box {
     position: absolute;
-    left: 105%;  /* ポケモン名入力欄の右に少し余裕を持たせて配置 */
-    top: 0;      /* 上端をポケモン名入力欄と揃える */
+    left: calc(100% + 5px);  /* 入力欄の右に5px間隔で配置 */
+    top: 0;                  /* 入力欄の上端と揃える */
     background-color: white;
     border: 1px solid #ccc;
-    width: 150px;  /* 必要に応じて調整 */
+    width: 150px;            /* 必要に応じて調整 */
     max-height: 150px;
     overflow-y: auto;
     z-index: 1000;
