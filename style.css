@@ -479,7 +479,7 @@ button {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* 背景を少し暗く */
-    z-index: 998; /* 情報入力エリアの下に表示 */
+    z-index: 500; /* 情報入力エリアの下に表示 */
 }
 
 /* 情報入力エリアのポップアップ設定 */
@@ -524,7 +524,7 @@ button {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 1000; /* 常に前面に表示 */
+    z-index: 2000; /* 常に前面に表示 */
 }
 
 .card-preview-area {
