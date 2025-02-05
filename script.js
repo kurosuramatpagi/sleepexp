@@ -1,6 +1,5 @@
 let specialPatterns = {};
 
-// 経験値テーブルと特殊パターンの生成
 const baseExpTable = {
   "1": 0, "2": 54, "3": 125, "4": 233, "5": 361, "6": 525, "7": 727, "8": 971, "9": 1245, "10": 1560,
   "11": 1905, "12": 2281, "13": 2688, "14": 3107, "15": 3536, "16": 3976, "17": 4430, "18": 4899,
@@ -20,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const addButton = document.getElementById('addButton');
     const popupOverlay = document.getElementById('popupOverlay');
     const closeFormBtn = document.getElementById('closeFormBtn');
+    const cardPreviewArea = document.getElementById('cardPreviewArea');
 
     boxButton.addEventListener('click', function() {
         formContainer.style.display = 'none';
@@ -68,14 +68,24 @@ document.addEventListener('DOMContentLoaded', function () {
         button.addEventListener('click', function () {
             document.querySelectorAll('.target-btn').forEach(btn => btn.classList.remove('selected'));
             this.classList.add('selected');
+            updateCardPreview();
         });
     });
 
-    document.getElementById('pokemonName').addEventListener('input', showSuggestions);
+    document.getElementById('pokemonName').addEventListener('input', function() {
+        showSuggestions();
+        updateCardPreview();
+    });
+
+    document.getElementById('nickname').addEventListener('input', updateCardPreview);
+    document.getElementById('currentLevel').addEventListener('input', updateCardPreview);
+    document.getElementById('expToNextLevel').addEventListener('input', updateCardPreview);
+    document.getElementById('memo').addEventListener('input', updateCardPreview);
 
     const sleepExpBonusBtn = document.getElementById('sleepExpBonusBtn');
     sleepExpBonusBtn.addEventListener('click', function () {
         this.classList.toggle('active');
+        updateCardPreview();
     });
 
     const expUpBtn = document.getElementById('expUpBtn');
@@ -88,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
             this.classList.add('active');
             expDownBtn.classList.remove('active');
         }
+        updateCardPreview();
     });
 
     expDownBtn.addEventListener('click', function () {
@@ -97,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
             this.classList.add('active');
             expUpBtn.classList.remove('active');
         }
+        updateCardPreview();
     });
 });
 
@@ -114,7 +126,6 @@ const specialPatternB = generateSpecialPatterns(baseExpTable, 1.8);
 console.log("Special Pattern A:", specialPatternA);
 console.log("Special Pattern B:", specialPatternB);
 
-// ひらがなをカタカナに変換する関数を追加
 function toKatakana(str) {
     return str.replace(/[\u3041-\u3096]/g, ch => 
         String.fromCharCode(ch.charCodeAt(0) + 0x60)
@@ -151,11 +162,39 @@ function showSuggestions() {
             input.value = match;
             suggestionBox.innerHTML = '';
             suggestionBox.style.display = 'none';
+            updateCardPreview();
         };
         suggestionBox.appendChild(suggestion);
     });
 
     suggestionBox.style.display = 'block';
+}
+
+function updateCardPreview() {
+    const pokemonName = document.getElementById('pokemonName').value.trim();
+    const nickname = document.getElementById('nickname').value.trim();
+    const currentLevel = document.getElementById('currentLevel').value;
+    const targetLevelElement = document.querySelector('.target-btn.selected');
+    const targetLevel = targetLevelElement ? targetLevelElement.getAttribute('data-level') : '';
+    const sleepExpBonus = document.getElementById('sleepExpBonusBtn').classList.contains('active');
+    const expUp = document.getElementById('expUpBtn').classList.contains('active');
+    const expDown = document.getElementById('expDownBtn').classList.contains('active');
+    const memo = document.getElementById('memo').value.trim();
+
+    let natureSymbol = `<span class="nature-symbol nature-none">-</span>`;
+    if (expUp) natureSymbol = `<span class="nature-symbol exp-up">↑</span>`;
+    if (expDown) natureSymbol = `<span class="nature-symbol exp-down">↓</span>`;
+    const sleepBonusIcon = sleepExpBonus ? '<span class="sleep-bonus">睡ボ</span>' : '';
+
+    const cardPreviewArea = document.getElementById('cardPreviewArea');
+    cardPreviewArea.innerHTML = `
+        <img src="images/${pokemonName}.png" alt="${pokemonName}" class="pokemon-image">
+        <p class="nickname">${nickname || pokemonName}</p>
+        <p class="level">Lv.${currentLevel} ⇒ ${targetLevel}</p>
+        <p class="exp-bonus">${sleepBonusIcon} ${natureSymbol}</p>
+        <p class="memo">${memo}</p>
+    `;
+    cardPreviewArea.style.display = 'block';
 }
 
 function registerPokemon() {
