@@ -26,29 +26,24 @@
     <!-- 情報入力エリア（ポップアップ表示用） -->
     <div class="form-container" id="formContainer">
         <button id="closeFormBtn" class="close-btn">×</button>
-       <div class="form-group">
-    <label for="pokemonName">ポケモン</label>
-    <input type="text" id="pokemonName" class="pokemon-name-input">
-    <div id="suggestionBox" class="suggestion-box"></div> <!-- これが右側に出る -->
-</div>
+        <div class="form-group">
+            <label for="pokemonName">ポケモン</label>
+            <input type="text" id="pokemonName" class="pokemon-name-input">
+            <div id="suggestionBox" class="suggestion-box"></div>
+        </div>
         <div class="form-group">
             <label for="nickname">ニックネーム</label>
             <input type="text" id="nickname" class="nickname-input">
         </div>
-
-        <!-- 睡眠EXPボーナス（ボタン化・ON/OFF可能） -->
         <div class="form-group">
             <button id="sleepExpBonusBtn" class="sleep-exp-btn">睡眠EXPボーナス</button>
         </div>
-
-        <!-- 性格（ボタン化・ラベル削除） -->
         <div class="form-group">
             <div class="nature-selection">
                 <button id="expUpBtn" class="nature-btn exp-up-btn">性格EXP↑</button>
                 <button id="expDownBtn" class="nature-btn exp-down-btn">性格EXP↓</button>
             </div>
         </div>
-
         <div class="form-group">
             <label for="currentLevel">現在のレベル</label>
             <input type="number" id="currentLevel" class="level-input">
@@ -57,8 +52,6 @@
             <label for="expToNextLevel">次のレベルまでのEXP</label>
             <input type="number" id="expToNextLevel" class="exp-input">
         </div>
-
-        <!-- 目標レベル（ボタンのみ） -->
         <div class="form-group">
             <label>目標レベル</label>
             <div class="target-level-buttons">
@@ -68,20 +61,15 @@
                 <button class="target-btn" data-level="60">60</button>
             </div>
         </div>
-
-        <!-- メモ欄 -->
         <div class="form-group">
             <label for="memo">メモ</label>
             <textarea id="memo" rows="3" class="memo-input"></textarea>
         </div>
-
         <button id="registerButton">登録</button>
     </div>
-    <div class="form-container" id="formContainer">
-    <!-- 入力フィールドなどの既存のコンテンツ -->
-</div>
-<!-- カードプレビューエリアの追加 -->
-<div id="cardPreviewArea" class="card-preview-area"></div>
+
+    <!-- カードプレビューエリア -->
+    <div id="cardPreviewArea" class="card-preview-area"></div>
 
     <!-- カードエリア -->
     <div id="pokemonDisplay"></div>
@@ -89,6 +77,6 @@
     <!-- 右下の「+」ボタン -->
     <button id="addButton" class="add-btn">+</button>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
