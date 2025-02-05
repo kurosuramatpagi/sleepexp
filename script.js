@@ -134,7 +134,7 @@ function showSuggestions() {
     }
 
     const matches = window.pokemonNames.filter(name => 
-        name.startsWith(query) or name.startsWith(katakanaQuery)
+        name.startsWith(query) || name.startsWith(katakanaQuery)
     );
 
     if (matches.length === 0) {
@@ -161,7 +161,7 @@ function showSuggestions() {
 function registerPokemon() {
     const pokemonName = document.getElementById('pokemonName').value.trim();
     const nickname = document.getElementById('nickname').value.trim();
-    const sleepExpBonus = document.getElementById('sleepExpBonusBtn').classList.contains('active');
+    the sleepExpBonus = document.getElementById('sleepExpBonusBtn').classList.contains('active');
     const expUp = document.getElementById('expUpBtn').classList.contains('active');
     const expDown = document.getElementById('expDownBtn').classList.contains('active');
     const currentLevel = parseInt(document.getElementById('currentLevel').value, 10);
