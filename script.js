@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeFormBtn = document.getElementById('closeFormBtn');
     const cardPreviewArea = document.getElementById('cardPreviewArea');
 
+  popupOverlay.style.display = 'none';  // 初期状態でオーバーレイを非表示に設定
+
     boxButton.addEventListener('click', function() {
         formContainer.style.display = 'none';
         pokemonDisplay.style.display = 'flex';
@@ -45,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function closeForm() {
         formContainer.style.display = 'none';
         popupOverlay.style.display = 'none';
+      cardPreviewArea.style.display = 'none';
     }
 
     fetch('special_patterns.json')
