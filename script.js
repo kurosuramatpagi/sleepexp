@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log("特殊パターンが読み込まれました:", specialPatterns);
         })
         .catch(error => console.error('Error loading special patterns:', error));
-    
+
     fetch('pokemon_names.txt')
         .then(response => response.text())
         .then(data => {
@@ -95,24 +95,51 @@ document.addEventListener('DOMContentLoaded', function () {
     const expDownBtn = document.getElementById('expDownBtn');
 
     expUpBtn.addEventListener('click', function () {
-        if (this.classList.contains('active')) {
-            this.classList.remove('active');
-        } else {
-            this.classList.add('active');
-            expDownBtn.classList.remove('active');
-        }
+        this.classList.toggle('active');
+        if (this.classList.contains('active')) expDownBtn.classList.remove('active');
         updateCardPreview();
     });
 
     expDownBtn.addEventListener('click', function () {
-        if (this.classList.contains('active')) {
-            this.classList.remove('active');
-        } else {
-            this.classList.add('active');
-            expUpBtn.classList.remove('active');
-        }
+        this.classList.toggle('active');
+        if (this.classList.contains('active')) expUpBtn.classList.remove('active');
         updateCardPreview();
     });
+
+    function showSuggestions() {
+        const input = document.getElementById('pokemonName');
+        const suggestionBox = document.getElementById('suggestionBox');
+        const query = input.value.trim();
+
+        if (!query) {
+            suggestionBox.innerHTML = '';
+            suggestionBox.style.display = 'none';
+            return;
+        }
+
+        const matches = window.pokemonNames.filter(name => name.startsWith(query));
+
+        if (matches.length === 0) {
+            suggestionBox.innerHTML = '';
+            suggestionBox.style.display = 'none';
+            return;
+        }
+
+        suggestionBox.innerHTML = '';
+        matches.forEach(match => {
+            const suggestion = document.createElement('div');
+            suggestion.textContent = match;
+            suggestion.onclick = () => {
+                input.value = match;
+                suggestionBox.innerHTML = '';
+                suggestionBox.style.display = 'none';
+                updateCardPreview();
+            };
+            suggestionBox.appendChild(suggestion);
+        });
+
+        suggestionBox.style.display = 'block';
+    }
 
     function updateCardPreview() {
         const pokemonName = document.getElementById('pokemonName').value.trim();
@@ -133,14 +160,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
         cardPreviewArea.innerHTML = `
             <div class="pokemon-box" style="
-                width: var(--preview-card-width, 60px); 
-                height: var(--preview-card-height, 140px); 
-                position: absolute; 
-                top: var(--preview-card-top, -150px); 
+                width: var(--preview-card-width, 60px);
+                height: var(--preview-card-height, 140px);
+                position: absolute;
+                top: var(--preview-card-top, -150px);
                 left: var(--preview-card-left, 10px);
                 z-index: 1001;">
                 <img src="images/${pokemonName || 'placeholder'}.png" alt="${pokemonName}" class="pokemon-image" style="
-                    width: var(--preview-image-width, 30px); 
+                    width: var(--preview-image-width, 30px);
                     height: var(--preview-image-height, 30px);">
                 <p class="nickname" style="font-size: var(--preview-text-size, 0.6em);">${nickname || pokemonName}</p>
                 <p class="level" style="font-size: var(--preview-text-size, 0.6em);">Lv.${currentLevel || 1}</p>
