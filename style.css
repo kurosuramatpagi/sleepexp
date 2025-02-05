@@ -526,3 +526,13 @@ button {
     cursor: pointer;
     z-index: 1000; /* 常に前面に表示 */
 }
+
+.card-preview-area {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-left: 20px; /* 情報入力エリアとの間隔 */
+    display: none; /* 初期状態では非表示 */
+}
