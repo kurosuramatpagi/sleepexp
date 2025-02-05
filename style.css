@@ -528,7 +528,7 @@ button {
 }
 
 .card-preview-area {
-    width: 300px;
+    width: 100px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
