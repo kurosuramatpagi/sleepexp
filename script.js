@@ -98,6 +98,39 @@ document.addEventListener('DOMContentLoaded', function () {
             expUpBtn.classList.remove('active');
         }
     });
+// 入力フィールドにリアルタイム更新のイベントリスナーを追加
+    const inputsToUpdateCard = document.querySelectorAll('.form-container input, .form-container select');
+    inputsToUpdateCard.forEach(input => {
+        input.addEventListener('input', updateCardPreview);
+    });
+});
+
+function updateCardPreview() {
+    const pokemonName = document.getElementById('pokemonName').value;
+    const nickname = document.getElementById('nickname').value || pokemonName;
+    const currentLevel = document.getElementById('currentLevel').value;
+    const expToNextLevel = document.getElementById('expToNextLevel').value;
+    const sleepExpBonus = document.getElementById('sleepExpBonusBtn').classList.contains('active');
+    const expUp = document.getElementById('expUpBtn').classList.contains('active');
+    const expDown = document.getElementById('expDownBtn').classList.contains('active');
+
+    // カードプレビューのHTMLを生成
+    const cardPreview = `
+        <div class="pokemon-box">
+            <img src="images/${pokemonName.toLowerCase()}.png" alt="${pokemonName}" class="pokemon-image">
+            <p class="nickname">${nickname}</p>
+            <p class="level">Lv. ${currentLevel}</p>
+            <p class="exp-next">次のレベルまで ${expToNextLevel} EXP</p>
+            <p class="exp-bonus">${sleepExpBonus ? '<span class="sleep-bonus">睡ボ</span>' : ''} ${expUp ? '<span class="nature-symbol exp-up">↑</span>' : expDown ? '<span class="nature-symbol exp-down">↓</span>' : '<span class="nature-symbol nature-none">-</span>'}</p>
+        </div>
+    `;
+
+    // カードプレビューエリアにHTMLを挿入
+    const cardPreviewArea = document.getElementById('cardPreviewArea');
+    cardPreviewArea.innerHTML = cardPreview;
+    cardPreviewArea.style.display = 'block';
+}
+  
 });
 
 function generateSpecialPatterns(baseTable, multiplier) {
