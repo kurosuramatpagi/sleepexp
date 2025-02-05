@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function closeForm() {
         formContainer.style.display = 'none';
         popupOverlay.style.display = 'none';
-        cardPreviewArea.style.display = 'none';
     }
 
     fetch('special_patterns.json')
@@ -111,39 +110,170 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         updateCardPreview();
     });
-
-    function updateCardPreview() {
-        const pokemonName = document.getElementById('pokemonName').value.trim();
-        const nickname = document.getElementById('nickname').value.trim();
-        const currentLevel = document.getElementById('currentLevel').value;
-        const expToNextLevel = document.getElementById('expToNextLevel').value;
-        const sleepExpBonus = sleepExpBonusBtn.classList.contains('active');
-        const expUp = expUpBtn.classList.contains('active');
-        const expDown = expDownBtn.classList.contains('active');
-
-        let natureSymbol = '<span class="nature-symbol nature-none">-</span>';
-        if (expUp) natureSymbol = '<span class="nature-symbol exp-up">↑</span>';
-        if (expDown) natureSymbol = '<span class="nature-symbol exp-down">↓</span>';
-
-        const sleepBonusIcon = sleepExpBonus ? '<span class="sleep-bonus">睡ボ</span>' : '';
-
-        cardPreviewArea.innerHTML = `
-            <div class="pokemon-box" style="
-                width: var(--preview-card-width, 60px); 
-                height: var(--preview-card-height, 140px); 
-                position: absolute; 
-                top: var(--preview-card-top, -150px); 
-                left: var(--preview-card-left, 10px);
-                z-index: 1001;">
-                <img src="images/${pokemonName || 'placeholder'}.png" alt="${pokemonName}" class="pokemon-image" style="
-                    width: var(--preview-image-width, 30px); 
-                    height: var(--preview-image-height, 30px);">
-                <p class="nickname" style="font-size: var(--preview-text-size, 0.6em);">${nickname || pokemonName}</p>
-                <p class="level" style="font-size: var(--preview-text-size, 0.6em);">Lv.${currentLevel || 1}</p>
-                <p class="exp-next" style="font-size: var(--preview-text-size, 0.6em);">あと ${expToNextLevel || 0} exp</p>
-                <p class="exp-bonus" style="font-size: var(--preview-text-size, 0.6em);">${sleepBonusIcon} ${natureSymbol}</p>
-            </div>
-        `;
-        cardPreviewArea.style.display = 'block';
-    }
 });
+
+function generateSpecialPatterns(baseTable, multiplier) {
+    const newTable = {};
+    for (let level in baseTable) {
+        newTable[level] = Math.ceil(baseTable[level] * multiplier);
+    }
+    return newTable;
+}
+
+const specialPatternA = generateSpecialPatterns(baseExpTable, 1.5);
+const specialPatternB = generateSpecialPatterns(baseExpTable, 1.8);
+
+console.log("Special Pattern A:", specialPatternA);
+console.log("Special Pattern B:", specialPatternB);
+
+function toKatakana(str) {
+    return str.replace(/[\u3041-\u3096]/g, ch => 
+        String.fromCharCode(ch.charCodeAt(0) + 0x60)
+    );
+}
+
+function showSuggestions() {
+    const input = document.getElementById('pokemonName');
+    const suggestionBox = document.getElementById('suggestionBox');
+    let query = input.value.trim();
+    let katakanaQuery = toKatakana(query);
+
+    if (!query) {
+        suggestionBox.innerHTML = '';
+        suggestionBox.style.display = 'none';
+        return;
+    }
+
+    const matches = window.pokemonNames.filter(name => 
+        name.startsWith(query) || name.startsWith(katakanaQuery)
+    );
+
+    if (matches.length === 0) {
+        suggestionBox.innerHTML = '';
+        suggestionBox.style.display = 'none';
+        return;
+    }
+
+    suggestionBox.innerHTML = '';
+    matches.forEach(match => {
+        const suggestion = document.createElement('div');
+        suggestion.textContent = match;
+        suggestion.onclick = () => {
+            input.value = match;
+            suggestionBox.innerHTML = '';
+            suggestionBox.style.display = 'none';
+            updateCardPreview();
+        };
+        suggestionBox.appendChild(suggestion);
+    });
+
+    suggestionBox.style.display = 'block';
+}
+
+function updateCardPreview() {
+    const pokemonName = document.getElementById('pokemonName').value.trim();
+    const nickname = document.getElementById('nickname').value.trim();
+    const currentLevel = document.getElementById('currentLevel').value;
+    const targetLevelElement = document.querySelector('.target-btn.selected');
+    const targetLevel = targetLevelElement ? targetLevelElement.getAttribute('data-level') : '';
+    const sleepExpBonus = document.getElementById('sleepExpBonusBtn').classList.contains('active');
+    const expUp = document.getElementById('expUpBtn').classList.contains('active');
+    const expDown = document.getElementById('expDownBtn').classList.contains('active');
+    const memo = document.getElementById('memo').value.trim();
+
+    let natureSymbol = <span class="nature-symbol nature-none">-</span>;
+    if (expUp) natureSymbol = <span class="nature-symbol exp-up">↑</span>;
+    if (expDown) natureSymbol = <span class="nature-symbol exp-down">↓</span>;
+    const sleepBonusIcon = sleepExpBonus ? '<span class="sleep-bonus">睡ボ</span>' : '';
+
+    const cardPreviewArea = document.getElementById('cardPreviewArea');
+    cardPreviewArea.innerHTML = 
+        <div class="pokemon-box" style="
+            width: var(--preview-card-width, 60px); 
+            height: var(--preview-card-height, 140px); 
+            position: absolute; 
+            top: var(--preview-card-top, 10px); 
+            left: var(--preview-card-left, 300px);">
+            <img src="images/${pokemonName || 'placeholder'}.png" alt="${pokemonName}" class="pokemon-image" style="
+                width: var(--preview-image-width, 30px); 
+                height: var(--preview-image-height, 30px);">
+            <p class="nickname" style="font-size: var(--preview-text-size, 0.6em);">${nickname || pokemonName}</p>
+            <p class="level" style="font-size: var(--preview-text-size, 0.6em);">Lv.${currentLevel || 1}</p>
+            <p class="exp-next" style="font-size: var(--preview-text-size, 0.6em);">${targetLevel ? Lv.${targetLevel} : ''}</p>
+            <p class="exp-bonus" style="font-size: var(--preview-text-size, 0.6em);">${sleepBonusIcon} ${natureSymbol}</p>
+            <p class="memo" style="font-size: var(--preview-text-size, 0.6em);">${memo}</p>
+        </div>
+    ;
+    cardPreviewArea.style.display = 'block';
+}
+
+function registerPokemon() {
+    const pokemonName = document.getElementById('pokemonName').value.trim();
+    const nickname = document.getElementById('nickname').value.trim();
+    const sleepExpBonus = document.getElementById('sleepExpBonusBtn').classList.contains('active');
+    const expUp = document.getElementById('expUpBtn').classList.contains('active');
+    const expDown = document.getElementById('expDownBtn').classList.contains('active');
+    const currentLevel = parseInt(document.getElementById('currentLevel').value, 10);
+    const expToNextLevel = parseInt(document.getElementById('expToNextLevel').value, 10);
+    const memo = document.getElementById('memo').value.trim();
+
+    let targetLevelElement = document.querySelector('.target-btn.selected');
+    if (!targetLevelElement) {
+        alert('目標レベルが選択されていません！');
+        return;
+    }
+    const targetLevel = parseInt(targetLevelElement.getAttribute('data-level'), 10);
+
+    let patternType = specialPatterns[pokemonName] || "default";
+    let expTable = (patternType === "specialPatternA") ? specialPatternA 
+                 : (patternType === "specialPatternB") ? specialPatternB 
+                 : baseExpTable;
+
+    let totalExpNeeded;
+    if (expTable[targetLevel] !== undefined && expTable[currentLevel + 1] !== undefined) {
+        totalExpNeeded = expToNextLevel + (expTable[targetLevel] - expTable[currentLevel + 1]);
+    } else {
+        totalExpNeeded = 'データ不足';
+    }
+
+    if (!pokemonName || !window.pokemonNames.includes(pokemonName)) {
+        alert('正しいポケモン名を入力してください！');
+        return;
+    }
+
+    let natureSymbol = <span class="nature-symbol nature-none">-</span>;
+    if (expUp) natureSymbol = <span class="nature-symbol exp-up">↑</span>;
+    if (expDown) natureSymbol = <span class="nature-symbol exp-down">↓</span>;
+
+    const sleepBonusIcon = sleepExpBonus ? '<span class="sleep-bonus">睡ボ</span>' : '';
+
+    const pokemonData = {
+        name: pokemonName,
+        nickname: nickname || pokemonName,
+        sleepBonusIcon: sleepBonusIcon,
+        natureSymbol: natureSymbol,
+        currentLevel: isNaN(currentLevel) ? 1 : currentLevel,
+        expToNextLevel: isNaN(expToNextLevel) ? 0 : expToNextLevel,
+        totalExpNeeded: totalExpNeeded,
+        targetLevel: targetLevel,
+        memo: memo,
+        imagePath: images/${pokemonName}.png
+    };
+
+    addPokemonToList(pokemonData);
+}
+
+function addPokemonToList(pokemon) {
+    const displayArea = document.getElementById('pokemonDisplay');
+    const pokemonElement = document.createElement('div');
+    pokemonElement.className = 'pokemon-box';
+    pokemonElement.innerHTML = 
+        <img src="${pokemon.imagePath}" alt="${pokemon.name}" class="pokemon-image">
+        <p class="nickname">${pokemon.nickname}</p>
+        <p class="level">Lv.${pokemon.currentLevel} ⇒ ${pokemon.targetLevel}</p>
+        <p class="exp-next">あと ${pokemon.totalExpNeeded} exp</p>
+        <p class="exp-bonus">${pokemon.sleepBonusIcon} ${pokemon.natureSymbol}</p>
+        <p class="memo">${pokemon.memo ? pokemon.memo : ""}</p>
+    ;
+    displayArea.appendChild(pokemonElement);
+}
