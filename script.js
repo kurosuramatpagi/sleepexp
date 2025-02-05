@@ -188,11 +188,21 @@ function updateCardPreview() {
 
     const cardPreviewArea = document.getElementById('cardPreviewArea');
     cardPreviewArea.innerHTML = `
-        <img src="images/${pokemonName}.png" alt="${pokemonName}" class="pokemon-image">
-        <p class="nickname">${nickname || pokemonName}</p>
-        <p class="level">Lv.${currentLevel} ⇒ ${targetLevel}</p>
-        <p class="exp-bonus">${sleepBonusIcon} ${natureSymbol}</p>
-        <p class="memo">${memo}</p>
+        <div class="pokemon-box" style="
+            width: var(--preview-card-width, 60px); 
+            height: var(--preview-card-height, 140px); 
+            position: absolute; 
+            top: var(--preview-card-top, 10px); 
+            left: var(--preview-card-left, 300px);">
+            <img src="images/${pokemonName || 'placeholder'}.png" alt="${pokemonName}" class="pokemon-image" style="
+                width: var(--preview-image-width, 30px); 
+                height: var(--preview-image-height, 30px);">
+            <p class="nickname" style="font-size: var(--preview-text-size, 0.6em);">${nickname || pokemonName}</p>
+            <p class="level" style="font-size: var(--preview-text-size, 0.6em);">Lv.${currentLevel || 1}</p>
+            <p class="exp-next" style="font-size: var(--preview-text-size, 0.6em);">${targetLevel ? `Lv.${targetLevel}` : ''}</p>
+            <p class="exp-bonus" style="font-size: var(--preview-text-size, 0.6em);">${sleepBonusIcon} ${natureSymbol}</p>
+            <p class="memo" style="font-size: var(--preview-text-size, 0.6em);">${memo}</p>
+        </div>
     `;
     cardPreviewArea.style.display = 'block';
 }
