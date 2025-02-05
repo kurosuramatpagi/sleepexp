@@ -178,4 +178,25 @@ document.addEventListener('DOMContentLoaded', function () {
         `;
         cardPreviewArea.style.display = 'block';
     }
+
+    function registerPokemon() {
+        const pokemonName = document.getElementById('pokemonName').value.trim();
+        const nickname = document.getElementById('nickname').value.trim();
+        const currentLevel = document.getElementById('currentLevel').value;
+        const memo = document.getElementById('memo').value.trim();
+
+        if (!pokemonName) {
+            alert('ポケモン名を入力してください！');
+            return;
+        }
+
+        const pokemonData = {
+            name: pokemonName,
+            nickname: nickname || pokemonName,
+            currentLevel: currentLevel || 1,
+            memo: memo
+        };
+
+        console.log('ポケモンが登録されました:', pokemonData);
+    }
 });
