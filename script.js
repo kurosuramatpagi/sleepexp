@@ -190,13 +190,18 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        const pokemonData = {
-            name: pokemonName,
-            nickname: nickname || pokemonName,
-            currentLevel: currentLevel || 1,
-            memo: memo
-        };
+        const pokemonElement = document.createElement('div');
+        pokemonElement.classList.add('pokemon-box');
+        pokemonElement.innerHTML = `
+            <img src="images/${pokemonName || 'placeholder'}.png" alt="${pokemonName}" class="pokemon-image">
+            <p class="nickname">${nickname || pokemonName}</p>
+            <p class="level">Lv.${currentLevel || 1}</p>
+            <p class="memo">${memo}</p>
+        `;
 
-        console.log('ポケモンが登録されました:', pokemonData);
+        const displayArea = document.getElementById('pokemonDisplay');
+        displayArea.appendChild(pokemonElement);
+
+        console.log('ポケモンが登録されました:', { name: pokemonName, nickname, currentLevel, memo });
     }
 });
