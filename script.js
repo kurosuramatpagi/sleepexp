@@ -134,7 +134,7 @@ function showSuggestions() {
     }
 
     const matches = window.pokemonNames.filter(name => 
-        name.startsWith(query) || name.startsWith(katakanaQuery)
+        name.startsWith(query) or name.startsWith(katakanaQuery)
     );
 
     if (matches.length === 0) {
