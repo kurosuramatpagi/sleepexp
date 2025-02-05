@@ -536,3 +536,14 @@ button {
     margin-left: 20px; /* 情報入力エリアとの間隔 */
     display: none; /* 初期状態では非表示 */
 }
+
+addButton.addEventListener('click', function() {
+    console.log("追加ボタンが押されたよ！");  // クリック確認
+    formContainer.style.display = 'block';
+    popupOverlay.style.display = 'block';
+    pokemonDisplay.style.display = 'flex';
+
+    console.log("formContainerの表示状態:", formContainer.style.display);
+    console.log("popupOverlayの表示状態:", popupOverlay.style.display);
+    console.log("pokemonDisplayの表示状態:", pokemonDisplay.style.display);
+});
