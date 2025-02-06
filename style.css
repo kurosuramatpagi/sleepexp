@@ -554,3 +554,7 @@ addButton.addEventListener('click', function() {
     width: var(--preview-card-width, 120px);
     height: var(--preview-card-height, 240px);
 }
+
+#formContainer {
+    z-index: 1100; /* ✅ 情報入力エリアをさらに上にして、グレーがかからないように */
+}
