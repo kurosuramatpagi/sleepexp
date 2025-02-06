@@ -27,7 +27,7 @@ cardPreviewArea.style.width = '80px';  // 幅
     cardPreviewArea.style.height = '160px'; // 高さ
     cardPreviewArea.style.top = '50px';  // Y座標
     cardPreviewArea.style.left = '250px'; // X座標
-cardPreviewArea.style.display = 'none'
+cardPreviewArea.style.display = 'none';
     popupOverlay.style.display = 'none';
 
     boxButton.addEventListener('click', function() {
@@ -165,8 +165,7 @@ cardPreviewArea.style.display = 'none'
 
         const sleepBonusIcon = sleepExpBonus ? '<span class="sleep-bonus">睡ボ</span>' : '';
 
-        cardPreviewArea.innerHTML = `
-             cardPreviewArea.innerHTML = `
+       cardPreviewArea.innerHTML = `
         <div class="pokemon-box">
             <img src="images/${pokemonName || 'placeholder'}.png" alt="${pokemonName}" class="pokemon-image">
             <p class="nickname">${nickname || pokemonName}</p>
