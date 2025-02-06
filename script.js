@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function () {
 const expToNextLevelInput = document.getElementById('expToNextLevel');
 expToNextLevelInput.parentElement.appendChild(cardPreviewArea);
 cardPreviewArea.style.position = 'absolute';
-    cardPreviewArea.style.top = '60px';  // Y座標
-    cardPreviewArea.style.left = '180px'; // X座標
+    cardPreviewArea.style.top = '-60px';  // Y座標
+    cardPreviewArea.style.left = '210px'; // X座標
 cardPreviewArea.style.display = 'none';
     popupOverlay.style.display = 'none';
 
