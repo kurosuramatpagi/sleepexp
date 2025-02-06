@@ -275,7 +275,7 @@ function registerPokemon() {
         <img src="images/${pokemonName}.png" alt="${pokemonName}" class="pokemon-image">
         <p class="nickname">${nickname || pokemonName}</p>
         <p class="level">Lv${currentLevel} ⇒ ${targetLevel}</p>
-        <p class="exp-next">あと ${totalExpNeeded} exp</p>
+        <p class="exp-next">あと <strong>${totalExpNeeded}</strong> exp</p>
         <p class="memo">${memo}</p>
     `;
 
