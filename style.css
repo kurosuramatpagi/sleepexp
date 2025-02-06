@@ -589,18 +589,18 @@ addButton.addEventListener('click', function() {
 
 /* 編集エリアのスタイル定義 */
 .edit-area {
-    width: 80%; /* 情報入力エリアと同じ横幅 */
-    height: 50%; /* 情報入力エリアの縦幅の半分 */
-    margin: 20px auto; /* 中央揃え、上下マージンは20px */
-    padding: 20px; /* 内部の余白 */
-    background-color: #ffffff; /* 背景色は白 */
-    border: 1px solid #ccc; /* 境界線は薄い灰色 */
+    position: fixed;  /* 位置を固定 */
+    top: 50px;  /* メニューバーの高さ分だけ下に設定 */
+    width: 80%; /* 幅を指定 */
+    height: calc(50% - 50px); /* メニューバーの高さを引いた半分の高さ */
+    margin: auto;  /* 中央揃え */
+    left: 10%; /* 左右中央に来るように設定 */
+    background-color: #ffffff; /* 背景色 */
+    border: 1px solid #ccc; /* 境界線 */
     border-radius: 10px; /* 角の丸み */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* ソフトな影 */
-    display: flex; /* Flexboxで内部要素を配置 */
-    flex-direction: column; /* 子要素を縦に並べる */
-    justify-content: space-around; /* 子要素の間に均等なスペースを配置 */
-    align-items: center; /* 子要素を中央揃え */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 影 */
+    z-index: 100; /* 他の要素より前面に表示 */
+    overflow: auto; /* 内容が多い場合はスクロール可能に */
 }
 
 /* 編集エリア内の各要素スタイル */
