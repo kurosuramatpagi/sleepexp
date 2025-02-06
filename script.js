@@ -165,8 +165,14 @@ cardPreviewArea.style.display = 'none';
 
         // ✅ 目標レベルまでの総経験値を計算
     let totalExpNeeded = 0;
+
     if (targetLevel > currentLevel) {
-        totalExpNeeded = baseExpTable[targetLevel] - baseExpTable[currentLevel];
+        totalExpNeeded += expToNextLevel; // まず現在のレベルの「次のレベルまでの経験値」を加算
+
+        // 現在レベル +1 から 目標レベルまでの経験値を加算
+        for (let lvl = currentLevel + 1; lvl < targetLevel; lvl++) {
+            totalExpNeeded += baseExpTable[lvl + 1] - baseExpTable[lvl];
+        }
     }
 
     // ✅ **カードのHTML**
