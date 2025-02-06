@@ -286,7 +286,7 @@ function registerPokemon() {
     pokemonElement.innerHTML = `
         <img src="images/${pokemonName}.png" alt="${pokemonName}" class="pokemon-image">
         <p class="nickname">${nickname || pokemonName}</p>
-        <p class="level">Lv${currentLevel} ⇒ ${targetLevel}</p>
+        <p class="level">Lv&nbsp;${currentLevel} ⇒ ${targetLevel}</p>
         <p class="exp-next">あと <strong>${totalExpNeeded}</strong> exp</p>
         <div class="exp-bonus-container">
             ${sleepBonusIcon}
