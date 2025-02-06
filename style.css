@@ -172,6 +172,9 @@ button {
     padding-top: var(--card-item-spacing, 1px); /* 内部の余白も調整 */
     padding-bottom: var(--card-item-spacing, 1px); /* 内部の余白も調整 */
 }
+.pokemon-box .sleep-bonus,
+.pokemon-box .nature-symbol,
+
 
 /* 名前（ニックネーム）を太字 */
 .pokemon-box .nickname {
