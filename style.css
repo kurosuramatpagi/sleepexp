@@ -153,6 +153,7 @@ button {
     font-size: 0.6em;
     display: flex;
     flex-direction: column;
+    line-height: 1.2;
     align-items: center;
     justify-content: space-between;
 }
