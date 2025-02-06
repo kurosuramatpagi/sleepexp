@@ -266,3 +266,23 @@ function registerPokemon() {
 
     console.log('ポケモンが登録されました:', { name: pokemonName, nickname, currentLevel, memo });
 }
+
+function openForm() {
+    formContainer.style.display = 'block';
+    popupOverlay.style.display = 'block';
+    pokemonDisplay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // ✅ 「＋」ボタンを半透明にする
+    addButton.style.opacity = '0.5';
+}
+
+function closeForm() {
+    formContainer.style.display = 'none';
+    popupOverlay.style.display = 'none';
+    cardPreviewArea.style.display = 'none';
+    document.body.style.overflow = '';
+
+    // ✅ 「＋」ボタンを元の透明度に戻す
+    addButton.style.opacity = '1';
+}
