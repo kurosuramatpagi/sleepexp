@@ -23,9 +23,10 @@ document.addEventListener('DOMContentLoaded', function () {
 const expToNextLevelInput = document.getElementById('expToNextLevel');
 expToNextLevelInput.parentElement.appendChild(cardPreviewArea);
 cardPreviewArea.style.position = 'absolute';
-cardPreviewArea.style.right = '10px';
-cardPreviewArea.style.top = '50%';
-cardPreviewArea.style.transform = 'translateY(-50%)';
+cardPreviewArea.style.width = '80px';  // 幅
+    cardPreviewArea.style.height = '160px'; // 高さ
+    cardPreviewArea.style.top = '50px';  // Y座標
+    cardPreviewArea.style.left = '250px'; // X座標
 cardPreviewArea.style.display = 'none'
     popupOverlay.style.display = 'none';
 
@@ -165,23 +166,16 @@ cardPreviewArea.style.display = 'none'
         const sleepBonusIcon = sleepExpBonus ? '<span class="sleep-bonus">睡ボ</span>' : '';
 
         cardPreviewArea.innerHTML = `
-            <div class="pokemon-box" style="
-                width: var(--preview-card-width, 60px);
-                height: var(--preview-card-height, 140px);
-                position: absolute;
-                top: var(--preview-card-top, -150px);
-                left: var(--preview-card-left, 10px);
-                z-index: 1001;">
-                <img src="images/${pokemonName || 'placeholder'}.png" alt="${pokemonName}" class="pokemon-image" style="
-                    width: var(--preview-image-width, 30px);
-                    height: var(--preview-image-height, 30px);">
-                <p class="nickname" style="font-size: var(--preview-text-size, 0.6em);">${nickname || pokemonName}</p>
-                <p class="level" style="font-size: var(--preview-text-size, 0.6em);">Lv.${currentLevel || 1}</p>
-                <p class="exp-next" style="font-size: var(--preview-text-size, 0.6em);">Lv.${targetLevel || ''}</p>
-                <p class="exp-bonus" style="font-size: var(--preview-text-size, 0.6em);">${sleepBonusIcon} ${natureSymbol}</p>
-                <p class="memo" style="font-size: var(--preview-text-size, 0.6em);">${memo}</p>
-            </div>
-        `;
+             cardPreviewArea.innerHTML = `
+        <div class="pokemon-box">
+            <img src="images/${pokemonName || 'placeholder'}.png" alt="${pokemonName}" class="pokemon-image">
+            <p class="nickname">${nickname || pokemonName}</p>
+            <p class="level">Lv.${currentLevel || 1}</p>
+            <p class="exp-next">Lv.${targetLevel || ''}</p>
+            <p class="exp-bonus">${sleepBonusIcon} ${natureSymbol}</p>
+            <p class="memo">${memo}</p>
+        </div>
+    `;
         cardPreviewArea.style.display = 'block';
     }
 
