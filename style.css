@@ -590,7 +590,7 @@ addButton.addEventListener('click', function() {
 /* 編集エリアのスタイル定義 */
 .edit-area {
     position: fixed;  /* 位置を固定 */
-    top: 150px;  /* メニューバーの高さ分だけ下に設定 */
+    top: 200px;  /* メニューバーの高さ分だけ下に設定 */
     width: 80%; /* 幅を指定 */
     height: 50%
     margin: auto;  /* 中央揃え */
