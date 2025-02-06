@@ -48,6 +48,10 @@ cardPreviewArea.style.display = 'none';
     document.body.style.overflow = 'hidden';  // ✅ `body` もスクロール禁止
     document.body.style.height = '100%';  // ✅ 高さを固定
     document.body.style.touchAction = 'none';  // ✅ モバイルでのスクロール防止
+    window.scrollTo(0, 0);  // ✅ **強制的にスクロール位置をトップに戻す**
+
+    // ✅ iOSの「ホームに追加」した際もスクロール禁止にする
+    document.addEventListener('touchmove', preventScroll, { passive: false });
     });
 
     closeFormBtn.addEventListener('click', closeForm);
@@ -61,6 +65,14 @@ cardPreviewArea.style.display = 'none';
     document.body.style.overflow = '';  // ✅ `body` のスクロール復活
     document.body.style.height = '';  // ✅ 高さ制限解除
     document.body.style.touchAction = '';  // ✅ タッチ操作を元に戻す
+
+    // ✅ スクロール禁止解除
+    document.removeEventListener('touchmove', preventScroll);
+}
+
+// ✅ スクロールを防ぐ関数（モバイル用）
+function preventScroll(event) {
+    event.preventDefault();
     }
 
     fetch('special_patterns.json')
