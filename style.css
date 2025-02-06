@@ -172,6 +172,32 @@ button {
     padding-top: var(--card-item-spacing, 1px); /* 内部の余白も調整 */
     padding-bottom: var(--card-item-spacing, 1px); /* 内部の余白も調整 */
 }
+
+/* 名前（ニックネーム）を太字 */
+.pokemon-box .nickname {
+    font-weight: bold;
+}
+
+/* Lvを太字 */
+.pokemon-box .level {
+    font-weight: bold;
+}
+
+/* 「あと○○exp」の○○部分だけ太字 */
+.pokemon-box .exp-next {
+    font-weight: normal;
+}
+
+.pokemon-box .exp-next strong {
+    font-weight: bold;  /* ○○部分だけ太字 */
+}
+
+/* カード内左右の余白を広げる */
+.pokemon-box {
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
 /* 「睡ボ」のフォントを標準に変更 */
 .sleep-bonus {
     display: inline-block;
