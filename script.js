@@ -163,8 +163,8 @@ cardPreviewArea.style.display = 'none';
 
     // 未入力時は「そのレベルから次のレベルに必要なEXPを取得」
   let currentExpToNext = parseInt(expToNextLevelInput.value, 10);
-    if (isNaN(currentExpToNext) || currentExpToNext <= 0) {
-        currentExpToNext = (baseExpTable[currentLevelNum + 1] || 0) - (baseExpTable[currentLevelNum] || 0);
+    if (isNaN(currentExpToNext)) {
+        currentExpToNext = baseExpTable[currentLevelNum + 1] - baseExpTable[currentLevelNum] || 0;
     }
 
     if (targetLevelNum > currentLevelNum) {
@@ -172,7 +172,7 @@ cardPreviewArea.style.display = 'none';
 
         // 現在レベル +1 から 目標レベルまでの経験値を加算
         for (let lvl = currentLevelNum + 1; lvl < targetLevelNum; lvl++) {
-            totalExpNeeded += (baseExpTable[lvl + 1] || 0) - (baseExpTable[lvl] || 0);
+            totalExpNeeded += baseExpTable[lvl + 1] - baseExpTable[lvl];
         }
     }
     // ✅ **カードのHTML**
