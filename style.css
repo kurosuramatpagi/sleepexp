@@ -528,8 +528,8 @@ button {
 }
 
 .card-preview-area {
-    width: auto;
-    max-width: 150px;  /* この制約が影響している可能性あり */
+    width: var(--preview-card-width, 240px);
+    height: var(--preview-card-height, 480px);
     padding: 10px;
      border: none;
     border-radius: 10px;
