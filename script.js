@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
 const expToNextLevelInput = document.getElementById('expToNextLevel');
 expToNextLevelInput.parentElement.appendChild(cardPreviewArea);
 cardPreviewArea.style.position = 'absolute';
-    cardPreviewArea.style.top = '-260px';  // Y座標
+    cardPreviewArea.style.top = '-360px';  // Y座標
     cardPreviewArea.style.left = '210px'; // X座標
 cardPreviewArea.style.display = 'none';
     popupOverlay.style.display = 'none';
@@ -179,6 +179,26 @@ if (cardPreviewBox) {
     cardPreviewBox.style.width = '120px';
     cardPreviewBox.style.height = '240px';
 }
+
+       // ✅ **カードプレビュー内の画像と文字のサイズを変更**
+    const cardPreviewBox = cardPreviewArea.querySelector('.pokemon-box');
+    if (cardPreviewBox) {
+        const image = cardPreviewBox.querySelector('.pokemon-image');
+        const texts = cardPreviewBox.querySelectorAll('p');
+
+        // ✅ 画像サイズを変更
+        image.style.width = '50px';  // 画像の幅
+        image.style.height = '50px'; // 画像の高さ
+
+        // ✅ 文字サイズを変更
+        texts.forEach(text => {
+            text.style.fontSize = '14px'; // 文字サイズ（大きさは調整可）
+        });
+
+        // ✅ **カードのサイズ変更（プレビュー全体の枠）**
+        cardPreviewBox.style.width = '140px';  // カードの幅
+        cardPreviewBox.style.height = '220px'; // カードの高さ
+    }
     }
 
     function registerPokemon() {
