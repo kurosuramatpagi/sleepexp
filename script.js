@@ -163,9 +163,9 @@ cardPreviewArea.style.display = 'none';
         return;
     }
 
-    // `expToNextLevel` の未記入チェック
+    // `expToNextLevelInput` の未記入チェック
     let currentExpToNext = parseInt(expToNextLevelInput.value, 10);
-    if (isNaN(currentExpToNext)) {
+    if (isNaN(currentExpToNext) && currentLevel < 60) {
         currentExpToNext = baseExpTable[currentLevel + 1] - baseExpTable[currentLevel] || 0;
     }
 
@@ -177,7 +177,10 @@ cardPreviewArea.style.display = 'none';
         }
     }
 
-    // カードの HTML 更新
+    // **表示前に `display = 'block'` を適用**
+    cardPreviewArea.style.display = 'block';
+
+    // **カードの HTML 更新**
     cardPreviewArea.innerHTML = `
         <div class="pokemon-box">
             <img src="images/${pokemonName}.png" alt="${pokemonName}" class="pokemon-image">
@@ -192,9 +195,6 @@ cardPreviewArea.style.display = 'none';
             <p class="memo">${memo}</p>
         </div>
     `;
-
-    // `display` を `block` にする
-    cardPreviewArea.style.display = 'block';
 
     // **カードプレビュー内の画像と文字のサイズを変更**
     const cardPreviewBox = cardPreviewArea.querySelector('.pokemon-box');
@@ -214,3 +214,4 @@ cardPreviewArea.style.display = 'none';
 
     console.log("カードプレビュー更新完了:", cardPreviewArea);
 }
+
