@@ -23,10 +23,10 @@ document.addEventListener('DOMContentLoaded', function () {
 const expToNextLevelInput = document.getElementById('expToNextLevel');
 expToNextLevelInput.parentElement.appendChild(cardPreviewArea);
 cardPreviewArea.style.position = 'absolute';
-cardPreviewArea.style.width = '80px';  // 幅
-    cardPreviewArea.style.height = '160px'; // 高さ
-    cardPreviewArea.style.top = '50px';  // Y座標
-    cardPreviewArea.style.left = '250px'; // X座標
+cardPreviewArea.style.width = '120px';  // 幅
+    cardPreviewArea.style.height = '240px'; // 高さ
+    cardPreviewArea.style.top = '30px';  // Y座標
+    cardPreviewArea.style.left = '200px'; // X座標
 cardPreviewArea.style.display = 'none';
     popupOverlay.style.display = 'none';
 
