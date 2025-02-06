@@ -632,13 +632,11 @@ addButton.addEventListener('click', function() {
     overflow-y: auto;
 }
 
-/* 背景色と同じ色のレイヤーのCSS (必要に応じて調整) */
-.same-color-layer {
-    display: block;
-    position: absolute;
-    top: 0;
+.cover {
     width: 100%;
-    height: 50px; /* 必要に応じて調整 */
-    background: #fff6e4; /* 背景色と同じ */
-    z-index: 50; /* contentより低いが、fixed-headerよりは高い */
+    background: #fff6e4; /* 背景色と同じ色 */
+    position: absolute;
+    bottom: 0; /* 固定エリアの最下部に配置 */
+    height: 1px; /* 1ピクセルの高さ */
+    z-index: 101; /* 固定エリアよりも少し高いz-indexでカードが見えないようにする */
 }
