@@ -163,14 +163,16 @@ cardPreviewArea.style.display = 'none';
 
         const sleepBonusIcon = sleepExpBonus ? '<span class="sleep-bonus">睡ボ</span>' : '';
 
-        // ✅ 目標レベルまでの総経験値を計算
-    let totalExpNeeded = 0;
+        let totalExpNeeded = 0;
+    const currentLevelNum = parseInt(currentLevel, 10);
+    const targetLevelNum = parseInt(targetLevel, 10);
+    const currentExpToNext = parseInt(expToNextLevelInput.value, 10);
 
-    if (targetLevel > currentLevel) {
-        totalExpNeeded += expToNextLevel; // まず現在のレベルの「次のレベルまでの経験値」を加算
+    if (targetLevelNum > currentLevelNum) {
+        totalExpNeeded += currentExpToNext; // 現在のレベルの「次のレベルまでの経験値」を加算
 
         // 現在レベル +1 から 目標レベルまでの経験値を加算
-        for (let lvl = currentLevel + 1; lvl < targetLevel; lvl++) {
+        for (let lvl = currentLevelNum + 1; lvl < targetLevelNum; lvl++) {
             totalExpNeeded += baseExpTable[lvl + 1] - baseExpTable[lvl];
         }
     }
