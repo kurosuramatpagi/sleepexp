@@ -250,7 +250,10 @@ function registerPokemon() {
     const targetLevel = targetLevelElement ? parseInt(targetLevelElement.getAttribute('data-level'), 10) : currentLevel;
     const expToNextLevel = parseInt(document.getElementById('expToNextLevel').value, 10) || (baseExpTable[currentLevel + 1] - baseExpTable[currentLevel]) || 0;
     const memo = document.getElementById('memo').value.trim();
-    
+    const sleepExpBonus = document.getElementById('sleepExpBonusBtn').classList.contains('active');
+    const expUp = document.getElementById('expUpBtn').classList.contains('active');
+    const expDown = document.getElementById('expDownBtn').classList.contains('active');
+
     if (!pokemonName) {
         alert('ポケモン名を入力してください！');
         return;
@@ -264,6 +267,13 @@ function registerPokemon() {
         }
     }
 
+    // ✅ 「睡ボアイコン」と「性格アイコン」の表示ロジック
+    const sleepBonusIcon = sleepExpBonus ? `<span class="sleep-bonus">睡ボ</span>` : "";
+    let natureSymbol = `<span class="nature-symbol nature-none">-</span>`;
+    if (expUp) natureSymbol = `<span class="nature-symbol exp-up">↑</span>`;
+    if (expDown) natureSymbol = `<span class="nature-symbol exp-down">↓</span>`;
+
+    // ✅ **ポケモンカードのHTMLを修正**
     const pokemonElement = document.createElement('div');
     pokemonElement.classList.add('pokemon-box');
     pokemonElement.setAttribute('data-name', pokemonName);
