@@ -183,8 +183,8 @@ cardPreviewArea.style.display = 'none';
         const texts = cardPreviewBox.querySelectorAll('p');
 
         // ✅ 画像サイズを変更
-        image.style.width = '80px';  // 画像の幅
-        image.style.height = '65px'; // 画像の高さ
+        image.style.width = '70px';  // 画像の幅
+        image.style.height = '70px'; // 画像の高さ
 
         // ✅ 文字サイズを変更
         texts.forEach(text => {
