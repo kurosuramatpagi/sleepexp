@@ -20,7 +20,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const popupOverlay = document.getElementById('popupOverlay');
     const closeFormBtn = document.getElementById('closeFormBtn');
     const cardPreviewArea = document.getElementById('cardPreviewArea');
-
+const expToNextLevelInput = document.getElementById('expToNextLevel');
+expToNextLevelInput.parentElement.appendChild(cardPreviewArea);
+cardPreviewArea.style.position = 'absolute';
+cardPreviewArea.style.right = '10px';
+cardPreviewArea.style.top = '50%';
+cardPreviewArea.style.transform = 'translateY(-50%)';
+cardPreviewArea.style.display = 'none'
     popupOverlay.style.display = 'none';
 
     boxButton.addEventListener('click', function() {
