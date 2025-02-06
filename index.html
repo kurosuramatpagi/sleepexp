@@ -11,6 +11,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 </head>
 <body>
+ <div class="fixed-area"> <!-- すべての固定コンテンツをこのdiv内に含めます -->
     <div class="banner">
         <h1>ポケスリ育成支援ツール</h1>
     </div>
@@ -20,7 +21,20 @@
         <button class="nav-button" id="sleepCalcButton">睡眠計算</button>
         <div class="empty-space"></div> <!-- 右半分の空白を確保 -->
     </div>
+      <!-- 編集エリア -->
+<div class="edit-area">
+    <!-- 編集エリア内の具体的な内容 -->
+    <div class="edit-item">ポケモン名</div>
+    <div class="edit-item">レベル</div>
+    <div class="edit-item">ニックネーム</div>
+    <!-- その他の編集可能な属性 -->
+</div>
+     <div class="fixed-area">
+    <!-- 既存の固定エリアコンテンツ -->
+    <div class="cover" style="height: 1px; background-color: #fff6e4;"></div> <!-- 1pxの高さの覆いを追加 -->
+</div>
 
+</div>
     <!-- ポップアップ用の背景 -->
     <div id="popupOverlay" class="popup-overlay"></div>
 
@@ -81,14 +95,7 @@
     <script type="module" src="script.js"></script>
 
     <script src="js/editArea.js" type="module"></script>
-    <!-- 編集エリア -->
-<div class="edit-area">
-    <!-- 編集エリア内の具体的な内容 -->
-    <div class="edit-item">ポケモン名</div>
-    <div class="edit-item">レベル</div>
-    <div class="edit-item">ニックネーム</div>
-    <!-- その他の編集可能な属性 -->
-</div>
+   
 
 </body>
 </html>
