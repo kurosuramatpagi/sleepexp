@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
 const expToNextLevelInput = document.getElementById('expToNextLevel');
 expToNextLevelInput.parentElement.appendChild(cardPreviewArea);
 cardPreviewArea.style.position = 'absolute';
-    cardPreviewArea.style.top = '-360px';  // Y座標
+    cardPreviewArea.style.top = '-320px';  // Y座標
     cardPreviewArea.style.left = '210px'; // X座標
 cardPreviewArea.style.display = 'none';
     popupOverlay.style.display = 'none';
@@ -183,12 +183,12 @@ cardPreviewArea.style.display = 'none';
         const texts = cardPreviewBox.querySelectorAll('p');
 
         // ✅ 画像サイズを変更
-        image.style.width = '50px';  // 画像の幅
-        image.style.height = '50px'; // 画像の高さ
+        image.style.width = '80px';  // 画像の幅
+        image.style.height = '80px'; // 画像の高さ
 
         // ✅ 文字サイズを変更
         texts.forEach(text => {
-            text.style.fontSize = '14px'; // 文字サイズ（大きさは調整可）
+            text.style.fontSize = '16px'; // 文字サイズ（大きさは調整可）
         });
 
         // ✅ **カードのサイズ変更（プレビュー全体の枠）**
