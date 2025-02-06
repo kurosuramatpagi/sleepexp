@@ -174,11 +174,7 @@ cardPreviewArea.style.display = 'none';
         </div>
     `;
         cardPreviewArea.style.display = 'block';
-      const cardPreviewBox = cardPreviewArea.querySelector('.pokemon-box');
-if (cardPreviewBox) {
-    cardPreviewBox.style.width = '120px';
-    cardPreviewBox.style.height = '240px';
-}
+      
 
        // ✅ **カードプレビュー内の画像と文字のサイズを変更**
     const cardPreviewBox = cardPreviewArea.querySelector('.pokemon-box');
@@ -196,8 +192,8 @@ if (cardPreviewBox) {
         });
 
         // ✅ **カードのサイズ変更（プレビュー全体の枠）**
-        cardPreviewBox.style.width = '140px';  // カードの幅
-        cardPreviewBox.style.height = '220px'; // カードの高さ
+        cardPreviewBox.style.width = '120px';  // カードの幅
+        cardPreviewBox.style.height = '240px'; // カードの高さ
     }
     }
 
