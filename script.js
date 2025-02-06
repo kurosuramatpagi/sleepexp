@@ -23,8 +23,11 @@ document.addEventListener('DOMContentLoaded', function () {
 const expToNextLevelInput = document.getElementById('expToNextLevel');
 expToNextLevelInput.parentElement.appendChild(cardPreviewArea);
 cardPreviewArea.style.position = 'absolute';
-cardPreviewArea.style.width = '120px';  // 幅
-    cardPreviewArea.style.height = '240px'; // 高さ
+const cardPreviewBox = cardPreviewArea.querySelector('.pokemon-box');
+if (cardPreviewBox) {
+    cardPreviewBox.style.width = '120px';
+    cardPreviewBox.style.height = '240px';
+}
     cardPreviewArea.style.top = '30px';  // Y座標
     cardPreviewArea.style.left = '200px'; // X座標
 cardPreviewArea.style.display = 'none';
