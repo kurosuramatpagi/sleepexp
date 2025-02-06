@@ -163,13 +163,23 @@ cardPreviewArea.style.display = 'none';
 
         const sleepBonusIcon = sleepExpBonus ? '<span class="sleep-bonus">睡ボ</span>' : '';
 
-       cardPreviewArea.innerHTML = `
+        // ✅ 目標レベルまでの総経験値を計算
+    let totalExpNeeded = 0;
+    if (targetLevel > currentLevel) {
+        totalExpNeeded = baseExpTable[targetLevel] - baseExpTable[currentLevel];
+    }
+
+    // ✅ **カードのHTML**
+    cardPreviewArea.innerHTML = `
         <div class="pokemon-box">
             <img src="images/${pokemonName || 'placeholder'}.png" alt="${pokemonName}" class="pokemon-image">
             <p class="nickname">${nickname || pokemonName}</p>
-            <p class="level">Lv.${currentLevel || 1}</p>
-            <p class="exp-next">Lv.${targetLevel || ''}</p>
-            <p class="exp-bonus">${sleepBonusIcon} ${natureSymbol}</p>
+            <p class="level">Lv${currentLevel} ⇒ ${targetLevel}</p>
+            <p class="exp-next">あと ${totalExpNeeded} exp</p>
+            <div class="exp-bonus-container">
+                <span class="sleep-bonus">${sleepBonusIcon}</span>
+                <span class="nature-symbol">${natureSymbol}</span>
+            </div>
             <p class="memo">${memo}</p>
         </div>
     `;
