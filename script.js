@@ -218,3 +218,5 @@ cardPreviewArea.style.display = 'none';
 
     console.log("カードプレビュー更新完了:", cardPreviewArea);
 }
+
+  });
