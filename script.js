@@ -220,3 +220,29 @@ cardPreviewArea.style.display = 'none';
 }
 
   });
+
+function registerPokemon() {
+    const pokemonName = document.getElementById('pokemonName').value.trim();
+    const nickname = document.getElementById('nickname').value.trim();
+    const currentLevel = parseInt(document.getElementById('currentLevel').value, 10) || 1;
+    const memo = document.getElementById('memo').value.trim();
+
+    if (!pokemonName) {
+        alert('ポケモン名を入力してください！');
+        return;
+    }
+
+    const pokemonElement = document.createElement('div');
+    pokemonElement.classList.add('pokemon-box');
+    pokemonElement.innerHTML = `
+        <img src="images/${pokemonName}.png" alt="${pokemonName}" class="pokemon-image">
+        <p class="nickname">${nickname || pokemonName}</p>
+        <p class="level">Lv.${currentLevel}</p>
+        <p class="memo">${memo}</p>
+    `;
+
+    const displayArea = document.getElementById('pokemonDisplay');
+    displayArea.appendChild(pokemonElement);
+
+    console.log('ポケモンが登録されました:', { name: pokemonName, nickname, currentLevel, memo });
+}
