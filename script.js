@@ -157,10 +157,6 @@ cardPreviewArea.style.display = 'none';
         const expDown = expDownBtn.classList.contains('active');
         const memo = document.getElementById('memo').value.trim();
 
-          let totalExpNeeded = 0;
-    const currentLevelNum = parseInt(currentLevel, 10);
-    const targetLevelNum = parseInt(targetLevel, 10);
-
     // 未入力時は「そのレベルから次のレベルに必要なEXPを取得」
  let totalExpNeeded = 0;
     const currentLevelNum = parseInt(currentLevel, 10);
