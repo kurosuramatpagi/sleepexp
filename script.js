@@ -44,7 +44,10 @@ cardPreviewArea.style.display = 'none';
         formContainer.style.display = 'block';
         popupOverlay.style.display = 'block';
         pokemonDisplay.style.display = 'flex';
-      document.body.style.overflow = 'hidden';  // ✅ スクロール禁止
+      document.documentElement.style.overflow = 'hidden';  // ✅ `html` もスクロール禁止
+    document.body.style.overflow = 'hidden';  // ✅ `body` もスクロール禁止
+    document.body.style.height = '100%';  // ✅ 高さを固定
+    document.body.style.touchAction = 'none';  // ✅ モバイルでのスクロール防止
     });
 
     closeFormBtn.addEventListener('click', closeForm);
@@ -54,7 +57,10 @@ cardPreviewArea.style.display = 'none';
         formContainer.style.display = 'none';
         popupOverlay.style.display = 'none';
         cardPreviewArea.style.display = 'none';
-      document.body.style.overflow = '';  // ✅ スクロール復活
+      document.documentElement.style.overflow = '';  // ✅ `html` のスクロール復活
+    document.body.style.overflow = '';  // ✅ `body` のスクロール復活
+    document.body.style.height = '';  // ✅ 高さ制限解除
+    document.body.style.touchAction = '';  // ✅ タッチ操作を元に戻す
     }
 
     fetch('special_patterns.json')
