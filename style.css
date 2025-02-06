@@ -533,7 +533,7 @@ button {
     padding: 10px;
      border: none;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: none;
     margin-left: 20px; /* 情報入力エリアとの間隔 */
     display: none; /* 初期状態では非表示 */
     display: inline-block; /* block だと幅を取る可能性があるので修正 */
