@@ -131,40 +131,51 @@ function preventScroll(event) {
         updateCardPreview();
     });
 
-    function showSuggestions() {
-        const input = document.getElementById('pokemonName');
-        const suggestionBox = document.getElementById('suggestionBox');
-        const query = input.value.trim();
+    // ひらがなをカタカナに変換する関数
+function toKatakana(str) {
+    return str.replace(/[\u3041-\u3096]/g, ch => String.fromCharCode(ch.charCodeAt(0) + 0x60));
+}
 
-        if (!query) {
-            suggestionBox.innerHTML = '';
-            suggestionBox.style.display = 'none';
-            return;
-        }
+function showSuggestions() {
+    const input = document.getElementById('pokemonName');
+    const suggestionBox = document.getElementById('suggestionBox');
+    let query = input.value.trim();
 
-        const matches = window.pokemonNames.filter(name => name.startsWith(query));
-
-        if (matches.length === 0) {
-            suggestionBox.innerHTML = '';
-            suggestionBox.style.display = 'none';
-            return;
-        }
-
+    if (!query) {
         suggestionBox.innerHTML = '';
-        matches.forEach(match => {
-            const suggestion = document.createElement('div');
-            suggestion.textContent = match;
-            suggestion.onclick = () => {
-                input.value = match;
-                suggestionBox.innerHTML = '';
-                suggestionBox.style.display = 'none';
-                updateCardPreview();
-            };
-            suggestionBox.appendChild(suggestion);
-        });
-
-        suggestionBox.style.display = 'block';
+        suggestionBox.style.display = 'none';
+        return;
     }
+
+    // 入力がひらがなならカタカナに変換
+    query = toKatakana(query);
+
+    // ポケモン名リストをカタカナで検索
+    const matches = window.pokemonNames.filter(name => name.startsWith(query));
+
+    if (matches.length === 0) {
+        suggestionBox.innerHTML = '';
+        suggestionBox.style.display = 'none';
+        return;
+    }
+
+    // サジェストの更新
+    suggestionBox.innerHTML = '';
+    matches.forEach(match => {
+        const suggestion = document.createElement('div');
+        suggestion.textContent = match;
+        suggestion.onclick = () => {
+            input.value = match;
+            suggestionBox.innerHTML = '';
+            suggestionBox.style.display = 'none';
+            updateCardPreview();
+        };
+        suggestionBox.appendChild(suggestion);
+    });
+
+    suggestionBox.style.display = 'block';
+}
+
 
    function updateCardPreview() {
     const pokemonName = document.getElementById('pokemonName').value.trim() || '???';
