@@ -241,31 +241,54 @@ function preventScroll(event) {
 
   });
 
+// カードエリアのカードをカードプレビューのカードに合わせる
 function registerPokemon() {
     const pokemonName = document.getElementById('pokemonName').value.trim();
     const nickname = document.getElementById('nickname').value.trim();
     const currentLevel = parseInt(document.getElementById('currentLevel').value, 10) || 1;
+    const targetLevelElement = document.querySelector('.target-btn.selected');
+    const targetLevel = targetLevelElement ? parseInt(targetLevelElement.getAttribute('data-level'), 10) : currentLevel;
+    const expToNextLevel = parseInt(document.getElementById('expToNextLevel').value, 10) || (baseExpTable[currentLevel + 1] - baseExpTable[currentLevel]) || 0;
     const memo = document.getElementById('memo').value.trim();
-
+    
     if (!pokemonName) {
         alert('ポケモン名を入力してください！');
         return;
     }
 
+    let totalExpNeeded = 0;
+    if (targetLevel > currentLevel) {
+        totalExpNeeded += expToNextLevel;
+        for (let lvl = currentLevel + 1; lvl < targetLevel; lvl++) {
+            totalExpNeeded += (baseExpTable[lvl + 1] - baseExpTable[lvl]) || 0;
+        }
+    }
+
     const pokemonElement = document.createElement('div');
     pokemonElement.classList.add('pokemon-box');
+    pokemonElement.setAttribute('data-name', pokemonName);
+    pokemonElement.setAttribute('data-level', currentLevel);
+    pokemonElement.setAttribute('data-target-level', targetLevel);
+    pokemonElement.setAttribute('data-exp-needed', totalExpNeeded);
+
     pokemonElement.innerHTML = `
         <img src="images/${pokemonName}.png" alt="${pokemonName}" class="pokemon-image">
         <p class="nickname">${nickname || pokemonName}</p>
-        <p class="level">Lv.${currentLevel}</p>
+        <p class="level">Lv${currentLevel} ⇒ ${targetLevel}</p>
+        <p class="exp-next">あと ${totalExpNeeded} exp</p>
         <p class="memo">${memo}</p>
     `;
 
-    const displayArea = document.getElementById('pokemonDisplay');
-    displayArea.appendChild(pokemonElement);
+    pokemonElement.addEventListener('click', function() {
+        console.log(`ポケモン ${pokemonName} を選択しました`);
+        // ここに飴を与える、睡眠計測の処理を追加予定
+    });
 
-    console.log('ポケモンが登録されました:', { name: pokemonName, nickname, currentLevel, memo });
+    document.getElementById('pokemonDisplay').appendChild(pokemonElement);
+
+    console.log('ポケモンが登録されました:', { name: pokemonName, nickname, currentLevel, targetLevel, totalExpNeeded, memo });
 }
+
 
 function openForm() {
     formContainer.style.display = 'block';
