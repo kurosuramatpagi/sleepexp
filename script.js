@@ -267,6 +267,8 @@ function registerPokemon() {
         }
     }
 
+
+  
     // ✅ 「睡ボアイコン」と「性格アイコン」の表示ロジック
     const sleepBonusIcon = sleepExpBonus ? `<span class="sleep-bonus">睡ボ</span>` : "";
     let natureSymbol = `<span class="nature-symbol nature-none">-</span>`;
@@ -286,6 +288,10 @@ function registerPokemon() {
         <p class="nickname">${nickname || pokemonName}</p>
         <p class="level">Lv${currentLevel} ⇒ ${targetLevel}</p>
         <p class="exp-next">あと <strong>${totalExpNeeded}</strong> exp</p>
+        <div class="exp-bonus-container">
+            ${sleepBonusIcon}
+            ${natureSymbol}
+        </div>
         <p class="memo">${memo}</p>
     `;
 
