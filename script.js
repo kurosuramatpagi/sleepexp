@@ -176,8 +176,8 @@ cardPreviewArea.style.display = 'none';
         cardPreviewArea.style.display = 'block';
       const cardPreviewBox = cardPreviewArea.querySelector('.pokemon-box');
 if (cardPreviewBox) {
-    cardPreviewBox.style.width = '240px';
-    cardPreviewBox.style.height = '480px';
+    cardPreviewBox.style.width = '120px';
+    cardPreviewBox.style.height = '240px';
 }
     }
 
