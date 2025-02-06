@@ -141,93 +141,96 @@ button {
     gap: var(--card-gap, 8px); /* カード間の間隔を自由に変更可能に */
 }
 
-/* ✅ カードエリアのデザイン調整 */
+/* カードのデザイン */
 .pokemon-box {
     width: 64.3px;
     height: 150px;
     text-align: center;
     border: 2px solid #ccc;
     border-radius: 10px;
-    padding: 3px 5px;  /* ✅ 左右の余白を狭く */
+    padding: 3px;
     background-color: white;
     font-size: 0.6em;
-    display: flex;
-    flex-direction: column;
-    line-height: 0.4;
-    align-items: center;
-    justify-content: space-between;
 }
 
-/* ✅ ポケモン画像 */
+/* ポケモン画像 */
 .pokemon-box img {
     width: 40px;
     height: 40px;
     border-radius: 10px;
 }
 
-/* ✅ ニックネーム（名前）を太字 */
+/* カード内のテキスト間隔を自由に変更可能 */
+.pokemon-box .nickname,
+.pokemon-box .level,
+.pokemon-box .exp-bonus,
+.pokemon-box .exp-next {
+    font-size: 0.7em;
+    line-height: var(--card-line-height, 0.9); /* 行間を自由に変更可能に */
+    margin-top: var(--card-item-spacing, 2.5px); /* 上の余白 */
+    margin-bottom: var(--card-item-spacing, 0px); /* 下の余白 */
+    padding-top: var(--card-item-spacing, 1px); /* 内部の余白も調整 */
+    padding-bottom: var(--card-item-spacing, 1px); /* 内部の余白も調整 */
+}
+
+/* 名前（ニックネーム）を太字 */
 .pokemon-box .nickname {
     font-weight: bold;
 }
 
-/* ✅ レベル表示を太字 */
+/* Lvを太字 */
 .pokemon-box .level {
     font-weight: bold;
 }
 
-/* ✅ 「あと○○exp」の ○○ 部分だけ太字 */
+/* 「あと○○exp」の○○部分だけ太字 */
 .pokemon-box .exp-next {
     font-weight: normal;
 }
 
 .pokemon-box .exp-next strong {
-    font-weight: bold;
+    font-weight: bold;  /* ○○部分だけ太字 */
 }
 
-/* ✅ 「睡ボ」アイコンのスタイル */
-.pokemon-box .sleep-bonus {
+/* カード内左右の余白を広げる */
+.pokemon-box {
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+/* 「睡ボ」のフォントを標準に変更 */
+.sleep-bonus {
     display: inline-block;
     background-color: #ffcc00;
     color: black;
-    font-weight: bold;
+    font-weight: normal; /* ← 太字を解除 */
     padding: 3px 6px;
     border-radius: 8px;
-    font-size: 0.7em;
 }
 
-/* ✅ 性格アイコンのスタイル */
-.pokemon-box .nature-symbol {
+/* 性格記号のデザイン */
+.nature-symbol {
     display: inline-block;
     padding: 3px 6px;
     border-radius: 5px;
     font-weight: bold;
     color: white;
-    font-size: 0.7em;
 }
 
-/* ✅ EXP↑（赤） */
-.pokemon-box .exp-up {
-    background-color: rgba(255, 0, 51, 0.7);
+/* 性格補正あり（EXP↑ / EXP↓） */
+.exp-up {
+    background-color: rgba(255, 0, 51, 0.7); /* 赤 (#ff0033) の70%不透明 */
 }
 
-/* ✅ EXP↓（青） */
-.pokemon-box .exp-down {
-    background-color: rgba(51, 0, 255, 0.7);
+.exp-down {
+    background-color: rgba(51, 0, 255, 0.7); /* 青 (#3300ff) の70%不透明 */
 }
 
-/* ✅ 性格補正なし（グレー） */
-.pokemon-box .nature-none {
-    background-color: rgba(200, 200, 200, 0.7);
-    color: black;
-    font-weight: normal;
-}
-
-/* ✅ 「睡ボ」と性格アイコンを並べる */
-.pokemon-box .exp-bonus-container {
-    display: flex;
-    gap: 4px;  /* アイコン間の余白 */
-    justify-content: center;
-    align-items: center;
+/* 性格補正なし（「-」を表示） */
+.nature-none {
+    background-color: rgba(200, 200, 200, 0.7); /* 薄いグレー */
+    color: black; /* 文字色を黒に */
+    font-weight: normal; /* 標準フォント */
 }
 
 
