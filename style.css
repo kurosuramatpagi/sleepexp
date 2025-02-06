@@ -586,3 +586,28 @@ addButton.addEventListener('click', function() {
 #formContainer {
     z-index: 1100; /* ✅ 情報入力エリアをさらに上にして、グレーがかからないように */
 }
+
+/* 編集エリアのスタイル定義 */
+.edit-area {
+    width: 80%; /* 情報入力エリアと同じ横幅 */
+    height: 50%; /* 情報入力エリアの縦幅の半分 */
+    margin: 20px auto; /* 中央揃え、上下マージンは20px */
+    padding: 20px; /* 内部の余白 */
+    background-color: #ffffff; /* 背景色は白 */
+    border: 1px solid #ccc; /* 境界線は薄い灰色 */
+    border-radius: 10px; /* 角の丸み */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* ソフトな影 */
+    display: flex; /* Flexboxで内部要素を配置 */
+    flex-direction: column; /* 子要素を縦に並べる */
+    justify-content: space-around; /* 子要素の間に均等なスペースを配置 */
+    align-items: center; /* 子要素を中央揃え */
+}
+
+/* 編集エリア内の各要素スタイル */
+.edit-item {
+    width: 90%; /* 編集エリアの幅の90%を使用 */
+    margin-bottom: 10px; /* 要素間の余白 */
+    padding: 10px; /* 内部の余白 */
+    border-bottom: 1px solid #ddd; /* 下境界線で要素を区切る */
+    text-align: left; /* テキストは左揃え */
+}
