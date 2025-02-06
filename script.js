@@ -157,16 +157,15 @@ cardPreviewArea.style.display = 'none';
         const expDown = expDownBtn.classList.contains('active');
         const memo = document.getElementById('memo').value.trim();
 
-        let natureSymbol = '<span class="nature-symbol nature-none">-</span>';
-        if (expUp) natureSymbol = '<span class="nature-symbol exp-up">↑</span>';
-        if (expDown) natureSymbol = '<span class="nature-symbol exp-down">↓</span>';
-
-        const sleepBonusIcon = sleepExpBonus ? '<span class="sleep-bonus">睡ボ</span>' : '';
-
-        let totalExpNeeded = 0;
+          let totalExpNeeded = 0;
     const currentLevelNum = parseInt(currentLevel, 10);
     const targetLevelNum = parseInt(targetLevel, 10);
-    const currentExpToNext = parseInt(expToNextLevelInput.value, 10);
+
+    // 未入力時は「そのレベルから次のレベルに必要なEXPを取得」
+    let currentExpToNext = parseInt(expToNextLevelInput.value, 10);
+    if (isNaN(currentExpToNext)) {
+        currentExpToNext = baseExpTable[currentLevelNum + 1] - baseExpTable[currentLevelNum] || 0;
+    }
 
     if (targetLevelNum > currentLevelNum) {
         totalExpNeeded += currentExpToNext; // 現在のレベルの「次のレベルまでの経験値」を加算
