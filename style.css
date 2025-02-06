@@ -528,8 +528,8 @@ button {
 }
 
 .card-preview-area {
-    width: auto; /* 必要な幅だけ取るように変更 */
-    max-width: 150px; /* 必要に応じて最大幅を制限 */
+    width: auto;
+    max-width: 150px;  /* この制約が影響している可能性あり */
     padding: 10px;
      border: none;
     border-radius: 10px;
@@ -549,3 +549,8 @@ addButton.addEventListener('click', function() {
     console.log("popupOverlayの表示状態:", popupOverlay.style.display);
     console.log("pokemonDisplayの表示状態:", pokemonDisplay.style.display);
 });
+
+.card-preview-area .pokemon-box {
+    width: var(--preview-card-width, 120px);
+    height: var(--preview-card-height, 240px);
+}
