@@ -25,8 +25,8 @@ expToNextLevelInput.parentElement.appendChild(cardPreviewArea);
 cardPreviewArea.style.position = 'absolute';
 const cardPreviewBox = cardPreviewArea.querySelector('.pokemon-box');
 if (cardPreviewBox) {
-    cardPreviewBox.style.width = '120px';
-    cardPreviewBox.style.height = '240px';
+    cardPreviewBox.style.width = '240px';
+    cardPreviewBox.style.height = '480px';
 }
     cardPreviewArea.style.top = '30px';  // Y座標
     cardPreviewArea.style.left = '200px'; // X座標
