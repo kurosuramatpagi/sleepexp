@@ -146,92 +146,71 @@ cardPreviewArea.style.display = 'none';
         suggestionBox.style.display = 'block';
     }
 
-    function updateCardPreview() {
-        const pokemonName = document.getElementById('pokemonName').value.trim();
-        const nickname = document.getElementById('nickname').value.trim();
-        const currentLevel = document.getElementById('currentLevel').value;
-        const targetLevelElement = document.querySelector('.target-btn.selected');
-        const targetLevel = targetLevelElement ? targetLevelElement.getAttribute('data-level') : '';
-        const sleepExpBonus = sleepExpBonusBtn.classList.contains('active');
-        const expUp = expUpBtn.classList.contains('active');
-        const expDown = expDownBtn.classList.contains('active');
-        const memo = document.getElementById('memo').value.trim();
+   function updateCardPreview() {
+    const pokemonName = document.getElementById('pokemonName').value.trim() || '???';
+    const nickname = document.getElementById('nickname').value.trim() || pokemonName;
+    const currentLevel = parseInt(document.getElementById('currentLevel').value, 10) || 1;
+    const targetLevelElement = document.querySelector('.target-btn.selected');
+    const targetLevel = targetLevelElement ? parseInt(targetLevelElement.getAttribute('data-level'), 10) : currentLevel;
+    const sleepExpBonus = sleepExpBonusBtn.classList.contains('active');
+    const expUp = expUpBtn.classList.contains('active');
+    const expDown = expDownBtn.classList.contains('active');
+    const memo = document.getElementById('memo').value.trim() || '';
 
-    // 未入力時は「そのレベルから次のレベルに必要なEXPを取得」
- let totalExpNeeded = 0;
-    const currentLevelNum = parseInt(currentLevel, 10);
-    const targetLevelNum = parseInt(targetLevel, 10);
-    const currentExpToNext = parseInt(expToNextLevelInput.value, 10);
+    // `cardPreviewArea` の取得確認
+    if (!cardPreviewArea) {
+        console.error("Error: cardPreviewArea が見つかりません。");
+        return;
+    }
 
-    if (targetLevelNum > currentLevelNum) {
-        totalExpNeeded += currentExpToNext; // 現在のレベルの「次のレベルまでの経験値」を加算
+    // `expToNextLevel` の未記入チェック
+    let currentExpToNext = parseInt(expToNextLevelInput.value, 10);
+    if (isNaN(currentExpToNext)) {
+        currentExpToNext = baseExpTable[currentLevel + 1] - baseExpTable[currentLevel] || 0;
+    }
 
-        // 現在レベル +1 から 目標レベルまでの経験値を加算
-        for (let lvl = currentLevelNum + 1; lvl < targetLevelNum; lvl++) {
-            totalExpNeeded += baseExpTable[lvl + 1] - baseExpTable[lvl];
+    let totalExpNeeded = 0;
+    if (targetLevel > currentLevel) {
+        totalExpNeeded += currentExpToNext;
+        for (let lvl = currentLevel + 1; lvl < targetLevel; lvl++) {
+            totalExpNeeded += (baseExpTable[lvl + 1] - baseExpTable[lvl]) || 0;
         }
     }
-    // ✅ **カードのHTML**
+
+    // カードの HTML 更新
     cardPreviewArea.innerHTML = `
         <div class="pokemon-box">
-            <img src="images/${pokemonName || 'placeholder'}.png" alt="${pokemonName}" class="pokemon-image">
-            <p class="nickname">${nickname || pokemonName}</p>
+            <img src="images/${pokemonName}.png" alt="${pokemonName}" class="pokemon-image">
+            <p class="nickname">${nickname}</p>
             <p class="level">Lv${currentLevel} ⇒ ${targetLevel}</p>
             <p class="exp-next">あと ${totalExpNeeded} exp</p>
             <div class="exp-bonus-container">
-                <span class="sleep-bonus">${sleepBonusIcon}</span>
-                <span class="nature-symbol">${natureSymbol}</span>
+                ${sleepExpBonus ? '<span class="sleep-bonus">睡ボ</span>' : ''}
+                ${expUp ? '<span class="nature-symbol exp-up">↑</span>' : ''}
+                ${expDown ? '<span class="nature-symbol exp-down">↓</span>' : ''}
             </div>
             <p class="memo">${memo}</p>
         </div>
     `;
-        cardPreviewArea.style.display = 'block';
-      
 
-       // ✅ **カードプレビュー内の画像と文字のサイズを変更**
+    // `display` を `block` にする
+    cardPreviewArea.style.display = 'block';
+
+    // **カードプレビュー内の画像と文字のサイズを変更**
     const cardPreviewBox = cardPreviewArea.querySelector('.pokemon-box');
     if (cardPreviewBox) {
         const image = cardPreviewBox.querySelector('.pokemon-image');
         const texts = cardPreviewBox.querySelectorAll('p');
 
-        // ✅ 画像サイズを変更
-        image.style.width = '70px';  // 画像の幅
-        image.style.height = '70px'; // 画像の高さ
-
-        // ✅ 文字サイズを変更
+        image.style.width = '70px';
+        image.style.height = '70px';
         texts.forEach(text => {
-            text.style.fontSize = '16px'; // 文字サイズ（大きさは調整可）
+            text.style.fontSize = '16px';
         });
 
-        // ✅ **カードのサイズ変更（プレビュー全体の枠）**
-        cardPreviewBox.style.width = '120px';  // カードの幅
-        cardPreviewBox.style.height = '240px'; // カードの高さ
-    }
+        cardPreviewBox.style.width = '120px';
+        cardPreviewBox.style.height = '240px';
     }
 
-    function registerPokemon() {
-        const pokemonName = document.getElementById('pokemonName').value.trim();
-        const nickname = document.getElementById('nickname').value.trim();
-        const currentLevel = document.getElementById('currentLevel').value;
-        const memo = document.getElementById('memo').value.trim();
-
-        if (!pokemonName) {
-            alert('ポケモン名を入力してください！');
-            return;
-        }
-
-        const pokemonElement = document.createElement('div');
-        pokemonElement.classList.add('pokemon-box');
-        pokemonElement.innerHTML = `
-            <img src="images/${pokemonName || 'placeholder'}.png" alt="${pokemonName}" class="pokemon-image">
-            <p class="nickname">${nickname || pokemonName}</p>
-            <p class="level">Lv.${currentLevel || 1}</p>
-            <p class="memo">${memo}</p>
-        `;
-
-        const displayArea = document.getElementById('pokemonDisplay');
-        displayArea.appendChild(pokemonElement);
-
-        console.log('ポケモンが登録されました:', { name: pokemonName, nickname, currentLevel, memo });
-    }
-});
+    console.log("カードプレビュー更新完了:", cardPreviewArea);
+}
