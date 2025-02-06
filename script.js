@@ -206,7 +206,7 @@ function preventScroll(event) {
         <div class="pokemon-box">
             <img src="images/${pokemonName}.png" alt="${pokemonName}" class="pokemon-image">
             <p class="nickname">${nickname}</p>
-            <p class="level">Lv${currentLevel} ⇒ ${targetLevel}</p>
+            <p class="level">Lv ${currentLevel} ⇒ ${targetLevel}</p>
             <p class="exp-next">あと ${totalExpNeeded} exp</p>
             <div class="exp-bonus-container">
                 ${sleepExpBonus ? '<span class="sleep-bonus">睡ボ</span>' : ''}
