@@ -162,10 +162,10 @@ cardPreviewArea.style.display = 'none';
     const targetLevelNum = parseInt(targetLevel, 10);
 
     // 未入力時は「そのレベルから次のレベルに必要なEXPを取得」
-  let currentExpToNext = parseInt(expToNextLevelInput.value, 10);
-    if (isNaN(currentExpToNext)) {
-        currentExpToNext = baseExpTable[currentLevelNum + 1] - baseExpTable[currentLevelNum] || 0;
-    }
+ let totalExpNeeded = 0;
+    const currentLevelNum = parseInt(currentLevel, 10);
+    const targetLevelNum = parseInt(targetLevel, 10);
+    const currentExpToNext = parseInt(expToNextLevelInput.value, 10);
 
     if (targetLevelNum > currentLevelNum) {
         totalExpNeeded += currentExpToNext; // 現在のレベルの「次のレベルまでの経験値」を加算
