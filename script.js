@@ -44,6 +44,7 @@ cardPreviewArea.style.display = 'none';
         formContainer.style.display = 'block';
         popupOverlay.style.display = 'block';
         pokemonDisplay.style.display = 'flex';
+      document.body.style.overflow = 'hidden';  // ✅ スクロール禁止
     });
 
     closeFormBtn.addEventListener('click', closeForm);
@@ -53,6 +54,7 @@ cardPreviewArea.style.display = 'none';
         formContainer.style.display = 'none';
         popupOverlay.style.display = 'none';
         cardPreviewArea.style.display = 'none';
+      document.body.style.overflow = '';  // ✅ スクロール復活
     }
 
     fetch('special_patterns.json')
