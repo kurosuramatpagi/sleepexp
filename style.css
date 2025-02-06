@@ -611,3 +611,34 @@ addButton.addEventListener('click', function() {
     border-bottom: 1px solid #ddd; /* 下境界線で要素を区切る */
     text-align: left; /* テキストは左揃え */
 }
+.fixed-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #fff6e4; /* 背景色と同じ */
+    border-bottom: 1px solid black; /* 黒い横線 */
+    z-index: 100;
+}
+
+.menu-bar, .banner, .edit-area {
+    padding: 10px;
+    text-align: center;
+}
+
+.scrollable-content {
+    margin-top: 150px; /* 固定エリアの高さを超えるマージン */
+    padding: 20px;
+    height: calc(100vh - 150px);
+    overflow-y: auto;
+}
+
+/* 背景色と同じ色のレイヤーのCSS (必要に応じて調整) */
+.same-color-layer {
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 50px; /* 必要に応じて調整 */
+    background: #fff6e4; /* 背景色と同じ */
+    z-index: 50; /* contentより低いが、fixed-headerよりは高い */
+}
