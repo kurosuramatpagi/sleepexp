@@ -157,16 +157,20 @@ cardPreviewArea.style.display = 'none';
     const expDown = expDownBtn.classList.contains('active');
     const memo = document.getElementById('memo').value.trim() || '';
 
-    // `cardPreviewArea` の取得確認
+    // **`cardPreviewArea` の取得確認**
     if (!cardPreviewArea) {
         console.error("Error: cardPreviewArea が見つかりません。");
         return;
     }
 
-    // `expToNextLevelInput` の未記入チェック
+    // **`expToNextLevelInput` の未記入チェック**
     let currentExpToNext = parseInt(expToNextLevelInput.value, 10);
-    if (isNaN(currentExpToNext) && currentLevel < 60) {
-        currentExpToNext = baseExpTable[currentLevel + 1] - baseExpTable[currentLevel] || 0;
+    if (isNaN(currentExpToNext) || currentExpToNext <= 0) {
+        if (currentLevel < 60) {
+            currentExpToNext = baseExpTable[currentLevel + 1] - baseExpTable[currentLevel] || 0;
+        } else {
+            currentExpToNext = 0;  // Lv.60 の場合、追加経験値はなし
+        }
     }
 
     let totalExpNeeded = 0;
@@ -177,10 +181,7 @@ cardPreviewArea.style.display = 'none';
         }
     }
 
-    // **表示前に `display = 'block'` を適用**
-    cardPreviewArea.style.display = 'block';
-
-    // **カードの HTML 更新**
+    // **innerHTML の更新**
     cardPreviewArea.innerHTML = `
         <div class="pokemon-box">
             <img src="images/${pokemonName}.png" alt="${pokemonName}" class="pokemon-image">
@@ -195,6 +196,9 @@ cardPreviewArea.style.display = 'none';
             <p class="memo">${memo}</p>
         </div>
     `;
+
+    // **innerHTML 更新後に `display = 'block'` を適用**
+    cardPreviewArea.style.display = 'block';
 
     // **カードプレビュー内の画像と文字のサイズを変更**
     const cardPreviewBox = cardPreviewArea.querySelector('.pokemon-box');
@@ -214,4 +218,3 @@ cardPreviewArea.style.display = 'none';
 
     console.log("カードプレビュー更新完了:", cardPreviewArea);
 }
-
