@@ -641,8 +641,11 @@ addButton.addEventListener('click', function() {
     z-index: 101; /* 固定エリアよりも少し高いz-indexでカードが見えないようにする */
 }
 
-/* スクロール可能なカードエリア */
 .scrollable-cards {
-    position: relative; /* 位置設定を明示 */
-    z-index: 1; /* カードが固定ヘッダーやカバーレイヤーよりも背後に来るように */
+    position: absolute;
+    top: 50px; /* 固定ヘッダーの高さ分だけ下に配置 */
+    bottom: 0; /* 画面の下端まで */
+    overflow-y: auto; /* 縦方向にスクロール可能に */
+    width: 100%; /* 幅はコンテナ全体 */
+    clip: rect(50px, auto, auto, auto); /* 上部の50pxをクリッピング */
 }
