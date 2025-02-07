@@ -140,6 +140,7 @@ button {
     margin-right: var(--card-area-margin, auto);
     display: flex;
     flex-wrap: wrap;
+    z-index: 100;
     justify-content: flex-start; /* 左詰めでカードを並べる */
     gap: var(--card-gap, 8px); /* カード間の間隔を自由に変更可能に */
 }
