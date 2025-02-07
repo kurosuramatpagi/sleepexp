@@ -133,7 +133,7 @@ button {
 #pokemonDisplay {
     width: var(--card-area-width, 88%);
     max-width: 100%;
-    top: 130px; 
+    top: -130px; 
     margin-left: var(--card-area-margin, auto);
     margin-right: var(--card-area-margin, auto);
     display: flex;
