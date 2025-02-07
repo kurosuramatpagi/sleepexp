@@ -649,3 +649,32 @@ addButton.addEventListener('click', function() {
     width: 100%;
     clip-path: inset(50px 0 0 0); /* 上から50pxの部分を除外 */
 }
+/* 固定エリアのスタイル */
+.fixed-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #fff6e4;
+    border-bottom: 1px solid black;
+    z-index: 102; /* 固定エリアを前面に */
+}
+
+/* カードエリアのスタイル */
+#pokemonDisplay {
+    position: absolute;
+    top: 150px; /* 固定エリアの高さに応じて調整 */
+    width: 100%;
+    bottom: 0;
+    overflow-y: auto; /* スクロール可能に */
+    z-index: 101; /* カードエリアを固定エリアより背後に */
+}
+
+/* カバー層を追加してスクロール時にカードが固定エリアに入らないようにする */
+.cover {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 150px; /* 固定エリアの高さと同じ */
+    background: #fff6e4; /* 背景色 */
+    z-index: 103; /* 固定エリアよりも高いが、内容物よりは低い */
+}
