@@ -133,9 +133,6 @@ button {
 #pokemonDisplay {
     width: var(--card-area-width, 88%);
     max-width: 100%;
-    position: absolute;
-    top: 150px; 
-    clip-path: inset(0px 0px 0px 0px); /* 上端からの表示制限なし */
     margin-left: var(--card-area-margin, auto);
     margin-right: var(--card-area-margin, auto);
     display: flex;
