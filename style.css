@@ -643,9 +643,9 @@ addButton.addEventListener('click', function() {
 
 .scrollable-cards {
     position: absolute;
-    top: 50px; /* 固定ヘッダーの高さ分だけ下に配置 */
-    bottom: 0; /* 画面の下端まで */
-    overflow-y: auto; /* 縦方向にスクロール可能に */
-    width: 100%; /* 幅はコンテナ全体 */
-    clip: rect(50px, auto, auto, auto); /* 上部の50pxをクリッピング */
+    top: 50px;
+    bottom: 0;
+    overflow-y: auto;
+    width: 100%;
+    clip-path: inset(50px 0 0 0); /* 上から50pxの部分を除外 */
 }
