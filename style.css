@@ -134,7 +134,7 @@ button {
     width: var(--card-area-width, 88%);
     max-width: 100%;
     top: 450px; 
-    left: 50px; 
+    left: 30px; 
     position: absolute; /* 位置をページに対して絶対位置で指定 */
     margin-left: var(--card-area-margin, auto);
     margin-right: var(--card-area-margin, auto);
