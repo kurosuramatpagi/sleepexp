@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         formContainer.style.display = 'none';
         pokemonDisplay.style.display = 'flex';
         addButton.style.display = 'block';
+      console.log("ボックスボタンがクリックされました");
         setActiveButton(this);  // アクティブ状態をこのボタンに設定
     });
 
@@ -33,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
         formContainer.style.display = 'none';
         pokemonDisplay.style.display = 'none';
         addButton.style.display = 'none';
+      console.log("睡眠計算ボタンがクリックされました");
         setActiveButton(this);  // アクティブ状態をこのボタンに設定
     });
 
