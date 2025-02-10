@@ -666,7 +666,6 @@ addButton.addEventListener('click', function() {
     .edit-area {
     position: fixed;
     top: 181px;
-    left: 10px;
     width: 100%;
     height: 220px;
     background-color: white;
