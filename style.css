@@ -140,7 +140,7 @@ button {
     margin-right: var(--card-area-margin, auto);
     display: flex;
     flex-wrap: wrap;
-    z-index: 100;
+    z-index: 80;
     justify-content: flex-start; /* 左詰めでカードを並べる */
     gap: var(--card-gap, 8px); /* カード間の間隔を自由に変更可能に */
 }
@@ -637,12 +637,13 @@ addButton.addEventListener('click', function() {
 }
 
 .cover {
-    width: 100%;
-    background: #fff6e4; /* 背景色と同じ色 */
     position: absolute;
-    bottom: 0; /* 固定エリアの最下部に配置 */
-    height: 1px; /* 1ピクセルの高さ */
-    z-index: 101; /* 固定エリアよりも少し高いz-indexでカードが見えないようにする */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 100;
+    background: rgba(255, 255, 255, 0.8); /* 半透明の白で覆う */
+    z-index: 90; /* カードエリアより前に表示 */
 }
 
 .scrollable-cards {
