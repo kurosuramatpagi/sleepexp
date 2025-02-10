@@ -7,8 +7,15 @@ document.addEventListener('DOMContentLoaded', function () {
         const card = event.target.closest('.pokemon-box');
         if (!card) return;
 
-        // カードのHTMLをそのままコピー
-        editCardPreview.innerHTML = card.innerHTML;
+        // カードのクローンを作成
+        const clonedCard = card.cloneNode(true);
+        clonedCard.style.width = "64.3px";  // カードエリアと同じサイズ
+        clonedCard.style.height = "150px";  // 高さも統一
+        clonedCard.style.transform = "none";  // 拡大を防ぐ
+
+        // 既存の編集プレビューをクリアして、新しいカードをセット
+        editCardPreview.innerHTML = "";
+        editCardPreview.appendChild(clonedCard);
 
         // 編集エリアを表示
         editArea.style.display = 'flex';
