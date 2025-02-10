@@ -56,17 +56,7 @@ cardPreviewArea.style.position = 'absolute';
 cardPreviewArea.style.display = 'none';
     popupOverlay.style.display = 'none';
 
-    boxButton.addEventListener('click', function() {
-        formContainer.style.display = 'none';
-        pokemonDisplay.style.display = 'flex';
-        addButton.style.display = 'block';
-    });
-
-    sleepCalcButton.addEventListener('click', function() {
-        formContainer.style.display = 'none';
-        pokemonDisplay.style.display = 'none';
-        addButton.style.display = 'none';
-    });
+   
 
     addButton.addEventListener('click', function() {
         formContainer.style.display = 'block';
