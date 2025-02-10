@@ -143,6 +143,7 @@ button {
     z-index: 80;
     justify-content: flex-start; /* 左詰めでカードを並べる */
     gap: var(--card-gap, 8px); /* カード間の間隔を自由に変更可能に */
+    overflow-y: auto; /* 縦スクロールを有効化 */
 }
 
 /* カードのデザイン */
@@ -664,13 +665,17 @@ addButton.addEventListener('click', function() {
     clip-path: inset(500px 0 0 0); /* 上から50pxの部分を除外 */
 }
 .edit-area {
-    display: flex !important;
-    min-height: 150px;
-    align-items: center;
+    position: fixed;
+    top: 180px;
+    width: 100%;
+    min-height: 150px; /* 高さを確保 */
     background-color: white;
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    display: block; /* もともとの `flex` を解除して影響をなくす */
 }
+
 
 #editCardPreview {
     position: relative !important;
