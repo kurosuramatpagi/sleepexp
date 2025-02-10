@@ -487,6 +487,7 @@ button {
 /* 2つのボタンの共通スタイル */
 .nav-button {
     background-color: #dfdfdf; /* ボタンの背景色 */
+    position: relative; /* 疑似要素を配置するための基準点 */
     color: black; /* テキストの色 */
     border: none;
     width: 25%; /* 左半分を2分割するので25%ずつ */
@@ -497,6 +498,17 @@ button {
     font-weight: bold;
     border-radius: 0; /* 角丸なし */
     padding: 0; /* 余白なし */
+}
+
+/* アクティブ状態のバーを表示 */
+.nav-button.active::after {
+    content: "";
+    position: absolute;
+    bottom: -1px; /* ボタンの下部に配置 */
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: blue; /* 青色のバー */
 }
 
 /* 右半分の空白部分を維持 */
@@ -649,27 +661,4 @@ addButton.addEventListener('click', function() {
     overflow-y: auto;
     width: 100%;
     clip-path: inset(500px 0 0 0); /* 上から50pxの部分を除外 */
-}
-
-/* ナビゲーションボタンのスタイル */
-.nav-button {
-    position: relative; /* 疑似要素を配置するための基準点 */
-    width: 100%;
-    padding: 10px 0;
-    background: none;
-    border: none;
-    color: black;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-/* アクティブ状態のバーを表示 */
-.nav-button.active::after {
-    content: "";
-    position: absolute;
-    bottom: -1px; /* ボタンの下部に配置 */
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background-color: blue; /* 青色のバー */
 }
