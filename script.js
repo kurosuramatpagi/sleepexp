@@ -346,7 +346,10 @@ function registerPokemon() {
     document.getElementById('pokemonDisplay').appendChild(pokemonElement);
 
     console.log('ポケモンが登録されました:', { name: pokemonName, nickname, currentLevel, targetLevel, totalExpNeeded, memo });
+closeForm();
+}
 
+// ✅ フォームを縮小しながら消す処理
 function closeForm() {
     const formContainer = document.getElementById('formContainer');
     const popupOverlay = document.getElementById('popupOverlay');
@@ -363,16 +366,6 @@ function closeForm() {
         formContainer.style.transform = 'scale(1)';  // 元に戻す
         popupOverlay.style.display = 'none';
     }, 300);
-}
-
-// 登録ボタンを押したら即座にフォームを閉じる
-document.getElementById('registerButton').addEventListener('click', function() {
-    registerPokemon(); // 既存のポケモン登録処理
-    closeForm(); // フォームを閉じる
-});
-
-
-  
 }
 
 
