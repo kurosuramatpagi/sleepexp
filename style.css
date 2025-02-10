@@ -496,6 +496,7 @@ button {
     text-align: center; /* テキスト中央寄せ */
     line-height: 50px; /* 縦方向も中央揃え */
     font-weight: bold;
+    z-index: 1001;
     border-radius: 0; /* 角丸なし */
     padding: 0; /* 余白なし */
 }
