@@ -20,6 +20,34 @@ document.addEventListener('DOMContentLoaded', function () {
     const popupOverlay = document.getElementById('popupOverlay');
     const closeFormBtn = document.getElementById('closeFormBtn');
     const cardPreviewArea = document.getElementById('cardPreviewArea');
+
+// ボタンのアクティブ状態を管理するロジックを追加
+    boxButton.addEventListener('click', function() {
+        formContainer.style.display = 'none';
+        pokemonDisplay.style.display = 'flex';
+        addButton.style.display = 'block';
+        setActiveButton(this);  // アクティブ状態をこのボタンに設定
+    });
+
+    sleepCalcButton.addEventListener('click', function() {
+        formContainer.style.display = 'none';
+        pokemonDisplay.style.display = 'none';
+        addButton.style.display = 'none';
+        setActiveButton(this);  // アクティブ状態をこのボタンに設定
+    });
+
+    // ボタンのアクティブ状態を切り替える関数
+    function setActiveButton(activeButton) {
+        // すべてのボタンから 'active' クラスを削除
+        document.querySelectorAll('.nav-button').forEach(button => {
+            button.classList.remove('active');
+        });
+        // アクティブなボタンに 'active' クラスを追加
+        activeButton.classList.add('active');
+    }
+
+
+
 const expToNextLevelInput = document.getElementById('expToNextLevel');
 expToNextLevelInput.parentElement.appendChild(cardPreviewArea);
 cardPreviewArea.style.position = 'absolute';
