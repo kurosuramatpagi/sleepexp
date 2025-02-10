@@ -591,13 +591,12 @@ addButton.addEventListener('click', function() {
 /* 編集エリアのスタイル定義 */
 .edit-area {
     position: fixed;  /* 位置を固定 */
-    top: 200px;  /* メニューバーの高さ分だけ下に設定 */
+    top: 180px;  /* メニューバーの高さ分だけ下に設定 */
     width: 100%; /* 幅を指定 */
-    height: 25%;
+    height: 22%;
     margin: auto;  /* 中央揃え */
     background-color: #ffffff; /* 背景色 */
     border: 1px solid #ccc; /* 境界線 */
-    border-radius: 10px; /* 角の丸み */
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* 影 */
     z-index: 100; /* 他の要素より前面に表示 */
     overflow: auto; /* 内容が多い場合はスクロール可能に */
