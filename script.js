@@ -347,45 +347,29 @@ function registerPokemon() {
 
     console.log('ポケモンが登録されました:', { name: pokemonName, nickname, currentLevel, targetLevel, totalExpNeeded, memo });
 
-
-function closeFormWithAnimation() {
+function closeForm() {
     const formContainer = document.getElementById('formContainer');
     const popupOverlay = document.getElementById('popupOverlay');
 
-    // 直前に追加されたカードを取得（最後のポケモンボックスをターゲットにする）
-    const allPokemonCards = document.querySelectorAll('.pokemon-box');
-    const lastAddedCard = allPokemonCards[allPokemonCards.length - 1]; // 最後のカード
-
-    if (!lastAddedCard) {
-        console.error("カードが見つかりません。通常の閉じる処理を実行します。");
-        closeForm();
-        return;
-    }
-
-    // カードの座標を取得
-    const cardRect = lastAddedCard.getBoundingClientRect();
-    const formRect = formContainer.getBoundingClientRect();
-
-    // アニメーションを適用するための初期スタイル
-    formContainer.style.transition = 'transform 0.5s ease-in-out, opacity 0.5s ease-in-out';
-    formContainer.style.transform = `translate(${cardRect.left - formRect.left}px, ${cardRect.top - formRect.top}px) scale(0.2)`;
+    // アニメーションを設定（縮小＆フェードアウト）
+    formContainer.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
     formContainer.style.opacity = '0';
+    formContainer.style.transform = 'scale(0.8)';
 
-    // アニメーション終了後、フォームを完全に非表示にする
+    // 0.3秒後に完全に非表示にする
     setTimeout(() => {
         formContainer.style.display = 'none';
-        formContainer.style.transform = 'translate(0, 0) scale(1)';
-        formContainer.style.opacity = '1';
+        formContainer.style.opacity = '1';  // 元に戻す
+        formContainer.style.transform = 'scale(1)';  // 元に戻す
         popupOverlay.style.display = 'none';
-    }, 500);
+    }, 300);
 }
 
-// 既存の登録ボタンの処理の中に `closeFormWithAnimation()` を追加
+// 登録ボタンを押したら即座にフォームを閉じる
 document.getElementById('registerButton').addEventListener('click', function() {
     registerPokemon(); // 既存のポケモン登録処理
-    closeFormWithAnimation(); // アニメーション付きでフォームを閉じる
+    closeForm(); // フォームを閉じる
 });
-
 
 
   
