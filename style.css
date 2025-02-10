@@ -675,15 +675,3 @@ addButton.addEventListener('click', function() {
     align-items: center;
     padding: 10px;
 }
-
-.edit-card-preview {
-    width: 120px;
-    height: 180px;
-    border: 1px solid #ddd;
-    background-color: #f9f9f9;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
