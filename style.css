@@ -680,7 +680,7 @@ addButton.addEventListener('click', function() {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 64.3px;  /* カードエリアのカードと同じサイズ */
-    height: 150px;
-    transform: none;  /* 拡大を防ぐ */
+    width: 96.45px; 
+    height: 225px;
+   
 }
