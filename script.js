@@ -355,16 +355,18 @@ function closeForm() {
     const popupOverlay = document.getElementById('popupOverlay');
 
     // アニメーションを設定（縮小＆フェードアウト）
-    formContainer.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
+    formContainer.style.transition = 'opacity 0.1s ease-out, transform 0.3s ease-out';
     formContainer.style.opacity = '0';
-    formContainer.style.transform = 'scale(0.8)';
+    formContainer.style.transform = 'scale(0.5) translate(-50%, -50%)';
 
     // 0.3秒後に完全に非表示にする
     setTimeout(() => {
         formContainer.style.display = 'none';
         formContainer.style.opacity = '1';  // 元に戻す
-        formContainer.style.transform = 'scale(1)';  // 元に戻す
+        formContainer.style.transform = 'scale(1) translate(-50%, -50%)';  // 元に戻す
         popupOverlay.style.display = 'none';
+      // ✅ 「＋」ボタンを元の透明度に戻す
+    addButton.style.opacity = '1';
     }, 300);
 }
 
@@ -379,6 +381,5 @@ function openForm() {
     addButton.style.opacity = '0.5';
 }
 
-    // ✅ 「＋」ボタンを元の透明度に戻す
-    addButton.style.opacity = '1';
+  
 
