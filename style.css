@@ -642,7 +642,7 @@ addButton.addEventListener('click', function() {
     left: 0;
     right: 0;
     bottom: 100;
-    background: rgba(255, 255, 255, 0.8); /* 半透明の白で覆う */
+    background: ffffff; /* 半透明の白で覆う */
     z-index: 90; /* カードエリアより前に表示 */
 }
 
