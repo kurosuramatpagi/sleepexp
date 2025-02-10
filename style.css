@@ -595,7 +595,7 @@ addButton.addEventListener('click', function() {
     position: fixed;  /* 位置を固定 */
     top: 180px;  /* メニューバーの高さ分だけ下に設定 */
     width: 100%; /* 幅を指定 */
-    height: 22%;
+    height: 23%;
     margin: auto;  /* 中央揃え */
     background-color: #ffffff; /* 背景色 */
     border: 1px solid #ccc; /* 境界線 */
