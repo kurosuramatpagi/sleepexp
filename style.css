@@ -675,3 +675,9 @@ addButton.addEventListener('click', function() {
     align-items: center;
     padding: 10px;
 }
+
+.edit-card-preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
