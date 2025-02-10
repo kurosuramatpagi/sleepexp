@@ -663,8 +663,8 @@ addButton.addEventListener('click', function() {
     width: 100%;
     clip-path: inset(500px 0 0 0); /* 上から50pxの部分を除外 */
 }
-    .edit-area {
-    position: absolute;
+  .edit-area {
+    position: fixed;
     top: 180px;
     left: 10px;
     width: 90%;
