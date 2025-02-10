@@ -17,18 +17,18 @@ document.addEventListener("DOMContentLoaded", function () {
         // 新しいカードのクローンを作成
         const previewCard = card.cloneNode(true);
         previewCard.id = "editCardPreview";
-        previewCard.style.position = "relative";  // 修正: `absolute` をやめる
-        previewCard.style.left = "auto";
-        previewCard.style.top = "auto";
+        previewCard.style.position = "relative"; // 修正: `absolute` をやめる
+        previewCard.style.left = "20px";
+        previewCard.style.top = "10px";
         previewCard.style.border = "2px solid #ccc";
         previewCard.style.borderRadius = "10px";
         previewCard.style.padding = "5px";
         previewCard.style.backgroundColor = "white";
 
         // 編集エリアを表示
-        editArea.style.display = "flex";
-        editArea.style.minHeight = "150px"; // 修正: 最低限の高さを確保
-        editArea.style.alignItems = "center";
+        editArea.style.display = "block"; // `.edit-area` を表示
+        editArea.style.minHeight = "150px"; // 最低限の高さを確保
+        editArea.style.alignItems = "center"; // 中央揃え
 
         // 編集エリアに追加
         editArea.appendChild(previewCard);
