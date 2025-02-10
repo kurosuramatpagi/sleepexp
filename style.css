@@ -593,7 +593,7 @@ addButton.addEventListener('click', function() {
     position: fixed;  /* 位置を固定 */
     top: 200px;  /* メニューバーの高さ分だけ下に設定 */
     width: 100%; /* 幅を指定 */
-    height: 80%;
+    height: 40%;
     margin: auto;  /* 中央揃え */
     background-color: #ffffff; /* 背景色 */
     border: 1px solid #ccc; /* 境界線 */
@@ -636,7 +636,7 @@ addButton.addEventListener('click', function() {
     position:fixed;
     top: 0;
     width: 100%; /* 幅を指定 */
-    height: 80%;
+    height: 40%;
     background: ffffff; 
     z-index: 90; /* カードエリアより前に表示 */
 }
