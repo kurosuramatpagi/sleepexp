@@ -379,12 +379,6 @@ function openForm() {
     addButton.style.opacity = '0.5';
 }
 
-function closeForm() {
-    formContainer.style.display = 'none';
-    popupOverlay.style.display = 'none';
-    cardPreviewArea.style.display = 'none';
-    document.body.style.overflow = '';
-
     // ✅ 「＋」ボタンを元の透明度に戻す
     addButton.style.opacity = '1';
-}
+
