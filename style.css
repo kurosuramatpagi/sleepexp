@@ -663,8 +663,8 @@ addButton.addEventListener('click', function() {
     width: 100%;
     clip-path: inset(500px 0 0 0); /* 上から50pxの部分を除外 */
 }
-  .edit-area {
-    position: fixed;
+.edit-area {
+    position: absolute;
     top: 180px;
     left: 10px;
     width: 90%;
@@ -677,10 +677,10 @@ addButton.addEventListener('click', function() {
     padding: 10px;
 }
 
-.edit-card-preview {
+#editCardPreview {
     width: 120px;
     height: 180px;
-    border: 1px solid #ddd;
+    border: 2px solid #ddd;
     background-color: #f9f9f9;
     display: flex;
     flex-direction: column;
