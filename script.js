@@ -136,6 +136,18 @@ function preventScroll(event) {
         updateCardPreview();
     });
 
+  document.getElementById('currentLevel').addEventListener('input', function () {
+    let value = parseInt(this.value, 10);
+
+    if (isNaN(value) || value < 1) {
+        alert("現在のレベルは1以上にしてください。");
+        this.value = 1;
+    } else if (value > 60) {
+        alert("現在のレベルは60以下にしてください。");
+        this.value = 60;
+    }
+});
+  
     const expUpBtn = document.getElementById('expUpBtn');
     const expDownBtn = document.getElementById('expDownBtn');
 
