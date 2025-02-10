@@ -664,26 +664,16 @@ addButton.addEventListener('click', function() {
     clip-path: inset(500px 0 0 0); /* 上から50pxの部分を除外 */
 }
 .edit-area {
-    position: absolute;
-    top: 180px;
-    left: 10px;
-    width: 90%;
-    height: 200px;
+    display: flex !important;
+    min-height: 150px;
+    align-items: center;
     background-color: white;
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    padding: 10px;
 }
 
 #editCardPreview {
-    width: 120px;
-    height: 180px;
-    border: 2px solid #ddd;
-    background-color: #f9f9f9;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
 }
