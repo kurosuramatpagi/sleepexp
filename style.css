@@ -521,7 +521,7 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 999; /* オーバーレイより上に表示 */
+    z-index: 1100; /* オーバーレイより上に表示 */
     background-color: white;
     padding: 20px;
     border-radius: 10px;
@@ -587,9 +587,6 @@ addButton.addEventListener('click', function() {
     height: var(--preview-card-height, 240px);
 }
 
-#formContainer {
-    z-index: 1100; /* ✅ 情報入力エリアをさらに上にして、グレーがかからないように */
-}
 
 /* 編集エリアのスタイル定義 */
 .edit-area {
@@ -652,5 +649,5 @@ addButton.addEventListener('click', function() {
     bottom: 0;
     overflow-y: auto;
     width: 100%;
-    clip-path: inset(50px 0 0 0); /* 上から50pxの部分を除外 */
+    clip-path: inset(120px 0 0 0); /* 上から50pxの部分を除外 */
 }
