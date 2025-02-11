@@ -380,6 +380,24 @@ function openForm() {
     // ✅ 「＋」ボタンを半透明にする
     addButton.style.opacity = '0.5';
 }
+function adjustScreenSize() {
+    const baseWidth = 390; // iPhone 14の幅
+    const baseHeight = 844; // iPhone 14の高さ
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+
+    // 画面比率を計算
+    const scaleX = screenWidth / baseWidth;
+    const scaleY = screenHeight / baseHeight;
+    const scale = Math.min(scaleX, scaleY); // どちらか小さい方を適用
+
+    // 縮小・拡大を適用
+    document.body.style.transform = `scale(${scale})`;
+}
+
+// 画面サイズ変更時に適用
+window.addEventListener("resize", adjustScreenSize);
+window.addEventListener("load", adjustScreenSize);
 
   
 
