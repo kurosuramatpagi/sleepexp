@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const textElements = clonedCard.querySelectorAll('p, span');
         textElements.forEach(element => {
             element.style.fontSize = "1.7em"; 
-            element.style.lineHeight = "1.3";  // **行間を広げる（1.8倍）**
+            element.style.lineHeight = "1.1";  // **行間を広げる（1.8倍）**
         });
 
         // ✅ **睡ボアイコンを大きく**
