@@ -683,3 +683,8 @@ addButton.addEventListener('click', function() {
     width: 128.6px !important;  /* 2倍サイズを強制適用 */
     height: 300px !important;
 }
+
+.pokemon-box .exp-next {
+    white-space: nowrap;  
+    overflow: visible;  /* はみ出しを許可 */
+}
