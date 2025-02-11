@@ -709,3 +709,27 @@ addButton.addEventListener('click', function() {
     font-weight: bold;
     white-space: nowrap;  /* 改行を防ぐ */
 }
+
+body {
+    width: 390px;  /* iPhone 14の幅 */
+    height: 844px; /* iPhone 14の高さ */
+    margin: 0 auto; /* 画面中央に配置 */
+    background-color: #fff6e4; /* 余白の背景色 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden; /* 画面外にスクロールさせない */
+    transform-origin: top left; /* 縮小の基準点 */
+}
+
+/* 画面全体のサイズを調整 */
+html, body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
