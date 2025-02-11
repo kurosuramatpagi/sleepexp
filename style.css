@@ -680,7 +680,6 @@ addButton.addEventListener('click', function() {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 128.6px;  /* 元の幅64.3pxの2倍 */
-    height: 300px;   /* 元の高さ150pxの2倍 */
-    transform: none;  /* 拡大を防ぐ */
+    width: 128.6px !important;  /* 2倍サイズを強制適用 */
+    height: 300px !important;
 }
