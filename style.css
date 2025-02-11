@@ -688,3 +688,24 @@ addButton.addEventListener('click', function() {
     white-space: nowrap;  
     overflow: visible;  /* はみ出しを許可 */
 }
+
+/* 「あと ○○ exp」のスタイル */
+.pokemon-box .exp-next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;  /* 改行を防ぐ */
+}
+
+/* 「あと」と「exp」の文字を小さくする */
+.pokemon-box .exp-next .small-text {
+    font-size: 0.8em;  /* 小さくする */
+    opacity: 0.8;  /* 少し薄くして強調しすぎない */
+}
+
+/* ○○部分は通常の大きさ＆太字 */
+.pokemon-box .exp-next strong {
+    font-size: 1.2em;  /* 通常より少し大きめ */
+    font-weight: bold;
+    white-space: nowrap;  /* 改行を防ぐ */
+}
