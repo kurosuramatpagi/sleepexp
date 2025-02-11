@@ -672,6 +672,8 @@ addButton.addEventListener('click', function() {
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
+    justify-content: center; /* 横方向の中央配置 */
+    align-items: center; /* 縦方向の中央配置 */
     align-items: center;
     padding: 10px;
 }
