@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // カードのクローンを作成
         const clonedCard = card.cloneNode(true);
-        clonedCard.style.width = "128.6px";  // 2倍サイズ
-        clonedCard.style.height = "300px";  
+        clonedCard.style.width = "110px";  // 2倍サイズ
+        clonedCard.style.height = "270px";  
         clonedCard.style.transform = "none"; 
 
         // 画像のサイズを2倍にする
@@ -23,7 +23,22 @@ document.addEventListener('DOMContentLoaded', function () {
         // 文字サイズを2倍にする
         const textElements = clonedCard.querySelectorAll('p, span');
         textElements.forEach(element => {
-            element.style.fontSize = "1.2em"; 
+            element.style.fontSize = "1.7em"; 
+            element.style.lineHeight = "1.8";  // **行間を広げる（1.8倍）**
+        });
+
+        // ✅ **睡ボアイコンを大きく**
+        const sleepBonusIcon = clonedCard.querySelector('.sleep-bonus');
+        if (sleepBonusIcon) {
+            sleepBonusIcon.style.fontSize = "1.3em";  
+            sleepBonusIcon.style.padding = "6px 10px";  
+        }
+
+        // ✅ **性格アイコン（↑, ↓）を大きく**
+        const natureIcons = clonedCard.querySelectorAll('.nature-symbol');
+        natureIcons.forEach(icon => {
+            icon.style.fontSize = "1.3em";  
+            icon.style.padding = "6px 10px";  
         });
 
         // **編集エリアの左側に配置**
