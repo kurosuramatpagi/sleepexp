@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
         clonedCard.style.transform = "none"; 
 
          // ✅ **カード内の左右の空白を広げる**
-        clonedCard.style.paddingLeft = "4px";  
-        clonedCard.style.paddingRight = "4px";
+        clonedCard.style.paddingLeft = "-1px";  
+        clonedCard.style.paddingRight = "-1px";
 
         // 画像のサイズを2倍にする
         const img = clonedCard.querySelector('img');
