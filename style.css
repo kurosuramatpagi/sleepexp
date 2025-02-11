@@ -683,5 +683,5 @@ addButton.addEventListener('click', function() {
     width: 128.6px !important;  /* 2倍サイズを強制適用 */
     height: 300px !important;
     position: relative;
-    top: 0; /* 上方向に動かないように固定 */
+    top: 50; /* 上方向に動かないように固定 */
 }
