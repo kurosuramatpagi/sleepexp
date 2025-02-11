@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
         clonedCard.style.transform = "none"; 
 
          // ✅ **カード内の左右の空白を広げる**
-        clonedCard.style.paddingLeft = "12px";  
-        clonedCard.style.paddingRight = "12px";
+        clonedCard.style.paddingLeft = "4px";  
+        clonedCard.style.paddingRight = "4px";
 
         // 画像のサイズを2倍にする
         const img = clonedCard.querySelector('img');
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const textElements = clonedCard.querySelectorAll('p, span');
         textElements.forEach(element => {
             element.style.fontSize = "1.7em"; 
-            element.style.lineHeight = "1.4";  // **行間を広げる（1.8倍）**
+            element.style.lineHeight = "1.3";  // **行間を広げる（1.8倍）**
         });
 
         // ✅ **睡ボアイコンを大きく**
