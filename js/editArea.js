@@ -9,9 +9,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // カードのクローンを作成
         const clonedCard = card.cloneNode(true);
-        clonedCard.style.width = "110px";  // 2倍サイズ
-        clonedCard.style.height = "270px";  
+        clonedCard.style.width = "120px";  // 2倍サイズ
+        clonedCard.style.height = "250px";  
         clonedCard.style.transform = "none"; 
+
+         // ✅ **カード内の左右の空白を広げる**
+        clonedCard.style.paddingLeft = "12px";  
+        clonedCard.style.paddingRight = "12px";
 
         // 画像のサイズを2倍にする
         const img = clonedCard.querySelector('img');
