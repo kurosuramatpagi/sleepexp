@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // カードのクローンを作成
         const clonedCard = card.cloneNode(true);
         clonedCard.style.width = "120px";  // 2倍サイズ
-        clonedCard.style.height = "250px";  
+        clonedCard.style.height = "230px";  
         clonedCard.style.transform = "none"; 
 
          // ✅ **カード内の左右の空白を広げる**
