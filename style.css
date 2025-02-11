@@ -672,8 +672,6 @@ addButton.addEventListener('click', function() {
     border: 1px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
-    justify-content: center; /* 横方向の中央配置 */
-    align-items: center; /* 縦方向の中央配置 */
     align-items: center;
     padding: 10px;
 }
@@ -684,4 +682,6 @@ addButton.addEventListener('click', function() {
     align-items: center;
     width: 128.6px !important;  /* 2倍サイズを強制適用 */
     height: 300px !important;
+    position: relative;
+    top: 0; /* 上方向に動かないように固定 */
 }
