@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // カードのクローンを作成
         const clonedCard = card.cloneNode(true);
-        clonedCard.style.width = "64.3px";  // カードエリアと同じサイズ
-        clonedCard.style.height = "150px";  // 高さも統一
+        clonedCard.style.width = "100px";  // カードエリアと同じサイズ
+        clonedCard.style.height = "220px";  // 高さも統一
         clonedCard.style.transform = "none";  // 拡大を防ぐ
 
         // 既存の編集プレビューをクリアして、新しいカードをセット
